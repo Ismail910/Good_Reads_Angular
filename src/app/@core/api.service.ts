@@ -90,7 +90,12 @@ export class ApiService {
   delete(url:string):Observable<any>
   {
 
-    return this.httpClient.delete(`${url}`);
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    return this.httpClient.delete(`${url}`,headers);
 
   }
 
