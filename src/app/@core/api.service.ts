@@ -7,18 +7,92 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  private ApiUrl='';
   constructor(private httpClient:HttpClient) { }
 
-  get(url: string, body?: {}, includeHeader?: boolean): Observable<any> {
+  get(url: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     });
 
     return this.httpClient.get(`${url}`, {
-      headers: headers,
-      withCredentials: false,
+      headers
     });
+
   }
+
+
+  post(url:string,body?:{}):Observable<any>
+  {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    return this.httpClient.post(`${url}`,JSON.stringify(body),
+    {
+      headers
+    });
+
+  }
+
+
+  postJson(url:string,body?:{}):Observable<any>
+  {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    return this.httpClient.post(`${url}`,JSON.stringify(body),
+    {
+      headers
+    });
+
+  }
+
+
+
+  put(url:string,body?:{}):Observable<any>
+  {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    return this.httpClient.put(`${url}`,JSON.stringify(body),
+    {
+      headers
+    });
+
+  }
+
+
+  putJson(url:string,body?:{}):Observable<any>
+  {
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    });
+
+    return this.httpClient.put(`${url}`,JSON.stringify(body),
+    {
+      headers
+    });
+
+  }
+
+
+  delete(url:string):Observable<any>
+  {
+
+    return this.httpClient.delete(`${url}`);
+
+  }
+
+
 }

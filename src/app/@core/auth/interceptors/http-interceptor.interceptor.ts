@@ -14,7 +14,11 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
-    console.log("interceptor ",request,next);
+     request = request.clone({
+      setHeaders: {
+        'x-token': `${JSON.parse(localStorage.getItem('token')!)}`,
+      },
+    });
 
     return next.handle(request);
   }
