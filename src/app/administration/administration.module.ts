@@ -9,6 +9,7 @@ import { AdminBooksComponent } from './admin-books/admin-books.component';
 import { AdminAuthorsComponent } from './admin-authors/admin-authors.component';
 import { AdminSidebarComponent } from './admin-layout/admin-sidebar/admin-sidebar.component';
 import { AdminHeaderComponent } from './admin-layout/admin-header/admin-header.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AdminHeaderComponent } from './admin-layout/admin-header/admin-header.c
     AdminBooksComponent,
     AdminAuthorsComponent,
     AdminSidebarComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    AdminLoginComponent
   ],
   imports: [
     CommonModule,
