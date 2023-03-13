@@ -11,7 +11,7 @@ const routes: Routes = [
   then(m=>m.AdministrationModule)
   },
   {path:'login', component:LoginComponent},
-  {path:'login', component:RegisterComponent},
+  {path:'register', component:RegisterComponent},
 
 ];
 
