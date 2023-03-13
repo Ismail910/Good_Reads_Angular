@@ -1,1 +1,89 @@
-<p>admin-categories works!</p>
+
+<div class="container mt-5">
+  <table class="table text-center m-auto">
+    <thead style=" background-color: #18AF9A;">
+      <tr>
+        <th>
+        <app-pagination>
+
+        </app-pagination>
+        </th>
+        <th colspan="6" style=" background-color: rgb(237, 237, 237);">
+          <button class="btn add" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
+        </th>
+        </tr>
+      <tr class="text-white">
+        <th>#</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <ng-container *ngFor="let category of listCategories; let i=index;">
+        <tr>
+          <td> {{i+1}}</td>
+          <td>{{category.name}}</td>
+          <td>
+            <button class="btn"><i class="fa fa-trash text-danger"></i></button>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary"></i></button>
+          </td>
+        </tr>
+      </ng-container>
+
+
+    </tbody>
+  </table>
+</div>
+
+
+<!---------------------Add Category----------------------------->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog mt-5">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+      <div class="modal-body">
+          <div class="form-group">
+
+            <input type="text" class="form-control" placeholder="Category Name">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn" style="background: #18AF9A">Save</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+<!---------------------EditCategory----------------------------->
+<div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog mt-5">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+      <div class="modal-body">
+          <div class="form-group">
+
+            <input type="text" class="form-control" placeholder="Category Name">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn" style="background: #18AF9A">Save</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>

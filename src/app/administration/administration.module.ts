@@ -10,6 +10,7 @@ import { AdminAuthorsComponent } from './admin-authors/admin-authors.component';
 import { AdminSidebarComponent } from './admin-layout/admin-sidebar/admin-sidebar.component';
 import { AdminHeaderComponent } from './admin-layout/admin-header/admin-header.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { SharedModule } from '../@shared/@shared.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
   ],
   imports: [
     CommonModule,
-    AdministrationRoutingModule
+    AdministrationRoutingModule,
+    SharedModule,
   ]
 })
 export class AdministrationModule { }

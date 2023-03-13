@@ -1,1 +1,23 @@
-<p>admin-panel works!</p>
+<div class="row container-fluid">
+  <div class="col-2">
+    <app-admin-sidebar></app-admin-sidebar>
+  </div>
+  <div class="col-10 bg-light">
+    <div class="row">
+      <div class="col-12">
+        <app-admin-header></app-admin-header>
+      </div>
+      <div class="col-12 position-relative">
+        <div class="title">
+          <h2 class="text-white">Books</h2>
+        </div>
+
+        <div class="card content-page">
+          <router-outlet></router-outlet>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

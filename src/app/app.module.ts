@@ -6,7 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './@core/api.service';
-import { CoreModule } from './@core/@core.module';
+import { CoreModule} from './@core/@core.module';
+import { SharedModule } from './@shared/@shared.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CoreModule } from './@core/@core.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   providers: [
     {
