@@ -1,0 +1,19 @@
+.btn
+{
+  border: 1px solid gainsboro;
+  border-radius: 0%;
+  -webkit-border-radius: 0%;
+  -moz-border-radius: 0%;
+  -ms-border-radius: 0%;
+  -o-border-radius: 0%;
+  padding: 2% 5%;
+}
+
+.active
+{
+  background-color: #2c3344;
+}
+.active a
+{
+  color: white;
+}

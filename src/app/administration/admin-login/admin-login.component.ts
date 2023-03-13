@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@core/auth/auth.service';
 import { environment } from 'src/environments/environment.development';
 
@@ -12,7 +13,7 @@ export class AdminLoginComponent {
 
   formLogin:FormGroup;
 
-  constructor(private fb:FormBuilder ,private auth:AuthService){
+  constructor(private fb:FormBuilder ,private auth:AuthService,private router:Router){
     this.formLogin=fb.group(
       {
         email:['',[Validators.required]],
@@ -38,6 +39,7 @@ export class AdminLoginComponent {
       next:(data)=>{
       localStorage.setItem('token',data.token);
       console.log(data);
+      this.router.navigate(['/Admin/Categories']);
       },
       error:()=>
       {
