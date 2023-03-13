@@ -38,4 +38,19 @@ export class AdminCategoriesComponent implements OnInit {
     return this.formCategory.get('name')?.value;
   }
 
+  addCategory()
+  {
+    this.api.postJson(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
+    {
+      next:(data)=>{
+
+        console.log(data);
+      },
+      error:()=>
+      {
+        console.log("error");
+      }
+
+    });
+  }
 }

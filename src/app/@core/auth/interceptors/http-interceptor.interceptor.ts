@@ -16,7 +16,7 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
      request = request.clone({
       setHeaders: {
-        'x-token': `${JSON.parse(localStorage.getItem('token')!)}`,
+        'x-token': `${(localStorage.getItem('token'))}`,
       },
     });
 
