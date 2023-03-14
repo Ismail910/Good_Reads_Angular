@@ -3,7 +3,7 @@
   <table class="table text-center m-auto">
     <thead style=" background-color: #18AF9A;">
       <tr>
-        <th>
+        <th style="background-color: rgb(237, 237, 237);">
         <app-pagination>
 
         </app-pagination>
@@ -45,11 +45,11 @@
         <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form>
+      <form method="POST" [formGroup]="formCategory" (ngSubmit)="addCategory()">
       <div class="modal-body">
           <div class="form-group">
 
-            <input type="text" class="form-control" placeholder="Category Name">
+            <input type="text" class="form-control" placeholder="Category Name" formControlName="name">
           </div>
       </div>
       <div class="modal-footer">
