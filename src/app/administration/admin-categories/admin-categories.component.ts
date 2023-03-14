@@ -2,7 +2,7 @@ import { environment } from './../../../environments/environment';
 import { ApiService } from './../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ICategory } from 'src/app/model/category/icategory';
+import { ICategory } from 'src/app/model/user/icategory';
 
 @Component({
   selector: 'app-admin-categories',

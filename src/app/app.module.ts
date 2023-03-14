@@ -9,7 +9,7 @@ import { ApiService } from './@core/api.service';
 import { CoreModule} from './@core/@core.module';
 import { SharedModule } from './@shared/@shared.module';
 
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +18,8 @@ import { SharedModule } from './@shared/@shared.module';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
   providers: [
     {
