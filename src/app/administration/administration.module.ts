@@ -11,6 +11,7 @@ import { AdminSidebarComponent } from './admin-layout/admin-sidebar/admin-sideba
 import { AdminHeaderComponent } from './admin-layout/admin-header/admin-header.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SharedModule } from '../@shared/@shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SharedModule } from '../@shared/@shared.module';
     CommonModule,
     AdministrationRoutingModule,
     SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class AdministrationModule { }
