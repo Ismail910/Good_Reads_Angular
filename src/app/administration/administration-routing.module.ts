@@ -7,7 +7,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
-  {path:'',component:AdminPanelComponent,children:
+  {path:'',component:AdminPanelComponent,children: 
   [
     {path:'Books',component:AdminBooksComponent},
     {path:'Authors',component:AdminAuthorsComponent},

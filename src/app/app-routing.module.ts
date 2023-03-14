@@ -10,8 +10,8 @@ const routes: Routes = [
   import('./administration/administration.module').
   then(m=>m.AdministrationModule)
   },
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent},
+  // {path:'login', component:LoginComponent},
+  // {path:'register', component:RegisterComponent},
 
 ];
 

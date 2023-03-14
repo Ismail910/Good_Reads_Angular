@@ -10,12 +10,18 @@ import { UserCategoriesComponent } from './components/user-categories/user-categ
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
 import { UserBooksComponent } from './components/user-books/user-books.component';
 import { UserBookDetailsComponent } from './components/user-book-details/user-book-details.component';
-import { HomeComponent } from './home/home/home.component';
+import { HomeComponent } from './home/home/HomeComponent.1';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { PopularComponent } from './home/popular/popular.component';
-
-
+import { NotFoundComponent } from './error/not-found/not-found.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -30,11 +36,23 @@ import { PopularComponent } from './home/popular/popular.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    PopularComponent
+    PopularComponent,
+    NotFoundComponent,
+
+
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    MatSlideToggleModule,
+    MatCardModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
+
+
   ]
 })
 export class UsersModule { }

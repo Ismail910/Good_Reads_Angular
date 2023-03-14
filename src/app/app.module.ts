@@ -8,17 +8,26 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiService } from './@core/api.service';
 import { CoreModule} from './@core/@core.module';
 import { SharedModule } from './@shared/@shared.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
+    
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    BrowserAnimationsModule,
+
+
+
+
+
   ],
   providers: [
     {
