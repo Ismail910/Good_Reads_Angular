@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {Author} from '../../model/user/author';
+import {Author} from '../../@shared/model/author';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 @Injectable({
@@ -14,6 +14,7 @@ export class AuthorService {
   getAllAuthors() :Observable<any> {
    return this.http.get<any>(`${environment.baseUrl}/admin/author/page/1`)
   }
+
   
   getAuthorByID(id:number){
     return this.http.get<any>(`${environment.baseUrl}/${id}`);

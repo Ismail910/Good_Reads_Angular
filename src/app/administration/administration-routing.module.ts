@@ -8,8 +8,12 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 const routes: Routes = [
+
+
+
   {path:'login',component:AdminLoginComponent},
   {path:'',component:AdminPanelComponent,children:
+
   [
     {path:'Books',component:AdminBooksComponent},
     {path:'Authors',component:AdminAuthorsComponent},
@@ -17,6 +21,7 @@ const routes: Routes = [
 
   ]}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

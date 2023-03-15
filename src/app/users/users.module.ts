@@ -10,13 +10,13 @@ import { UserCategoriesComponent } from './components/user-categories/user-categ
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
 import { UserBooksComponent } from './components/user-books/user-books.component';
 import { UserBookDetailsComponent } from './components/user-book-details/user-book-details.component';
-import { HomeComponent } from './home/home/home.component';
+import { HomeComponent } from './home/home/HomeComponent.1';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { PopularComponent } from './home/popular/popular.component';
 import { UserAuthorCardComponent } from './components/user-author-card/user-author-card.component';
 import { SharedModule } from '../@shared/@shared.module';
-
+import { NotFoundComponent } from './error/not-found/not-found.component';
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import { SharedModule } from '../@shared/@shared.module';
     LoginComponent,
     RegisterComponent,
     PopularComponent,
-    UserAuthorCardComponent
+    UserAuthorCardComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,

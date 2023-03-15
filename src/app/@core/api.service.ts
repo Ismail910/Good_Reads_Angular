@@ -22,7 +22,7 @@ export class ApiService {
   }
 
 
-  post(url:string,body?:{}):Observable<any>
+  post(url:string,body:{}):Observable<any>
   {
 
     const headers = new HttpHeaders({
@@ -90,7 +90,7 @@ export class ApiService {
   delete(url:string):Observable<any>
   {
     const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
+      'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
     });
 
