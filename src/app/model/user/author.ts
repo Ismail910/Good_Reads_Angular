@@ -1,8 +1,10 @@
 export interface Author {
-    ID :Number;
-    photo:string;
-    firstName:string;
-    lastName:string;
-    dateOfBirth:string;
+    _id: string;
+    photo: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
+    books: string[];
+    ID: number;
 }
 

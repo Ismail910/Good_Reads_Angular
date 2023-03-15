@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { PopularComponent } from './home/popular/popular.component';
+import { UserAuthorCardComponent } from './components/user-author-card/user-author-card.component';
+import { SharedModule } from '../@shared/@shared.module';
 
 
 
@@ -30,11 +32,13 @@ import { PopularComponent } from './home/popular/popular.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    PopularComponent
+    PopularComponent,
+    UserAuthorCardComponent
   ],
   imports: [
     CommonModule,
-    UsersRoutingModule
+    UsersRoutingModule,
+    SharedModule
   ]
 })
 export class UsersModule { }
