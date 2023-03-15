@@ -1,5 +1,7 @@
-export interface ICategory {
+import { Book } from './book';
 
-  name:string,
-  id:number
+export interface ICategory {
+  name:string;
+  id:number;
+  book:Book;
 }
