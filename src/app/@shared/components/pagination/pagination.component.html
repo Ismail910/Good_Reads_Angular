@@ -1,8 +1,14 @@
 <ul class="pagination m-auto mx-4">
   <!-- make prev disabled when index = 1 and next disabled when index = length -->
-  <li class="page-item btn " style="background-color: #2c3344;"> <a href="page-link" class="text-white">Prev</a></li>
-  <li class="page-item btn"> <a href="page-link">1</a></li>
-  <li class="page-item btn active"> <a href="page-link">2</a></li>
-  <li class="page-item btn"> <a href="page-link">3</a></li>
-  <li class="page-item btn" style="background-color: #2c3344;"> <a href="page-link" class="text-white">Next</a></li>
+  <li class="page-item" style="background-color: #2c3344;">
+    <button class="text-white btn" type="button" (click)="prev()" [disabled]="page==1">Prev</button></li>
+
+  <ng-container *ngFor="let p of pagination; ">
+    <li class="page-item btn" [class.active]="page==p+1">
+      <button type="button" class="btn" (click)="pageChange(p+1)">{{p+1}}</button></li>
+  </ng-container>
+
+  <li class="page-item" style="background-color: #2c3344;">
+    <button  class="text-white btn" type="button" (click)="next()"
+    [disabled]="page==pagination.length">Next</button></li>
 </ul>

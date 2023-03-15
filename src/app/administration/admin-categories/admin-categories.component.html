@@ -11,9 +11,17 @@
       <tr>
         <th style="background-color: rgb(237, 237, 237);">
 
-        <app-pagination>
+          <div class="container">
+            <app-pagination
+            [pagination]="_pagination"
+            [next]="next"
+            [prev]="prev"
+            [page]="page"
+            (currPage)="currentPage($event)"
+            >
+            </app-pagination>
+          </div>
 
-        </app-pagination>
 
         </th>
         <th style="background-color: rgb(237, 237, 237);"></th>
