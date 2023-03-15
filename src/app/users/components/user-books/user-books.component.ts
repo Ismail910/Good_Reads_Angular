@@ -1,3 +1,4 @@
+import { Book } from '../../../@shared/model/book';
 import { BookServiceService } from './../../../services/user/book-service.service';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -9,23 +10,44 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserBooksComponent implements OnChanges,OnInit{
 
+  books?:any
+  book?:Book;
+
   constructor(
     private ActvetedRoute: ActivatedRoute,
-    private bookService: BookServiceService)
-  {
+    private bookService: BookServiceService,
+
+    ){
     this.ActvetedRoute.paramMap.subscribe((parmMap)=>{
-      parmMap.get('id');
+      parmMap.get('id')
+
     })
   }
 
-
-
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+
+
+  this.bookService.getAllBooks().subscribe( books =>{
+    this.books = books
+   })
+
+
+  this.ActvetedRoute.paramMap.subscribe((paramMap)=>{
+    this.bookService.getBook(paramMap.get('id') || '1').subscribe((book) =>{
+      this.book = book
+      console.log(book)
+      })
+   })
   }
+
   ngOnChanges(changes: SimpleChanges): void {
-    throw new Error('Method not implemented.');
+
+    this.bookService.getBooksByStatus().subscribe( books =>{
+      this.books = books
+     })
+
   }
+
 
 
 }

@@ -1,10 +1,11 @@
+import { Book } from './book';
 export interface Author {
-    _id: string;
-    photo: string;
-    firstName: string;
-    lastName: string;
-    dateOfBirth: string;
-    books: string[];
-    ID: number;
+
+    ID :Number;
+    photo:string;
+    firstName:string;
+    lastName:string;
+    dateOfBirth:string;
+    book:Book;
 }
 

@@ -1,40 +1,21 @@
 import { ICategory } from './icategory';
+import { Author } from './author';
+import { BookUser, Reviews } from './book-user';
 
-export interface Book {
-  name?:string
-  img?:string
-  summary:string
+    export interface Book {
+        id: string;
+        name: string;
+        img: string;
+        summary: string;
+        avg_rate: number;
+        reviews: Reviews[];
+        author: Author;
+        ICategory:ICategory;
+        bookUser: BookUser;
+    }
 
-ICategory:ICategory
-// author:Author
-}
 
 
-declare module namespace {
 
-  export interface Author {
-      _id: string;
-      firstName: string;
-      lastName: string;
-  }
 
-  export interface BookUser {
-      _id: string;
-      rating: number;
-      status: string;
-  }
-
-  export interface RootObject {
-      _id: string;
-      name: string;
-      img: string;
-      summary: string;
-      avg_rate: number;
-      reviews: any[];
-      author: Author;
-      __v: number;
-      bookUser: BookUser;
-  }
-
-}
 
