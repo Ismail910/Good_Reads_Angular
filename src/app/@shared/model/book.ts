@@ -1,4 +1,4 @@
-import { ICategory } from '../user/icategory';
+import { ICategory } from './icategory';
 import { Author } from './author';
 import { BookUser, Reviews } from './book-user';
 
@@ -13,6 +13,9 @@ import { BookUser, Reviews } from './book-user';
         ICategory:ICategory;
         bookUser: BookUser;
     }
+
+
+
 
 
 

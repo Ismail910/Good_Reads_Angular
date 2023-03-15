@@ -20,7 +20,7 @@ td button i
 }
 .add
 {
-  margin-left: 80%;
+  margin-left: 40%;
 }
 .add i
 {
@@ -41,4 +41,14 @@ td button i
 .modal button
 {
   color: white;
+}
+
+.ng-valid:not(form)
+{
+  border-left: 5px solid green;
+}
+
+.ng-invalid:not(form)
+{
+  border-left: 5px solid rgb(149, 8, 8);
 }
