@@ -1,6 +1,9 @@
+import { Author } from 'src/app/@shared/model/author';
 import { environment } from './../../../environments/environment.development';
 import { ApiService } from './../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-authors',
@@ -9,16 +12,107 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminAuthorsComponent implements OnInit {
 
-  constructor(private api:ApiService)
-  {
+  formAuthor:FormGroup;
+  listAuthors:Author[]=[];
+  totalPages:number=0;
+  page:number=1;
+  _pagination:any=[];
+  constructor(private fb:FormBuilder,private api:ApiService) {
+    this.formAuthor=fb.group(
+    {
+      fName:['',[Validators.required]],
+      lName:['',[Validators.required]],
+      dateBirth:['',[Validators.required]],
+      image:['',[Validators.required]]
+
+    });
 
   }
 
   ngOnInit(): void {
-    //test get all
-   this.api.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
-    console.log(data);
-   });
+    this.authors();
+  }
+
+  next=()=>{
+    if(this.page<this.totalPages){
+      this.page++;
+      this.authors();
+    }
+
+    }
+
+    prev=()=>{
+      if(this.page>1){
+      this.page--;
+      this.authors();
+      }
+    }
+    currentPage(p:number)
+    {
+      this.page=p;
+      this.authors();
+    }
+
+    authors()
+    {
+      this.api.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data=>{
+        this.listAuthors=data.data;
+        this.totalPages=data.pages.totalPages;
+        this._pagination=[...Array(this.totalPages).keys()];
+      })
+    }
+
+  addAuthor()
+  {
+
+  }
+
+  deleteAuthor(id:Number)
+  {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.api.delete(`${environment.baseUrl}/admin/author/${id}`).subscribe({
+          next:()=>
+          {
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            );
+            this.authors();
+          },
+          error:()=>{
+
+          }
+        });
+      }
+    });
+  }
+
+  get firstName()
+  {
+    return this.formAuthor.get('fName');
+  }
+
+  get lastName()
+  {
+    return this.formAuthor.get('lName');
+  }
+
+  get dateBirth()
+  {
+    return this.formAuthor.get('dateBirth');
+  }
+
+
 
    //test get by id
 
@@ -27,7 +121,7 @@ export class AdminAuthorsComponent implements OnInit {
    });*/
 
 
-   //test delete 
+   //test delete
    /*this.api.delete(`${environment.baseUrl}/admin/author/1`).subscribe(data=>{
     console.log(data);
    });*/
@@ -66,9 +160,3 @@ export class AdminAuthorsComponent implements OnInit {
 
   }
 
-
-
-
-
-
-}
