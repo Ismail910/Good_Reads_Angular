@@ -1,11 +1,12 @@
 
 <a [routerLink]="['/author',author.ID]" style="text-decoration: none;">
-<div class="card rounded-5" style="width: 20rem; height: 20rem;">
-    <img src="../../../../assets/author.jpeg"  
-    style="width: 20rem; height: 20rem;" class="card-img-top rounded-top-5" alt="auhor">
-    <div class="card-body">
-       <h3 class="text-center">{{author.firstName}} {{ author.lastName}}</h3>
+
+<div class="card text-center bg-white ">
+    <div class="card-body text-dark">
+    <div class="img-area">
+      <img src="../../../../assets/author.jpeg" alt="project1" class="img-fluid" style="width:100%">
     </div>
-    
-</div>
+    <h3 class="text-center">{{author.firstName}} {{ author.lastName}}</h3>
+   </div>
+  </div>
 </a>
