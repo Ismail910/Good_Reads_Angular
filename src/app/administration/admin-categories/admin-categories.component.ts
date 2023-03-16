@@ -15,10 +15,13 @@ export class AdminCategoriesComponent implements OnInit {
   formCategory:FormGroup;
   listCategories:ICategory[]=[];
   totalPages:number=0;
-  page:number=0;
+  page:number=1;
+  _pagination:any=[];
+
 
   constructor(private api:ApiService,private fb:FormBuilder)
   {
+
     this.formCategory=fb.group(
       {
         name:['',[Validators.required]],
@@ -29,11 +32,35 @@ export class AdminCategoriesComponent implements OnInit {
     this.categories();
   }
 
+
+  next=()=>{
+  if(this.page<this.totalPages){
+    this.page++;
+    this.categories();
+  }
+
+  }
+
+  prev=()=>{
+    if(this.page>1){
+    this.page--;
+    this.categories();
+    }
+  }
+  currentPage(p:number)
+  {
+    this.page=p;
+    this.categories();
+  }
+
+
+
   categories()
   {
-    this.api.get(`${environment.baseUrl}/category/page/1`).subscribe(data=>{
+    this.api.get(`${environment.baseUrl}/category/page/${this.page}`).subscribe(data=>{
       this.listCategories=data.data;
       this.totalPages=data.pages.totalPages;
+      this._pagination=[...Array(this.totalPages).keys()];
     })
 
   }

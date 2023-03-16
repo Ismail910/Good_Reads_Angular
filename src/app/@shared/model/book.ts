@@ -10,7 +10,7 @@ import { BookUser, Reviews } from './book-user';
         avg_rate: number;
         reviews: Reviews[];
         author: Author;
-        ICategory:ICategory;
+        category:ICategory;
         bookUser: BookUser;
     }
 

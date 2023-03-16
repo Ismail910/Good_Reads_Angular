@@ -9,14 +9,20 @@
   <table class="table text-center m-auto mb-2">
     <thead style=" background-color: #18AF9A;">
       <tr>
-        <th style="background-color: rgb(237, 237, 237);">
+        <th style="background-color: rgb(237, 237, 237);" colspan="2">
 
-        <app-pagination>
-
-        </app-pagination>
+          <div class="container">
+            <app-pagination
+            [pagination]="_pagination"
+            [next]="next"
+            [prev]="prev"
+            [page]="page"
+            (currPage)="currentPage($event)"
+            >
+            </app-pagination>
+          </div>
 
         </th>
-        <th style="background-color: rgb(237, 237, 237);"></th>
 
         <th style=" background-color: rgb(237, 237, 237);">
           <button class="btn add" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
