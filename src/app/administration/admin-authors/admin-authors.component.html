@@ -65,13 +65,14 @@
         <h5 class="modal-title" id="exampleModalLabel">Add Author</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form [formGroup]="formAuthor"  (ngSubmit)="addAuthor()">
+      <form [formGroup]="formAuthor"  (ngSubmit)="addAuthor()" enctype="multipart/form-data">
       <div class="modal-body">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="FirstName"
              name="fName" formControlName="fName"
-              [class.is-invalid]="firstName?.untouched || !firstName?.valid"
-              [class.is-valid]="firstName?.valid">
+              [class.is-valid]="firstName?.valid"
+              [class.is-invalid]="firstName?.untouched || firstName?.invalid"
+              >
 
             <div class="alert alert-warning" [hidden]="firstName?.valid || firstName?.untouched" >
              <small *ngIf="firstName?.errors?.['required']">First Name is required </small>
@@ -107,15 +108,15 @@
 
 
           <div class="form-group">
-            <input type="file" class="file-input">
-            <!--<div class="file-upload">
+            <input type="file" class="file-input" formControlName="image" name="image"
+             (change)="uploadImage($event)"
+             [class.is-invalid]="image?.untouched || !image?.valid"
+             [class.is-valid]="image?.valid"
+             >
 
-              <mat-label>Upload Image</mat-label>
-
-               <button mat-mini-fab color="primary" class="upload-btn">
-                   <mat-icon>attach_file</mat-icon>
-               </button>
-           </div>-->
+             <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >
+              <small *ngIf="image?.errors?.['required']">Image is required </small>
+            </div>
           </div>
       </div>
       <div class="modal-footer">

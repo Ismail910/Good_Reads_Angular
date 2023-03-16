@@ -86,7 +86,7 @@ export class AdminCategoriesComponent implements OnInit {
     });
   }
 
-  deleteCategory(id:number)
+  deleteCategory(id:string)
   {
     Swal.fire({
       title: 'Are you sure?',
