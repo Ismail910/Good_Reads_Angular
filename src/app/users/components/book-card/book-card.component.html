@@ -1,0 +1,32 @@
+<div class="container ">
+<div class=" row row-cols-1 row-cols-md-3 g-3 p-5 d-flex justify-content-evenly">
+  <div class="col-4 " >
+    <div class=" card text-center" >
+      <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" [routerLink]="['/book/', book.id]" class="card-img-top"
+        alt="Hollywood Sign on The Hill" />
+      <div class="card-body">
+        <h1 class="card-title">{{book?.name}}</h1>
+        <p class="card-text">
+          {{book?.summary}}
+        </p>
+        <p>{{book?.avg_rate}}</p>
+        <div>
+          <div class="fs-1 p-5 ">
+            rating:
+            <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating(star )">
+              <i class="fa fa-star fs-3" [ngClass]="{'active': star <= rating}"></i>
+            </span>
+          </div></div>
+          <div>
+          <select class="select btn btn-secondary dropdown-toggle"type="button">
+            <option value="Read">Read</option>
+            <option value="Reading">Reading</option>
+            <option value="wantToRead">Want To Read</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+

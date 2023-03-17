@@ -3,6 +3,7 @@ import { Author } from './author';
 import { BookUser, Reviews } from './book-user';
 
     export interface Book {
+        _id: any;
         id: string;
         name: string;
         img: string;
