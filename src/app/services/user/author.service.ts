@@ -16,7 +16,13 @@ export class AuthorService {
   }
 
 
+
   getAuthorByID(id:number){
     return this.http.get<any>(`${environment.baseUrl}/${id}`);
+
+
+  // getAuthorByID(id:number):Observable<any> {
+  //   return this.http.get<any>(`${environment.baseUrl}/admin/author/${id}/640ded78df5541b3bcf41873`);
+
   }
 }
