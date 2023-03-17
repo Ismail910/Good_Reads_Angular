@@ -13,8 +13,8 @@ const routes: Routes = [
 
   {path:'login',component:AdminLoginComponent},
   {path:'',component:AdminPanelComponent,children:
-
   [
+    {path:'Dashboard',component:AdminDashboardComponent},
     {path:'Books',component:AdminBooksComponent},
     {path:'Authors',component:AdminAuthorsComponent},
     {path:'Categories',component:AdminCategoriesComponent}

@@ -17,7 +17,8 @@ export class AdminCategoriesComponent implements OnInit {
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
-
+  isAdded:boolean=false;
+  error:boolean=false;
 
   constructor(private api:ApiService,private fb:FormBuilder)
   {
@@ -75,15 +76,29 @@ export class AdminCategoriesComponent implements OnInit {
     this.api.postJson(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
     {
       next:(data)=>{
-
-        console.log(data);
+        this. isAdded=true;
       },
       error:()=>
       {
-        console.log("error");
+        this.error=true;
       }
 
+
     });
+
+  }
+
+  showCategory(category:ICategory)
+  {
+    //console.log("cat",category);
+    this.formCategory.get('name')?.setValue(category.name);
+    this.formCategory.get('_id')?.setValue(category._id);
+
+  }
+
+  EditCategory()
+  {
+    console.log(this.formCategory.value);
   }
 
   deleteCategory(id:string)
