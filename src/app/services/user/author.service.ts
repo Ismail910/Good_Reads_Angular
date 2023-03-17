@@ -15,7 +15,7 @@ export class AuthorService {
    return this.http.get<any>(`${environment.baseUrl}/admin/author/page/1`)
   }
 
-  
+
   getAuthorByID(id:number){
     return this.http.get<any>(`${environment.baseUrl}/${id}`);
   }
