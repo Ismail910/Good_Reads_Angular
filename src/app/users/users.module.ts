@@ -1,6 +1,6 @@
+// import { NgxStarRatingModule } from 'ngx-star-rating';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { UsersRoutingModule } from './users-routing.module';
 import { UserHeaderComponent } from './user-layout/user-header/user-header.component';
 import { UserFooterComponent } from './user-layout/user-footer/user-footer.component';
@@ -17,6 +17,9 @@ import { PopularComponent } from './home/popular/popular.component';
 import { UserAuthorCardComponent } from './components/user-author-card/user-author-card.component';
 import { SharedModule } from '../@shared/@shared.module';
 import { NotFoundComponent } from './error/not-found/not-found.component';
+import { SlideshowComponent } from './user-layout/slideshow/slideshow.component';
+import { BookCardComponent } from './components/book-card/book-card.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,12 +37,16 @@ import { NotFoundComponent } from './error/not-found/not-found.component';
     RegisterComponent,
     PopularComponent,
     UserAuthorCardComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SlideshowComponent,
+    BookCardComponent
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }
