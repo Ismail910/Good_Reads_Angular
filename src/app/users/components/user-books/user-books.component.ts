@@ -22,13 +22,13 @@ export class UserBooksComponent implements OnChanges,OnInit{
   _pagination:any=[];
   constructor(
     private ActvetedRoute: ActivatedRoute,
-    // private bookService: BookServiceService,
+    private bookService: BookServiceService,
     private Api: ApiService
     ){
     this.ActvetedRoute.paramMap.subscribe((parmMap)=>{
-    //  this.bookId =  parmMap.get('id') || ''
+     this.bookId =  parmMap.get('id') || ''
       this.status = parmMap.get('status') || "notRead"
-      // this.userId = parmMap.get('userId') ||  '6414d8e6b98388bb550de21d'
+      this.userId = parmMap.get('userId') ||  '6414d8e6b98388bb550de21d'
     })
   }
 

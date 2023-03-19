@@ -25,8 +25,8 @@ getAllBooks(userId:string):Observable<any>{
  }
 
 
-getBook(bookId:string){
-     return this.Http.get<Book>(`${environment.baseUrl}/books/`+ bookId ,
+getBook(bookId:string):Observable<Book>{
+     return this.Http.get<Book>(`${environment.baseUrl}book/`+ bookId ,
      {
        headers : new HttpHeaders().set('Authorization','secrt token')
      })
