@@ -14,9 +14,17 @@ signup(url:string,body:{}):Observable<any>
   return this.api.postJson(`${url}`,body);
 }
 
+
+
 login(url:string,body:{}):Observable<any>
 {
   return this.api.postJson(`${url}`,body);
+}
+
+
+logout()
+{
+  
 }
 
 

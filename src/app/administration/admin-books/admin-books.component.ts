@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/api.service';
 import { Book } from 'src/app/@shared/model/book';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-books',
@@ -49,5 +50,35 @@ export class AdminBooksComponent implements OnInit {
       })
 
     }
+
+    deleteBook(id: string) {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.api.delete(`${environment.baseUrl}/book/${id}`).subscribe({
+            next: () => {
+              Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+              );
+              this.books();
+            },
+            error: () => {
+
+            }
+          });
+        }
+      });
+    }
+
+
 
 }
