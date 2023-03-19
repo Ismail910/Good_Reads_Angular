@@ -13,36 +13,27 @@ export class UserBooksComponent implements OnChanges,OnInit{
   books?:any
   book?:Book;
   status!:string
-  userId!:number
-  bookId!:number
+  userId!:string
+  bookId!:string
 
   constructor(
     private ActvetedRoute: ActivatedRoute,
     private bookService: BookServiceService,
     ){
     this.ActvetedRoute.paramMap.subscribe((parmMap)=>{
-     this.bookId =  parseInt(parmMap.get('id') || '1')
+     this.bookId =  parmMap.get('id') || ''
       this.status = parmMap.get('status') || "notRead"
-      this.userId = parseInt(parmMap.get('userId') ||  "1")
-
-
-
+      this.userId = parmMap.get('userId') ||  ""
     })
   }
 
   ngOnInit(): void {
 
-
-  this.bookService.getAllBooks().subscribe( books =>{
+  this.bookService.getAllBooks(this.userId).subscribe( books =>{
     this.books = books
+    console.log(books);
+    console.log("this user id" , this.userId);
    })
-
-
-
-    this.bookService.getBook(this.bookId).subscribe((book) =>{
-      this.book = book
-      console.log(book)
-      })
    }
 
 

@@ -8,7 +8,7 @@
 </div>
 <small> {{books | json}}</small>
 <small> {{book | json}}</small>
-<div *ngFor="let book of books.data; index as i; "[attr.data-index]="i">
+<div *ngFor="let book of books?.data; index as i; "[attr.data-index]="i">
   <app-book-card [book]="book"></app-book-card>
 </div>
 
