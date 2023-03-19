@@ -24,7 +24,7 @@ const routes: Routes = [
     {path:'Categories',component:UserCategoriesComponent},
     {path:'Category/:id',component:UserCategoriesComponent},
   ]},
-  //{path:'**',component:NotFoundComponent}
+  {path:'**',component:NotFoundComponent}
 
 ];
 

@@ -6,21 +6,32 @@
   <a [routerLink]="[ ]"  [queryParams]="{status: 'wantToRead', userID:''}" class="badge bg-primary p-5 m-5 fs-5">Want To Read</a>
 </div>
 </div>
+
+
+
+
+<div class="container">
+  <div class="row ">
+    <div *ngFor="let book of books; index as i; "[attr.data-index]="i"  class="col-12 col-md-12 col-lg-4 mt-5">
+      <app-book-card [book]="book" ></app-book-card>
+    </div>
+  </div>
+</div>
 <small> {{books | json}}</small>
-<small> {{book | json}}</small>
+<!-- <small> {{book | json}}</small> -->
 
 
 <div class="container-fluid row row-cols-1 row-cols-md-3 g-3 p-5">
 
-  <div class="col-4"  *ngFor="let book of books.data; index as i; "[attr.data-index]="i">
+  <!-- <div class="col-4"  *ngFor="let book of books.data; index as i; "[attr.data-index]="i"> -->
 
-    <div class="card h-100 text-center"[routerLink]="['book/', book.id]">
+    <!-- <div class="card h-100 text-center"[routerLink]="['book/', book.id]"> -->
       <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" class="card-img-top"
         alt="Hollywood Sign on The Hill" />
       <div class="card-body">
-        <h1 class="card-title">{{book?.name}}</h1>
+        <!-- <h1 class="card-title">{{book?.name}}</h1> -->
         <p class="card-text">
-          {{book?.summary}}
+          <!-- {{book?.summary}} -->
         </p>
         <p>{{book?.avg_rate}}</p>
       </div>
@@ -29,9 +40,9 @@
   </div>
   
 
-<div *ngFor="let book of books.data; index as i; "[attr.data-index]="i">
-  <app-book-card [book]="book"></app-book-card>
-</div>
+<!-- <div *ngFor="let book of books.data; index as i; "[attr.data-index]="i"> -->
+  <!-- <app-book-card [book]="book"></app-book-card> -->
+<!-- </div> -->
 
 
 
@@ -39,3 +50,15 @@
   <app-pagination></app-pagination>
 </div>
 
+=======
+<div class="container">
+  <app-pagination
+  [pagination]="_pagination"
+  [next]="next"
+  [prev]="prev"
+  [page]="page"
+  (currPage)="currentPage($event)"
+  >
+  </app-pagination>
+</div>
+>>>>>>> 2083e4b93e72d386b54bb4575d636f2e0770a390
