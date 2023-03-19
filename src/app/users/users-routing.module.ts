@@ -19,11 +19,10 @@ const routes: Routes = [
     {path:'book/:id',component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},
-    {path:'catyegory',component:UserCategoriesComponent},
+    {path:'category',component:UserCategoriesComponent},
     {path:'category/:id',component:UserCategoriesComponent},
 
   ]},
-  {path:'**',component:NotFoundComponent}
 
 ];
 

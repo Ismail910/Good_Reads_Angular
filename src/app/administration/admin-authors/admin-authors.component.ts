@@ -14,9 +14,14 @@ export class AdminAuthorsComponent implements OnInit {
 
   formAuthor: FormGroup;
   listAuthors: Author[] = [];
+  selectedImage!:File;
   totalPages: number = 0;
   page: number = 1;
   _pagination: any = [];
+  isAdded:boolean=false;
+  isEdit:boolean=false;
+  error:Boolean=false;
+
   constructor(private fb: FormBuilder, private api: ApiService) {
     this.formAuthor = fb.group(
       {
@@ -48,7 +53,7 @@ export class AdminAuthorsComponent implements OnInit {
     }
   }
 
-  
+
   currentPage(p: number) {
     this.page = p;
     this.authors();
@@ -62,18 +67,22 @@ export class AdminAuthorsComponent implements OnInit {
     })
   }
 
-  uploadImage(e: any) {
+  uploadImage(event: any) {
+   this.selectedImage=event.target.files[0];
+   console.log(this.selectedImage);
 
   }
+
   addAuthor() {
 
     let formdata: any = new FormData();
-    formdata.append("firstName", this.firstName);
-    formdata.append("lastName", this.lastName);
-    formdata.append("dateBirth", this.dateBirth);
-
+    formdata.append("firstName", this.firstName?.value);
+    formdata.append("lastName", this.lastName?.value);
+    formdata.append("dateBirth", this.dateBirth?.value);
+    formdata.append("photo",this.selectedImage,this.selectedImage.name);
     this.api.post(`${environment.baseUrl}/admin/author`, formdata).subscribe({
-      next: () => {
+      next: (data) => {
+        console.log(data);
 
       },
       error: () => {
@@ -111,6 +120,15 @@ export class AdminAuthorsComponent implements OnInit {
     });
   }
 
+
+
+  showAuthor(author:any)
+  {
+
+  }
+
+
+
   get firstName() {
     return this.formAuthor.get('fName');
   }
@@ -129,40 +147,6 @@ export class AdminAuthorsComponent implements OnInit {
   }
 
 
-
-
-  //test delete
-  /*this.api.delete(`${environment.baseUrl}/admin/author/1`).subscribe(data=>{
-   console.log(data);
-  });*/
-
-
-  // test add author
-
-  /*const author=
-  {
-   firstName:"apiAuthor",
-   lastName:"testapi",
-   dateOfBirth:"01/01/1999"
-  }
-
-  this.api.postJson(`${environment.baseUrl}/admin/author`,author).subscribe(data=>{
-   console.log(data);
-  });*/
-
-
-
-  /// test update
-
-  /*const author=
-  {
-   firstName:"apiupdate",
-   lastName:"updatetestapi",
-  }
-
-  this.api.putJson(`${environment.baseUrl}/admin/author/1`,author).subscribe(data=>{
-   console.log(data);
-  });*/
 
 
 
