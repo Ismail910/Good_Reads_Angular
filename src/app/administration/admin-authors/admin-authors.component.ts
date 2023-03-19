@@ -47,6 +47,8 @@ export class AdminAuthorsComponent implements OnInit {
       this.authors();
     }
   }
+
+  
   currentPage(p: number) {
     this.page = p;
     this.authors();
