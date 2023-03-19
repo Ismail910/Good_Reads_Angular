@@ -6,14 +6,25 @@
   <a [routerLink]="[ ]"  [queryParams]="{status: 'wantToRead', userID:''}" class="badge bg-primary p-5 m-5 fs-5">Want To Read</a>
 </div>
 </div>
+
+
+
+
+<div class="container">
+  <div class="row ">
+    <div *ngFor="let book of books; index as i; "[attr.data-index]="i"  class="col-12 col-md-12 col-lg-4 mt-5">
+      <app-book-card [book]="book" ></app-book-card>
+    </div>
+  </div>
+</div>
 <small> {{books | json}}</small>
-<small> {{book | json}}</small>
-<div *ngFor="let book of books?.data; index as i; "[attr.data-index]="i">
-  <app-book-card [book]="book"></app-book-card>
+<div class="container">
+  <app-pagination
+  [pagination]="_pagination"
+  [next]="next"
+  [prev]="prev"
+  [page]="page"
+  (currPage)="currentPage($event)"
+  >
+  </app-pagination>
 </div>
-
-
-<div class="m-auto p-5 w-100">
-  <app-pagination></app-pagination>
-</div>
-
