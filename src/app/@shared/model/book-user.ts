@@ -1,6 +1,5 @@
 import { Book } from "./book";
 import { User } from "./user";
-
 export interface BookUser {
   id: string;
   rating: number;
@@ -14,4 +13,3 @@ export interface Reviews {
   book:Book;
   user:User;
 }
-

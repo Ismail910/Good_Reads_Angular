@@ -18,7 +18,7 @@ import { UserAuthorCardComponent } from './components/user-author-card/user-auth
 import { SharedModule } from '../@shared/@shared.module';
 import { NotFoundComponent } from './error/not-found/not-found.component';
 import { SlideshowComponent } from './user-layout/slideshow/slideshow.component';
-import { BookCardComponent } from './components/book-card/book-card.component';
+//import { BookCardComponent } from './components/book-card/book-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
@@ -39,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserAuthorCardComponent,
     NotFoundComponent,
     SlideshowComponent,
-    BookCardComponent
+   // BookCardComponent
   ],
   imports: [
     CommonModule,
