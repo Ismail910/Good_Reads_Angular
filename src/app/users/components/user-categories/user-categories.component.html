@@ -1,15 +1,27 @@
 <div class="container">
-    <h2>ALL CATEGORIES</h2>
-    <div class="row py-5">
-       <div *ngFor="let category of categories"  class="col-md-2 unimation">
-               <div class="movie my-2 position-relative">
-                   <div class=" h-75">
-                    <a routerLink='/Categories/{{ category._id }}' ><img class="w-100" [src]="category.image" >  </a> 
-                   </div>          
-                   <a routerLink='/Categories/{{ category._id }}' ><h1 class="my-2 h6" style="color:  #3C3484;"><b>{{ category.name }}</b></h1> </a> 
-                       
-               </div>
-       </div>
+  <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
+    ALL CATEGORIES
+  </h2>
+  <div class="row py-5">
+    <div *ngFor="let category of categories" class="col-md-2">
+      <div class="h-100 w-100" style="margin-left: 30%">
+        <a routerLink="/Categories/{{ category._id }}"
+          ><img  src="../../../../assets/download-removebg-preview.png" />
+        </a>
+      </div>
+      <div routerLink="/Categories/{{ category._id }}">
+        <h1
+          style="
+            color: #3c3484;
+            font-size: 150%;
+            text-align: center;
+            margin-left: 60%;
+          "
+        >
+          <b>{{ category.name }}</b>
+        </h1>
+      </div>
     </div>
+  </div>
 </div>
 <app-pagination></app-pagination>

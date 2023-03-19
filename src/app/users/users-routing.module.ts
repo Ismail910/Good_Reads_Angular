@@ -11,8 +11,13 @@ import { NotFoundComponent } from './error/not-found/not-found.component';
 const routes: Routes = [
    {path:'',component:HomeComponent,children:
    [
+
     
     {path:'books',component:UserBooksComponent},
+
+    {path:'book',component:UserBooksComponent},
+
+
     {path:'book/:id',component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},

@@ -9,17 +9,24 @@ import { CategoryService } from 'src/app/services/user/category.service';
 })
 export class UserCategoriesComponent implements OnInit,OnChanges{
  categories!:any
+ page!:string
     constructor (private categoryService :CategoryService){
-  
+      this.categoryService.getCategories().subscribe((aut) => {
+        this.categories = aut.data;
+        this.page=aut.pages;
+        console.log(this.categories );
+        console.log(this.page);
+        
+      }  );
     }
     ngOnChanges() {
   
     }
   
     ngOnInit() {
-      this.categoryService.getCategories()
-      .subscribe((aut) => this.categories = aut);
-  console.log(this.categories);
+  //     this.categoryService.getCategories()
+  //     .subscribe((aut) => this.categories = aut);
+  // console.log(this.categories);
   
     }
   
