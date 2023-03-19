@@ -8,7 +8,7 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 })
 export class BookCardComponent implements OnInit{
 
-  @Input() book? :any;
+  @Input() book!:any;
   @Output() rating: number = 1 ;
 
 
