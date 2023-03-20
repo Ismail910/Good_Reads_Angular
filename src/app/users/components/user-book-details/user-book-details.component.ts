@@ -3,9 +3,10 @@ import { ApiService } from './../../../@core/api.service';
 import { ReviewService } from './../../../services/user/review.service';
 import { BookServiceService } from './../../../services/user/book-service.service';
 import { ActivatedRoute } from '@angular/router';
-import { Reviews } from './../../../@shared/model/book-user';
+import { Reviews, BookUser } from './../../../@shared/model/book-user';
 import { Book } from './../../../@shared/model/book';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+
 
 
 @Component({
@@ -13,11 +14,11 @@ import { Component, OnInit, Output } from '@angular/core';
   templateUrl: './user-book-details.component.html',
   styleUrls: ['./user-book-details.component.css']
 })
-export class UserBookDetailsComponent implements OnInit {
+export class UserBookDetailsComponent implements OnInit , OnChanges{
   book!:any
-  Reviews?:Reviews
+  reviews?:Reviews
   bookId!:string
-  rating: number = 1 ;
+  rating!:number   ;
   constructor(
     private ActivatedRoute:ActivatedRoute,
     private BookService:BookServiceService,
@@ -28,6 +29,10 @@ export class UserBookDetailsComponent implements OnInit {
         this.bookId = paramMap.get("id") || "1"
       })
     }
+  ngOnChanges(changes: SimpleChanges): void {
+    // this.rating = this.book[0].bookUser.reating
+    // console.log(this.book[0].bookUser.reating);
+  }
 
   setRating(star: number ): void {
     this.rating = star
@@ -35,17 +40,23 @@ export class UserBookDetailsComponent implements OnInit {
     console.log(this.book[0].bookUser.rating);
  }
 
-  ngOnInit(): void {
-    this.getbook();
-    this.rating = this.book[0]?.bookUser.rating
+  ngOnInit (): void {
+     this.getbook();
+
   }
-  
+
+
   getbook(){
    this.Api.get(`${environment.baseUrl}/book/${this.bookId}`).subscribe(book=>{
     this.book = book
-    console.log(book);
-
+    this.setRatin()
    })
+  }
+
+   setRatin (){
+    this.rating = this.book[0].bookUser.rating
+    console.log();
+
   }
 
 

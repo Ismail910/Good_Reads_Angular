@@ -1,9 +1,9 @@
 <div>
 <div class="container p-5">
-  <a [routerLink]="[ ]" [queryParams]="{status: 'All', userID:''}" class="badge bg-primary p-5 m-5 fs-5">All Books</a>
-  <a [routerLink]="[ ]"  [queryParams]="{status: 'Read',userID:''}"class="badge bg-primary p-5 m-5 fs-5">Read </a>
-  <a [routerLink]="[ ]"  [queryParams]="{status: 'Reading' , userID:''}"class="badge bg-primary p-5 m-5 fs-5">Currently Reading </a>
-  <a [routerLink]="[ ]"  [queryParams]="{status: 'wantToRead', userID:''}" class="badge bg-primary p-5 m-5 fs-5">Want To Read</a>
+  <a [routerLink]="[ ]" [queryParams]="{status: 'All', userId: userId}" class="badge bg-primary p-5 m-5 fs-5">All Books</a>
+  <a [routerLink]="[ ]"  [queryParams]="{status: 'Read',userId: userId}"class="badge bg-primary p-5 m-5 fs-5">Read </a>
+  <a [routerLink]="[ ]"  [queryParams]="{status: 'Reading' , userId: userId}"class="badge bg-primary p-5 m-5 fs-5">Currently Reading </a>
+  <!-- <a [routerLink]="[ ]"  [queryParams]="{status: 'wantToRead', userId:''}" class="badge bg-primary p-5 m-5 fs-5">Want To Read</a> -->
 </div>
 </div>
 
