@@ -8,12 +8,8 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 })
 export class BookCardComponent implements OnInit{
 
-  // @Input() book!:any;
-  // @Output() rating: number = 1 ;
-
-  @Input() book? :any;
-  @Output() rating: number = 1 ;
-
+  @Input() book!:any;
+   rating: number = 1 ;
 
 
   setRating(star: number ): void {
@@ -21,8 +17,9 @@ export class BookCardComponent implements OnInit{
      console.log(this.rating);
      console.log(this.book?.rating);
   }
+
   ngOnInit(): void {
-    // console.log(this.book?.rating );
+    console.log(this.book?.rating );
     this.rating = this.book?.rating
 
 
