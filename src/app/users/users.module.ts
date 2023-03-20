@@ -27,7 +27,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserHeaderComponent,
     UserFooterComponent,
     UserAuthorsComponent,
-    UserAuthorCardComponent,
     UserAuthorDetailsComponent,
     UserCategoriesComponent,
     UserCategoryDetailsComponent,
@@ -40,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserAuthorCardComponent,
     NotFoundComponent,
     SlideshowComponent,
-    BookCardComponent
+     BookCardComponent,
   ],
   imports: [
     CommonModule,

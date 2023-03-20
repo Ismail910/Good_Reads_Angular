@@ -75,12 +75,12 @@ export class AdminAuthorsComponent implements OnInit {
 
   addAuthor() {
 
-    let formdata: any = new FormData();
+    let formdata= new FormData();
     formdata.append("firstName", this.firstName?.value);
     formdata.append("lastName", this.lastName?.value);
-    formdata.append("dateBirth", this.dateBirth?.value);
+    formdata.append("dateOfBirth", this.dateBirth?.value);
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
-    this.api.post(`${environment.baseUrl}/admin/author`, formdata).subscribe({
+    this.api.post(`${environment.baseUrl}/admin/author`,formdata).subscribe({
       next: (data) => {
         console.log(data);
 
