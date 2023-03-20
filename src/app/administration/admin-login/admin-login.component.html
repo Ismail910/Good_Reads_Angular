@@ -5,13 +5,28 @@
         <i class="fa fa-user"></i>
       </div>
       <h3 class="text-center">Admin</h3>
-      <form method="POST" [formGroup]="formLogin" (ngSubmit)="login()" >
+      <ng-container *ngIf="error">
+        <div class="alert alert-danger">
+          <span>{{message}}</span>
+         </div>
+      </ng-container>
+
+
+      <form method="POST" [formGroup]="formLogin"  (ngSubmit)="login()" >
         <div class="form-group">
-          <input type="email" class="form-control" formControlName="email" placeholder="Email">
+          <input type="email" class="form-control" formControlName="email" name="email" placeholder="Email"
+          [class.is-valid]="email?.valid"
+          [class.is-invalid]="email?.invalid"
+          >
         </div>
 
         <div class="form-group">
-          <input type="password" class="form-control" formControlName="password" placeholder="Password">
+          <input type="password" class="form-control" formControlName="password" name="password" placeholder="Password"
+
+          [class.is-valid]="password?.valid"
+          [class.is-invalid]="password?.invalid"
+
+          >
         </div>
 
         <div class="form-group">
@@ -26,7 +41,8 @@
           </div>
 
         </div>
-        <button type="submit" class="btn  position-absolute mt-2 mx-1">Login</button>
+        <button type="submit" class="btn  position-absolute mt-2 mx-1"
+        >Login</button>
       </form>
     </div>
   </div>

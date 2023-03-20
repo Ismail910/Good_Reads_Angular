@@ -1,10 +1,23 @@
 
 <div class="container mt-5">
-  <div class="alert alert-success alert-dismissible fade show mx-4" role="alert">
-    <span>Added Successfully!</span>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <ng-container *ngIf="isAdded">
+    <div class="alert alert-success alert-dismissible fade show mx-4" role="alert">
+      <span>Added Successfully!</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="isEdit">
+    <div class="alert alert-success fade show mx-4" role="alert">
+      <span>Edit Successfully!</span>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="error">
+  <div class="alert alert-danger alert-dismissible fade show mx-4" role="alert">
+    <span>Category is already exist!</span>
   </div>
-  <table class="table text-center m-auto">
+  </ng-container>
+  <table class="table text-center m-auto mb-2">
     <thead style=" background-color: #18AF9A;">
       <tr>
         <th style="background-color: rgb(237, 237, 237);" colspan="4">
@@ -45,7 +58,7 @@
           <td>{{author.dateOfBirth}}</td>
           <td>
             <button class="btn" (click)="deleteAuthor(author.ID)"><i class="fa fa-trash text-danger"></i></button>
-            <button class="btn"  data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary"></i></button>
+            <button class="btn"  data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary" (click)="showAuthor(author)"></i></button>
           </td>
         </tr>
       </ng-container>
@@ -65,13 +78,14 @@
         <h5 class="modal-title" id="exampleModalLabel">Add Author</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form [formGroup]="formAuthor"  (ngSubmit)="addAuthor()">
+      <form [formGroup]="formAuthor" (ngSubmit)="addAuthor()">
       <div class="modal-body">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="FirstName"
              name="fName" formControlName="fName"
-              [class.is-invalid]="firstName?.untouched || !firstName?.valid"
-              [class.is-valid]="firstName?.valid">
+              [class.is-valid]="firstName?.valid"
+              [class.is-invalid]="firstName?.invalid"
+              >
 
             <div class="alert alert-warning" [hidden]="firstName?.valid || firstName?.untouched" >
              <small *ngIf="firstName?.errors?.['required']">First Name is required </small>
@@ -83,7 +97,7 @@
             <input type="text" class="form-control" placeholder="LastName"
              name="lName" formControlName="lName"
 
-             [class.is-invalid]="lastName?.untouched || !lastName?.valid"
+             [class.is-invalid]="lastName?.invalid"
               [class.is-valid]="lastName?.valid"
              >
 
@@ -96,7 +110,7 @@
           <div class="form-group">
             <input type="date" class="form-control" placeholder="DB" name="dateBirth" formControlName="dateBirth"
 
-            [class.is-invalid]="dateBirth?.untouched || !dateBirth?.valid"
+            [class.is-invalid]="dateBirth?.invalid"
             [class.is-valid]="dateBirth?.valid"
             >
             <div class="alert alert-warning" [hidden]="dateBirth?.valid || dateBirth?.untouched" >
@@ -107,15 +121,15 @@
 
 
           <div class="form-group">
-            <input type="file" class="file-input">
-            <!--<div class="file-upload">
+            <input type="file" class="file-input" formControlName="image" name="image"
+             (change)="uploadImage($event)"
+             [class.is-invalid]="image?.invalid"
+             [class.is-valid]="image?.valid"
+             >
 
-              <mat-label>Upload Image</mat-label>
-
-               <button mat-mini-fab color="primary" class="upload-btn">
-                   <mat-icon>attach_file</mat-icon>
-               </button>
-           </div>-->
+             <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >
+              <small *ngIf="image?.errors?.['required']">Image is required </small>
+            </div>
           </div>
       </div>
       <div class="modal-footer">

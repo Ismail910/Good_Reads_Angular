@@ -7,23 +7,27 @@ import { UserAuthorsComponent } from './components/user-authors/user-authors.com
 import { UserAuthorDetailsComponent } from './components/user-author-details/user-author-details.component';
 import { UserCategoriesComponent } from './components/user-categories/user-categories.component';
 import { NotFoundComponent } from './error/not-found/not-found.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { LoginComponent } from './auth/login/login.component';
 
 const routes: Routes = [
-
-
-
    {path:'',component:HomeComponent,children:
    [
+
+
     {path:'books',component:UserBooksComponent},
+
+    {path:'book',component:UserBooksComponent},
+
 
     {path:'book/:id',component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},
-    {path:'catyegory',component:UserCategoriesComponent},
-    {path:'category/:id',component:UserCategoriesComponent},
-
+    {path:'Categories',component:UserCategoriesComponent},
+    {path:'Category/:id',component:UserCategoriesComponent},
+    {path:'register',component:RegisterComponent},
+    {path:'login',component:LoginComponent},
   ]},
-  //{path:'**',component:NotFoundComponent}
 
 ];
 

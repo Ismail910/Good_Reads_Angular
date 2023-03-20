@@ -1,14 +1,47 @@
-<p>user-book-details works!</p>
-<p>user-book-details works!</p>
 
-<p>user-book-details works!</p>
+<!--
+<app-book-card [book]="book"></app-book-card> -->
+
+<p>{{book | json}}</p>
+<!-- <div *ngFor="let  of book"> -->
+
+<div class="container ">
+  <div class=" row row-cols-1 row-cols-md-3 g-3 p-5 d-flex justify-content-evenly">
+    <div class="col-4 " >
+      <div class=" card text-center" >
+        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"  class="card-img-top"
+          alt="Hollywood Sign on The Hill" />
+        <div class="card-body">
+          <h1 class="card-title">{{book[0].name}}</h1>
+          <h1 class="card-title">Author: {{book[0].author.firstName}} {{book[0].author.lastName}}</h1>
+          <h1 class="card-title">Category: {{book[0].category.name}}</h1>
+          <h1 class="card-title">rating: {{book[0].bookUser.rating}}</h1>
 
 
-<p>user-book-details works!</p>
-<p>user-book-details works!</p>
 
-<p>user-book-details works!</p>
-
-<p>user-book-details works!</p>
-
+          <p class="card-text">
+          <b>Summary:</b>{{book[0].summary}}
+          </p>
+          <p><b>Average rate: </b>{{book[0].avg_rate | number: '1.0-0'}}</p>
+          <div>
+            <div class="fs-1 p-5 ">
+              rating:
+              <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating(star)">
+                <i class="fa fa-star fs-3" [ngClass]="{'active': star <= rating}"></i>
+              </span>
+            </div>
+          </div>
+            <div>
+              <select class="select btn btn-secondary dropdown-toggle"type="button"value="{{book[0].bookUser.status}}">
+                <option value="Read">Read</option>
+                <option value="Reading">Reading</option>
+                <option value="wantToRead">Want To Read</option>
+              </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- </div>
+</div> -->
 

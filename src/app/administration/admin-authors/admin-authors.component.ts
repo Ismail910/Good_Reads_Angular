@@ -4,6 +4,7 @@ import { ApiService } from './../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-authors',
@@ -12,20 +13,25 @@ import Swal from 'sweetalert2';
 })
 export class AdminAuthorsComponent implements OnInit {
 
-  formAuthor:FormGroup;
-  listAuthors:Author[]=[];
-  totalPages:number=0;
-  page:number=1;
-  _pagination:any=[];
-  constructor(private fb:FormBuilder,private api:ApiService) {
-    this.formAuthor=fb.group(
-    {
-      fName:['',[Validators.required]],
-      lName:['',[Validators.required]],
-      dateBirth:['',[Validators.required]],
-      image:['',[Validators.required]]
+  formAuthor: FormGroup;
+  listAuthors: Author[] = [];
+  selectedImage!:File;
+  totalPages: number = 0;
+  page: number = 1;
+  _pagination: any = [];
+  isAdded:boolean=false;
+  isEdit:boolean=false;
+  error:Boolean=false;
 
-    });
+  constructor(private fb: FormBuilder, private api: ApiService) {
+    this.formAuthor = fb.group(
+      {
+        fName: ['', [Validators.required]],
+        lName: ['', [Validators.required]],
+        dateBirth: ['', [Validators.required]],
+        image: ['', [Validators.required]]
+
+      });
 
   }
 
@@ -33,42 +39,70 @@ export class AdminAuthorsComponent implements OnInit {
     this.authors();
   }
 
-  next=()=>{
-    if(this.page<this.totalPages){
+  next = () => {
+    if (this.page < this.totalPages) {
       this.page++;
       this.authors();
     }
 
-    }
+  }
 
-    prev=()=>{
-      if(this.page>1){
+  prev = () => {
+    if (this.page > 1) {
       this.page--;
       this.authors();
-      }
     }
-    currentPage(p:number)
-    {
-      this.page=p;
-      this.authors();
-    }
+  }
 
-    authors()
-    {
-      this.api.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data=>{
-        this.listAuthors=data.data;
-        this.totalPages=data.pages.totalPages;
-        this._pagination=[...Array(this.totalPages).keys()];
-      })
-    }
 
-  addAuthor()
-  {
+  currentPage(p: number) {
+    this.page = p;
+    this.authors();
+  }
+
+  authors() {
+    this.api.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data => {
+      this.listAuthors = data.data;
+      this.totalPages = data.pages.totalPages;
+      this._pagination = [...Array(this.totalPages).keys()];
+    })
+  }
+
+  uploadImage(event: any) {
+   this.selectedImage=event.target.files[0];
+   console.log(this.selectedImage);
 
   }
 
-  deleteAuthor(id:Number)
-  {
+  addAuthor() {
+
+    let formdata= new FormData();
+    formdata.append("firstName", this.firstName?.value);
+    formdata.append("lastName", this.lastName?.value);
+    formdata.append("dateOfBirth", this.dateBirth?.value);
+    formdata.append("photo",this.selectedImage,this.selectedImage.name);
+
+    //const form = new FormData();
+
+    /*const headers = new HttpHeaders({
+      'Content-Type': `multipart/form-data; boundary=${formdata._boundary}`,
+   });*/
+
+    //headers['Content-Type'] = `multipart/form-data; boundary=${form._boundary}
+
+    this.api.post(`${environment.baseUrl}/admin/author`,formdata).subscribe({
+      next: (data) => {
+        console.log(data);
+
+      },
+      error: () => {
+
+      }
+    })
+
+  }
+
+  deleteAuthor(id: Number) {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -80,8 +114,7 @@ export class AdminAuthorsComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.api.delete(`${environment.baseUrl}/admin/author/${id}`).subscribe({
-          next:()=>
-          {
+          next: () => {
             Swal.fire(
               'Deleted!',
               'Your file has been deleted.',
@@ -89,7 +122,7 @@ export class AdminAuthorsComponent implements OnInit {
             );
             this.authors();
           },
-          error:()=>{
+          error: () => {
 
           }
         });
@@ -97,66 +130,37 @@ export class AdminAuthorsComponent implements OnInit {
     });
   }
 
-  get firstName()
+
+
+  showAuthor(author:any)
   {
+
+  }
+
+
+
+  get firstName() {
     return this.formAuthor.get('fName');
   }
 
-  get lastName()
-  {
+  get lastName() {
     return this.formAuthor.get('lName');
   }
 
-  get dateBirth()
-  {
+  get dateBirth() {
     return this.formAuthor.get('dateBirth');
   }
 
-
-
-   //test get by id
-
-   /*this.api.get(`${environment.baseUrl}/admin/author/1`).subscribe(data=>{
-    console.log(data);
-   });*/
-
-
-   //test delete
-   /*this.api.delete(`${environment.baseUrl}/admin/author/1`).subscribe(data=>{
-    console.log(data);
-   });*/
-
-
-   // test add author
-
-   /*const author=
-   {
-    firstName:"apiAuthor",
-    lastName:"testapi",
-    dateOfBirth:"01/01/1999"
-   }
-
-   this.api.postJson(`${environment.baseUrl}/admin/author`,author).subscribe(data=>{
-    console.log(data);
-   });*/
-
-
-
-   /// test update
-
-   /*const author=
-   {
-    firstName:"apiupdate",
-    lastName:"updatetestapi",
-   }
-
-   this.api.putJson(`${environment.baseUrl}/admin/author/1`,author).subscribe(data=>{
-    console.log(data);
-   });*/
-
-
-
-
-
+  get image()
+  {
+    return this.formAuthor.get("image");
   }
+
+
+
+
+
+
+
+}
 
