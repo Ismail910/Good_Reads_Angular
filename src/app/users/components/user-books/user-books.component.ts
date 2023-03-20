@@ -28,7 +28,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
     this.ActvetedRoute.paramMap.subscribe((parmMap)=>{
      this.bookId =  parmMap.get('id') || ''
       this.status = parmMap.get('status') || "notRead"
-      this.userId = parmMap.get('userId') ||  '6414d8e6b98388bb550de21d'
+      this.userId = parmMap.get('userId') ||  '641749cca55c37c65c055e40'
     })
   }
 
@@ -42,10 +42,9 @@ export class UserBooksComponent implements OnChanges,OnInit{
 
   getBooks()
     {
-      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}`).subscribe(data=>{ //${this.userId}
+      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{ //
         this.books=data.data;
         console.log(this.books);
-
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
       })
