@@ -4,6 +4,7 @@ import { ApiService } from './../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-authors',
@@ -80,6 +81,15 @@ export class AdminAuthorsComponent implements OnInit {
     formdata.append("lastName", this.lastName?.value);
     formdata.append("dateOfBirth", this.dateBirth?.value);
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
+
+    //const form = new FormData();
+
+    /*const headers = new HttpHeaders({
+      'Content-Type': `multipart/form-data; boundary=${formdata._boundary}`,
+   });*/
+
+    //headers['Content-Type'] = `multipart/form-data; boundary=${form._boundary}
+
     this.api.post(`${environment.baseUrl}/admin/author`,formdata).subscribe({
       next: (data) => {
         console.log(data);

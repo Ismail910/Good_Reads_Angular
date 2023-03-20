@@ -24,7 +24,6 @@ export class ApiService {
 
   post(url:string,body:any):Observable<any>
   {
-
     const headers = new HttpHeaders({
         'Content-Type': 'multipart/form-data',
          Accept: '*/*',

@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AdminHeaderComponent {
 
+  firstName:String|null;
+  lastName:string|null;
+  constructor()
+  {
+    this.firstName=localStorage.getItem('fName');
+    this.lastName=localStorage.getItem('lName');
+  }
+
 }
