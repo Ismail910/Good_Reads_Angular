@@ -22,17 +22,18 @@ export class ApiService {
   }
 
 
-  post(url:string,body:{}):Observable<any>
+  post(url:string,body:any):Observable<any>
   {
-
     const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'multipart/form-data',
+         Accept: '*/*',
+        'Access-Control-Allow-Origin': '*',
+
     });
 
     return this.httpClient.post(`${url}`,JSON.stringify(body),
     {
-      headers
+      headers,
     });
 
   }

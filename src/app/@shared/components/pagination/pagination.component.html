@@ -4,7 +4,7 @@
     <button class="text-white btn" type="button" (click)="prev()" [disabled]="page==1">P</button></li>
 
   <ng-container *ngFor="let p of pagination; ">
-    <li class="page-item btn" [class.active]="page==p+1">
+    <li class="page-item" [class.active]="page==p+1">
       <button type="button" class="btn" (click)="pageChange(p+1)">{{p+1}}</button></li>
   </ng-container>
 
@@ -12,3 +12,4 @@
     <button  class="text-white btn" type="button" (click)="next()"
     [disabled]="page==pagination.length">N</button></li>
 </ul>
+

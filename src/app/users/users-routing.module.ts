@@ -14,7 +14,7 @@ const routes: Routes = [
    {path:'',component:HomeComponent,children:
    [
 
-    
+
     {path:'books',component:UserBooksComponent},
 
     {path:'book',component:UserBooksComponent},
@@ -28,7 +28,6 @@ const routes: Routes = [
     {path:'register',component:RegisterComponent},
     {path:'login',component:LoginComponent},
   ]},
-  {path:'**',component:NotFoundComponent}
 
 ];
 
