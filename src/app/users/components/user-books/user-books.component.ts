@@ -64,14 +64,13 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.getBooks();
     }
     }
-
     prev=()=>{
       if(this.page>1){
       this.page--;
       this.getBooks();
       }
     }
-
+    
     currentPage(p:number)
     {
       this.page=p;
