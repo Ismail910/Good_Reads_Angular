@@ -22,9 +22,9 @@ loginForm =new FormGroup({
 })
 submitloginForm(loginForm:FormGroup){
   this._AuthService.login(loginForm.value).subscribe((Response)=>{
-    if(Response.message == 'success'){
+    if(Response.id){
       localStorage.setItem('token',Response.token);
-      this._Router.navigate(['/']);
+      this._Router.navigate(['/book']);
       
     }
     else {
