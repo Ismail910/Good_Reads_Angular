@@ -13,19 +13,28 @@ import Swal from 'sweetalert2';
 export class AdminCategoriesComponent implements OnInit {
 
   formCategory:FormGroup;
+  editCategory:FormGroup;
   listCategories:ICategory[]=[];
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
-
+  isAdded:boolean=false;
+  isEdit:boolean=false;
+  error:boolean=false;
 
   constructor(private api:ApiService,private fb:FormBuilder)
   {
 
-    this.formCategory=fb.group(
+      this.formCategory=fb.group(
       {
         name:['',[Validators.required]],
       });
+
+        this.editCategory=fb.group(
+        {
+          name:['',[Validators.required]],
+          _id:['',Validators.required]
+        });
   }
 
   ngOnInit(): void {
@@ -47,12 +56,28 @@ export class AdminCategoriesComponent implements OnInit {
     this.categories();
     }
   }
+
+
   currentPage(p:number)
   {
     this.page=p;
     this.categories();
   }
 
+
+
+
+
+  get nameCategory(){
+    return this.formCategory.get('name');
+  }
+
+  get oldNameCategory(){
+    return this.editCategory.get('name');
+  }
+  get idCategory(){
+    return this.editCategory.get('_id');
+  }
 
 
   categories()
@@ -65,28 +90,64 @@ export class AdminCategoriesComponent implements OnInit {
 
   }
 
-
-  get nameCategory(){
-    return this.formCategory.get('name');
-  }
-
   addCategory()
   {
     this.api.postJson(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
     {
-      next:(data)=>{
-
-        console.log(data);
+      next:()=>{
+        this.isAdded=true;
+        this.categories();
+        setTimeout(() => {
+          this.isAdded= false;
+        }, 3000);
       },
       error:()=>
       {
-        console.log("error");
+        this.error=true;
+        setTimeout(() => {
+          this.error= false;
+        }, 3000);
       }
 
+
     });
+
   }
 
-  deleteCategory(id:number)
+  showCategory(category:ICategory)
+  {
+    //console.log("cat",category);
+    this.editCategory.get('name')?.setValue(category.name);
+    this.editCategory.get('_id')?.setValue(category._id);
+
+  }
+
+  EditCategory()
+  {
+
+    console.log(this.editCategory.get('_id')?.value);
+    this.api.putJson(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
+    ,this.editCategory.value).subscribe({
+      next:()=>{
+        this.isEdit=true;
+        this.categories();
+        setTimeout(() => {
+          this.isEdit= false;
+        }, 3000);
+
+      },
+      error:()=>{
+        this.error=true;
+        setTimeout(() => {
+          this.error= false;
+        }, 3000);
+      }
+    });
+
+  }
+
+
+  deleteCategory(id:string)
   {
     Swal.fire({
       title: 'Are you sure?',

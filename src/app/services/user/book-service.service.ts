@@ -12,25 +12,24 @@ export class BookServiceService {
   constructor( private Http:HttpClient ){}
 
 
-getBooksByStatus(status:string,userID:number):Observable<any>{
+getBooksByStatus(status:string,userID:string):Observable<any>{
   return this.Http.get<Book[]>(`${environment.baseUrl}/home/page/1/?${status}?${userID}` ,{
     headers: new HttpHeaders().set('Authorization','secrt token')
   })
 }
 
-getAllBooks():Observable<any>{
-  return this.Http.get<Book[]>(`${environment.baseUrl}/home/all/page/1/`/*userid*/, {
+getAllBooks(userId:string):Observable<any>{
+  return this.Http.get<Book[]>(`${environment.baseUrl}/home/all/page/2/?${userId}`, {
    headers : new HttpHeaders().set('Authorization', 'secrt token')
   })
  }
 
 
-getBook(bookId:number){
-     return this.Http.get<Book>(`${environment.baseUrl}/books/`+ bookId ,
+getBook(bookId:string):Observable<Book>{
+     return this.Http.get<Book>(`${environment.baseUrl}book/`+ bookId ,
      {
        headers : new HttpHeaders().set('Authorization','secrt token')
      })
    }
-
 }
 
