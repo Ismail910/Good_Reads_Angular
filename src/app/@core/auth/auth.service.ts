@@ -11,20 +11,27 @@ export class AuthService {
 signup(url:string,body:{}):Observable<any>
 {
 
-  return this.api.postJson(`${url}`,body);
+  return this.api.post(`${url}`,body);
 }
 
 
 
 login(url:string,body:{}):Observable<any>
 {
-  return this.api.postJson(`${url}`,body);
+  return this.api.post(`${url}`,body);
+}
+
+isLogin():boolean
+{
+  if(localStorage.getItem("isLogin")=="true")
+  return true;
+  return false;
 }
 
 
 logout()
 {
-  
+
 }
 
 

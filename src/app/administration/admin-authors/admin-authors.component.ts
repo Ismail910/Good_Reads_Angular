@@ -76,10 +76,22 @@ export class AdminAuthorsComponent implements OnInit {
 
   addAuthor() {
 
+
+
     let formdata= new FormData();
+    let date=(this.dateBirth?.value).replace(/-/g,"/");
+    let d="";
+    for (let char of date) {
+
+
+      d= char + d;
+    }
+
+    console.log(date);
     formdata.append("firstName", this.firstName?.value);
     formdata.append("lastName", this.lastName?.value);
-    formdata.append("dateOfBirth", this.dateBirth?.value);
+    formdata.append("dateOfBirth", d);
+
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
 
     //const form = new FormData();
