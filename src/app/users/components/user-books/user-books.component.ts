@@ -70,7 +70,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.getBooks();
       }
     }
-    
+
     currentPage(p:number)
     {
       this.page=p;
