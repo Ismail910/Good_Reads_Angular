@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { Router } from '@angular/router';
+import { User } from 'src/app/@shared/model/user';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit{
   error ='';
+   userData:User = {}
   constructor(private _AuthService:AuthService ,private _Router:Router){}
   ngOnInit() : void{}
 loginForm =new FormGroup({
@@ -23,6 +25,8 @@ loginForm =new FormGroup({
 submitloginForm(loginForm:FormGroup){
   this._AuthService.login(loginForm.value).subscribe((Response)=>{
     if(Response.id){
+      this.userData = Response;
+      console.log(this.userData);
       localStorage.setItem('token',Response.token);
       this._Router.navigate(['/book']);
       
