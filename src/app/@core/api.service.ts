@@ -22,24 +22,13 @@ export class ApiService {
   }
 
 
+
   post(url:string,body:any):Observable<any>
   {
-    const headers = new HttpHeaders({
-        'Content-Type': 'multipart/form-data',
-         Accept: '*/*',
-        'Access-Control-Allow-Origin': '*',
-
-    });
-
-    return this.httpClient.post(`${url}`,JSON.stringify(body),
-    {
-      headers,
-    });
-
+    return this.httpClient.post(`${url}`,body);
   }
 
-
-  postJson(url:string,body?:{}):Observable<any>
+  /*postJson(url:string,body?:{}):Observable<any>
   {
 
     const headers = new HttpHeaders({
@@ -52,38 +41,14 @@ export class ApiService {
       headers
     });
 
-  }
+  }*/
 
 
 
   put(url:string,body?:{}):Observable<any>
   {
 
-    const headers = new HttpHeaders({
-      'Content-Type': 'multipart/form-data',
-      'Access-Control-Allow-Origin': '*',
-    });
-
-    return this.httpClient.put(`${url}`,JSON.stringify(body),
-    {
-      headers
-    });
-
-  }
-
-
-  putJson(url:string,body?:{}):Observable<any>
-  {
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-    });
-
-    return this.httpClient.put(`${url}`,JSON.stringify(body),
-    {
-      headers
-    });
+    return this.httpClient.put(`${url}`,body);
 
   }
 

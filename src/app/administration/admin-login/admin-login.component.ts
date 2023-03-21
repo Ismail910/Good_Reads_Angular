@@ -52,6 +52,7 @@ export class AdminLoginComponent {
       localStorage.setItem('isAdmin',data.isAdmin);
       localStorage.setItem('fName',data.first_name);
       localStorage.setItem('lName',data.last_name);
+      localStorage.setItem('isLogin',"true");
       console.log(data);
       this.router.navigate(['/Admin/Categories']);
       },
