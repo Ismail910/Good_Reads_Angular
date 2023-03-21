@@ -11,7 +11,7 @@ import { User } from 'src/app/@shared/model/user';
 })
 export class LoginComponent implements OnInit{
   error ='';
-   userData:User = {}
+   userData?:any
   constructor(private _AuthService:AuthService ,private _Router:Router){}
   ngOnInit() : void{}
 loginForm =new FormGroup({

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/user/auth.service';
 import { User } from './../../../@shared/model/user';
 import { environment } from './../../../../environments/environment';
 import { ApiService } from './../../../@core/api.service';
@@ -7,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Reviews, BookUser } from './../../../@shared/model/book-user';
 import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginComponent } from './../../auth/login/login.component'
 
 @Component({
   selector: 'app-user-book-details',
@@ -21,12 +23,24 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
   status!:string;
   reviewForm: FormGroup;
   user_id!:User
+  userData?:any
   constructor(
+    private Auth: AuthService,
     private ActivatedRoute:ActivatedRoute,
     private BookService:BookServiceService,
     private ReviewsService:ReviewService,
     private Api : ApiService,
+
     ){
+      this.userData = this.Auth.getuser().subscribe(user=>{
+        this.userData = user;
+        this.user_id = this.userData.user._id
+        console.log("user id",this.userData.user._id);
+
+
+      })
+      console.log("users",this.userData.user);
+
       this.reviewForm = new FormGroup({
         description: new FormControl('', [Validators.required]),
         like: new FormControl('', [Validators.required])
@@ -44,7 +58,7 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
 
   ngOnInit (): void {
      this.getbook();
-
+    //  console.log(this.userData._id);
   }
 
 
@@ -64,20 +78,21 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
    setRatin (){
     this.rating = this.book[0].bookUser.rating
   }
+  add(stat:any){
+    this.status = stat.target.value
+    console.log(this.status);
 
+  }
   addRating()
   {
     let data = {
-      // user: "641749cca55c37c65c055e40",
-      // book: this.bookId,
-      // comment: this.reviewForm.controls['description'].value,
-      // like:this.reviewForm.controls['like'].value
       rating:this.rating,
       status:this.status,
       book:this.bookId,
       user:this.user_id
     }
-    // this.Api.post(`${environment.baseUrl}/bookUser`,)
+
+    this.Api.post(`${environment.baseUrl}/bookUser`,data)
 
   }
 
@@ -91,7 +106,7 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
 
   setReview() {
     let data = {
-      user: "641749cca55c37c65c055e40",
+      user: this.user_id,
       book: this.bookId,
       comment: this.reviewForm.controls['description'].value,
       like:this.reviewForm.controls['like'].value
@@ -101,6 +116,7 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
       console.log(datad);
       console.log("asd");
       console.log(data);
+      console.log(this.user_id);
 
     })
 
