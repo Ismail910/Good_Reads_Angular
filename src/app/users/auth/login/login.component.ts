@@ -25,7 +25,6 @@ submitloginForm(loginForm:FormGroup){
     if(Response.id){
       localStorage.setItem('token',Response.token);
       this._Router.navigate(['/book']);
-      
     }
     else {
       console.log(Response.message)

@@ -1,3 +1,5 @@
+
+import { Router } from '@angular/router';
 import { Book } from 'src/app/@shared/model/book';
 import { Component, Input, Output, OnInit } from '@angular/core';
 
@@ -9,20 +11,22 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 export class BookCardComponent implements OnInit{
 
   @Input() book!:any;
-   rating: number = 1 ;
+  rating: number = 1 ;
+  bookId?:string
+   constructor(private _Router : Router){
+   }
 
 
-  setRating(star: number ): void {
-     this.rating = star
-     console.log(this.rating);
-     console.log(this.book?.rating);
+  setRating(): void {
+    this._Router.navigate([`/book/${this.book.book._id}`]);
+    //  this.rating = star
+    //  console.log(this.rating);
+    //  console.log(this.book?.rating);
   }
 
   ngOnInit(): void {
     console.log(this.book?.rating );
     this.rating = this.book?.rating
-
-
   }
 
 }

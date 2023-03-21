@@ -48,6 +48,8 @@ export class UserBooksComponent implements OnChanges,OnInit{
         console.log(data);
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
+        console.log(this.userId);
+
       })
     }
 

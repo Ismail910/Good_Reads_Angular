@@ -108,8 +108,6 @@ export class AdminCategoriesComponent implements OnInit {
           this.error= false;
         }, 3000);
       }
-
-
     });
 
   }
