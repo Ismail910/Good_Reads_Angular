@@ -12,11 +12,11 @@
     </div>
   </ng-container>
 
-  <ng-container *ngIf="error">
+  <!--<ng-container *ngIf="error">
   <div class="alert alert-danger alert-dismissible fade show mx-4" role="alert">
     <span>Category is already exist!</span>
   </div>
-  </ng-container>
+  </ng-container>-->
   <table class="table text-center m-auto mb-2">
     <thead style=" background-color: #18AF9A;">
       <tr>
@@ -52,13 +52,17 @@
       <ng-container *ngFor="let author of listAuthors; let i=index;">
         <tr>
           <td>{{i+1}}</td>
-          <td></td>
+          <td  style="width: 5%;">
+            <img src="http://localhost:5000/{{author.photo}}" alt="" class="img-fluid">
+          </td>
           <td>{{author.firstName}}</td>
           <td>{{author.lastName}}</td>
           <td>{{author.dateOfBirth}}</td>
+
           <td>
             <button class="btn" (click)="deleteAuthor(author.ID)"><i class="fa fa-trash text-danger"></i></button>
-            <button class="btn"  data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary" (click)="showAuthor(author)"></i></button>
+            <button class="btn"  data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary" (click)="showAuthor(author)"
+              ></i></button>
           </td>
         </tr>
       </ng-container>
@@ -71,118 +75,10 @@
 
 
 <!---------------------Add Authors----------------------------->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog mt-5">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Author</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form [formGroup]="formAuthor" (ngSubmit)="addAuthor()">
-      <div class="modal-body">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="FirstName"
-             name="fName" formControlName="fName"
-              [class.is-valid]="firstName?.valid"
-              [class.is-invalid]="firstName?.invalid"
-              >
-
-            <div class="alert alert-warning" [hidden]="firstName?.valid || firstName?.untouched" >
-             <small *ngIf="firstName?.errors?.['required']">First Name is required </small>
-           </div>
-          </div>
-
-          <div class="form-group">
-
-            <input type="text" class="form-control" placeholder="LastName"
-             name="lName" formControlName="lName"
-
-             [class.is-invalid]="lastName?.invalid"
-              [class.is-valid]="lastName?.valid"
-             >
-
-             <div class="alert alert-warning" [hidden]="lastName?.valid || lastName?.untouched" >
-              <small *ngIf="lastName?.errors?.['required']">Last Name is required </small>
-            </div>
-          </div>
-
-
-          <div class="form-group">
-            <input type="date" class="form-control" placeholder="DB" name="dateBirth" formControlName="dateBirth"
-
-            [class.is-invalid]="dateBirth?.invalid"
-            [class.is-valid]="dateBirth?.valid"
-            >
-            <div class="alert alert-warning" [hidden]="dateBirth?.valid || dateBirth?.untouched" >
-              <small *ngIf="dateBirth?.errors?.['required']">Date Birth is required </small>
-            </div>
-          </div>
-
-
-
-          <div class="form-group">
-            <input type="file" class="file-input" formControlName="image" name="image"
-             (change)="uploadImage($event)"
-             [class.is-invalid]="image?.invalid"
-             [class.is-valid]="image?.valid"
-             >
-
-             <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >
-              <small *ngIf="image?.errors?.['required']">Image is required </small>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn" style="background: #18AF9A"
-        [disabled]="formAuthor.invalid"
-        >Save</button>
-      </div>
-      </form>
-    </div>
-
-  </div>
-</div>
+<app-admin-authors-add></app-admin-authors-add>
 
 
 
 <!---------------------Edit Authors----------------------------->
-<div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog mt-5">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Author</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form>
-      <div class="modal-body">
-          <div class="form-group">
 
-            <input type="text" class="form-control" placeholder="FirstName">
-          </div>
-
-          <div class="form-group">
-
-            <input type="text" class="form-control" placeholder="LastName">
-          </div>
-
-          <div class="form-group">
-
-            <input type="date" class="form-control" placeholder="DB">
-          </div>
-
-
-
-          <div class="form-group">
-            <input type="file" class="form-control">
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn" style="background: #18AF9A">Save</button>
-      </div>
-      </form>
-    </div>
-
-  </div>
-</div>
+<app-admin-authors-edit [author]="EAuthor"></app-admin-authors-edit>

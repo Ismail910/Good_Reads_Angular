@@ -124,8 +124,6 @@ export class AdminCategoriesComponent implements OnInit {
 
   EditCategory()
   {
-
-    console.log(this.editCategory.get('_id')?.value);
     this.api.put(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
     ,this.editCategory.value).subscribe({
       next:()=>{

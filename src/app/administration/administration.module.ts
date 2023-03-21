@@ -11,6 +11,8 @@ import { AdminHeaderComponent } from './admin-layout/admin-header/admin-header.c
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { SharedModule } from '../@shared/@shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminAuthorsEditComponent } from './admin-authors/admin-authors-edit/admin-authors-edit.component';
+import { AdminAuthorsAddComponent } from './admin-authors/admin-authors-add/admin-authors-add.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminAuthorsComponent,
     AdminSidebarComponent,
     AdminHeaderComponent,
-    AdminLoginComponent
+    AdminLoginComponent,
+    AdminAuthorsEditComponent,
+    AdminAuthorsAddComponent
   ],
   imports: [
     CommonModule,
