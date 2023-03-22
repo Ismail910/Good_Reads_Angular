@@ -6,6 +6,9 @@ import { ApiService } from '../api.service';
   providedIn: 'root'
 })
 export class AuthService {
+  getuser() {
+    throw new Error('Method not implemented.');
+  }
   constructor(private api:ApiService) { }
 
 signup(url:string,body:{}):Observable<any>
