@@ -42,17 +42,20 @@ export class UserBooksComponent implements OnChanges,OnInit{
 
   getBooks()
     {
-      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{ //
+      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
+        console.log(data);
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
+        console.log(this.userId);
+
       })
     }
 
     getBooksByStatus()
     {
-      this.Api.get(`${environment.baseUrl}/home/page/${this.page}/?${this.status}?${this.userId}`).subscribe( book =>{
+      this.Api.get(`${environment.baseUrl}/home/page/${this.page}/${this.status}${this.userId}`).subscribe( book =>{
         this.books = book.data
        })
     }
@@ -63,7 +66,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.getBooks();
     }
     }
-
     prev=()=>{
       if(this.page>1){
       this.page--;
