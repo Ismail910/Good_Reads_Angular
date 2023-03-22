@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminAuthorsEditComponent } from './admin-authors/admin-authors-edit/admin-authors-edit.component';
 import { AdminAuthorsAddComponent } from './admin-authors/admin-authors-add/admin-authors-add.component';
 import { AdminBooksAddComponent } from './admin-books/admin-books-add/admin-books-add.component';
+import { AdminBooksEditComponent } from './admin-books/admin-books-edit/admin-books-edit.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AdminBooksAddComponent } from './admin-books/admin-books-add/admin-book
     AdminLoginComponent,
     AdminAuthorsEditComponent,
     AdminAuthorsAddComponent,
-    AdminBooksAddComponent
+    AdminBooksAddComponent,
+    AdminBooksEditComponent
   ],
   imports: [
     CommonModule,

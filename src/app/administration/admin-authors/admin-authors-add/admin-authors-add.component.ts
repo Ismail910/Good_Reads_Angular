@@ -16,7 +16,7 @@ export class AdminAuthorsAddComponent {
   @Output()isAdded: EventEmitter<boolean> =   new EventEmitter();
   error:Boolean=false;
 
-  constructor(private fb: FormBuilder, private api: ApiService) {
+    constructor(private fb: FormBuilder, private api: ApiService) {
     this.formAuthor = fb.group(
       {
         fName: ['', [Validators.required]],
@@ -26,7 +26,7 @@ export class AdminAuthorsAddComponent {
       });
 
 
-        }
+    }
 
 
   uploadImage(event: any) {
