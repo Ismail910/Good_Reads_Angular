@@ -11,7 +11,7 @@ export class UserCategoriesComponent implements OnInit,OnChanges{
  categories!:any
  page!:string
     constructor (private categoryService :CategoryService){
-      this.categoryService.getCategories().subscribe((aut) => {
+      this.categoryService.getCategories(1).subscribe((aut) => {
         this.categories = aut.data;
         this.page=aut.pages;
         console.log(this.categories );
