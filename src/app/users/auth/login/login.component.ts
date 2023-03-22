@@ -26,8 +26,9 @@ submitloginForm(loginForm:FormGroup){
   this._AuthService.login(loginForm.value).subscribe((Response)=>{
     if(Response.id){
       this.userData = Response;
-      console.log(this.userData);
       localStorage.setItem('token',Response.token);
+      localStorage.setItem('isLogin',"true");
+      this._AuthService.saveCurrentUser();
       this._Router.navigate(['/book']);
     }
     else {

@@ -41,7 +41,7 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
         this.user_info = this.userData.user
 
 
-      })
+     } )
       console.log("users",this.userData.user);
 
       this.reviewForm = new FormGroup({

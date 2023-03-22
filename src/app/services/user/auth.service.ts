@@ -3,18 +3,18 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
-import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode'
 @Injectable({
   providedIn: 'root'
 
 })
 export class AuthService {
-  currentuser = new BehaviorSubject(null)
+  currentUser= new BehaviorSubject(null) 
   constructor(private _HttpClient:HttpClient) {
 
-    if(localStorage.getItem('token') != null) {
-      this.savecurrentuser();
-  }
+  //   if(localStorage.getItem('token') != null) {
+  //     // this.savecurrentuser();
+  // }
   }
 
   register(data:any): Observable<any>{
@@ -25,14 +25,15 @@ export class AuthService {
   }
 
 
-  savecurrentuser()
+  saveCurrentUser()
   {
-    let token:any =localStorage.getItem('token')
-    this.currentuser.next( jwtDecode(token)) ;
+    let token:any = localStorage.getItem('token');
+    this.currentUser.next(jwtDecode(token))
+    console.log(this.currentUser)
   }
 
   getuser():Observable<User | null>
   {
-    return this.currentuser.asObservable();
+    return this.currentUser.asObservable();
   }
 }
