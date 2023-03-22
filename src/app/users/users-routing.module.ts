@@ -9,6 +9,7 @@ import { UserCategoriesComponent } from './components/user-categories/user-categ
 import { NotFoundComponent } from './error/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
+import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
 
 const routes: Routes = [
    {path:'',component:HomeComponent,children:
@@ -23,8 +24,8 @@ const routes: Routes = [
     {path:'book/:id',component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},
-    {path:'Categories',component:UserCategoriesComponent},
-    {path:'Category/:id',component:UserCategoriesComponent},
+    {path:'category',component:UserCategoriesComponent},
+    {path:'category/:id',component:UserCategoryDetailsComponent},
     {path:'register',component:RegisterComponent},
     {path:'login',component:LoginComponent},
   ]},

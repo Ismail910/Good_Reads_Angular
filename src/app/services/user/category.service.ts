@@ -11,17 +11,23 @@ export class CategoryService {
  
   constructor(private http: HttpClient) { }
 
-  getCategories() :Observable<any> {
-   return this.http.get<any>(`${environment.baseUrl}/category/page/1`);
+  getCategories(numPage:number) :Observable<any> {
+   return this.http.get<any>(`${environment.baseUrl}/category/page/${numPage}`);
   }
 
 
 
-  getCategory(id:number){
-    return this.http.get<any>(`${environment.baseUrl}/${id}`);
+  getCategory(id:any){
+    return this.http.get<any>(`${environment.baseUrl}/category/${id}`);
 
 
   
 
   }
-}
+
+getcategorybooks(id:any):Observable<any> {
+    return this.http.get<any>(
+      `${environment.baseUrl}/category/${id}/page/1`
+    );
+
+}}
