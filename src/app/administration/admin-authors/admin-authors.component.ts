@@ -2,9 +2,8 @@ import { Author } from 'src/app/@shared/model/author';
 import { environment } from './../../../environments/environment.development';
 import { ApiService } from './../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-admin-authors',
@@ -62,6 +61,19 @@ export class AdminAuthorsComponent implements OnInit {
     })
   }
 
+  receivedNewAuthor(e:any)
+  {
+    this.isAdded=e;
+    this.authors();
+  }
+
+
+  receivedEditAuthor(e:any)
+  {
+    this.isEdit=e;
+    this.authors();
+  }
+
 
 
   deleteAuthor(id: Number) {
@@ -97,13 +109,6 @@ export class AdminAuthorsComponent implements OnInit {
   showAuthor(author:Author)
   {
     this.EAuthor=author;
-    //console.log(this.EAuthor);
-
-    /*this.editAuthor.get('fName')?.setValue(author.firstName);
-    this.editAuthor.get('lName')?.setValue(author.lastName);
-    this.editAuthor.get('ID')?.setValue(author.ID);
-    this.editAuthor.get('dateBirth')?.setValue(author.dateOfBirth);
-    this.editAuthor.get('image')?.setValue(author.photo);*/
   }
 
 

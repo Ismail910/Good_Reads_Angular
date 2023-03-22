@@ -5,8 +5,9 @@
         <h5 class="modal-title" id="exampleModalLabel">Edit Author</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form [formGroup]="editAuthor">
+      <form [formGroup]="editAuthor" (ngSubmit)="edit()">
       <div class="modal-body">
+
           <div class="form-group">
 
             <input type="text" class="form-control" placeholder="FirstName" formControlName="fName"
@@ -26,30 +27,30 @@
 
           <div class="form-group">
 
-            <input type="date" class="form-control" placeholder="DB" formControlName="dateBirth"
+            <input type="date" class="form-control" placeholder="DB"
+            formControlName="dateBirth"
             [class.is-invalid]="EdateBirth?.invalid"
             [class.is-valid]="EdateBirth?.valid"
             >
           </div>
+            <div class="form-group">
+            <input type="file" class="file-input"
+            formControlName="image" name="image"
+             (change)="uploadImage($event)" >
 
-
-
-          <div class="form-group">
-            <!--<input type="file" class="file-input" formControlName="image" name="image"
-             (change)="uploadImage($event)"
-             [class.is-invalid]="Eimage?.invalid"
-             [class.is-valid]="Eimage?.valid"
-             >-->
-             <img src="http://localhost:5000/{{author?.photo}}" alt="" style="width:15%;">
+          <img src="http://localhost:5000/{{author?.photo}}" alt="" style="width:15%; border:1px solid black;" >
 
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn" style="background: #18AF9A">Save</button>
+        <button type="submit" class="btn" style="background: #18AF9A"
+        data-bs-dismiss="modal"
+        >Save</button>
       </div>
       </form>
     </div>
 
   </div>
 </div>
+

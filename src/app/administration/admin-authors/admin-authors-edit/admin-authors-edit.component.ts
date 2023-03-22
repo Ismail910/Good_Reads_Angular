@@ -1,5 +1,5 @@
-import { Author } from './../../../@shared/model/author';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { environment } from './../../../../environments/environment';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/@core/api.service';
 
@@ -8,12 +8,12 @@ import { ApiService } from 'src/app/@core/api.service';
   templateUrl: './admin-authors-edit.component.html',
   styleUrls: ['./admin-authors-edit.component.css']
 })
-export class AdminAuthorsEditComponent implements  OnChanges{
+export class AdminAuthorsEditComponent implements OnChanges{
 
   @Input()author:any;
   editAuthor:FormGroup;
   selectedImage!:File;
-  isEdit:boolean=false;
+  @Output()isEdit:EventEmitter<boolean> = new EventEmitter();
   error:Boolean=false;
 
   constructor(private fb: FormBuilder, private api: ApiService)
@@ -26,8 +26,12 @@ export class AdminAuthorsEditComponent implements  OnChanges{
         image: [''],
         ID:['']
       });
+
   }
+
   ngOnChanges(): void {
+    console.log("eee");
+   console.log(this.author);
     this.Author();
   }
 
@@ -39,12 +43,44 @@ export class AdminAuthorsEditComponent implements  OnChanges{
    }
   Author()
   {
-
     this.editAuthor.get('fName')?.setValue(this.author?.firstName);
     this.editAuthor.get('lName')?.setValue(this.author?.lastName);
     this.editAuthor.get('ID')?.setValue(this.author?.ID);
     this.editAuthor.get('dateBirth')?.setValue(this.author?.dateOfBirth);
-    this.editAuthor.get('image')?.setValue(this.author?.photo);
+  }
+
+   edit()
+  {
+    let formdata= new FormData();
+    let date=(this.EdateBirth?.value).replace(/-/g,"/");
+
+    let newdate="";
+    for (let char of date) {
+      newdate= char + newdate;
+    }
+
+    formdata.append("firstName", this.EfirstName?.value);
+    formdata.append("lastName", this.ElastName?.value);
+    formdata.append("dateOfBirth", newdate);
+     if(this.selectedImage)
+    formdata.append("photo",this.selectedImage,this.selectedImage.name);
+
+     this.api.put(`${environment.baseUrl}/admin/author/${this.author.ID}`,formdata).subscribe(
+      {
+      next:(data)=>{
+        this.editAuthor.reset();
+        this.isEdit.emit(true);
+         setTimeout(() => {
+           this.isEdit.emit(false);
+         }, 3000);
+
+      },
+       error:()=>{
+
+      }
+
+    }
+    );
   }
 
   get EfirstName() {

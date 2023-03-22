@@ -51,9 +51,9 @@
     <tbody>
       <ng-container *ngFor="let author of listAuthors; let i=index;">
         <tr>
-          <td>{{i+1}}</td>
+          <td class="px-1">{{i+1}}</td>
           <td  style="width: 5%;">
-            <img src="http://localhost:5000/{{author.photo}}" alt="" class="img-fluid">
+            <img src="http://localhost:5000/{{author.photo}}" alt="" class="img-fluid rounded-circle">
           </td>
           <td>{{author.firstName}}</td>
           <td>{{author.lastName}}</td>
@@ -75,10 +75,10 @@
 
 
 <!---------------------Add Authors----------------------------->
-<app-admin-authors-add></app-admin-authors-add>
+<app-admin-authors-add (isAdded)="receivedNewAuthor($event)"></app-admin-authors-add>
 
 
 
 <!---------------------Edit Authors----------------------------->
 
-<app-admin-authors-edit [author]="EAuthor"></app-admin-authors-edit>
+<app-admin-authors-edit (isEdit)="receivedEditAuthor($event)" [author]="EAuthor"></app-admin-authors-edit>

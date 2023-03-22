@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/@core/api.service';
 import { environment } from 'src/environments/environment';
@@ -13,11 +13,7 @@ export class AdminAuthorsAddComponent {
 
   formAuthor: FormGroup;
   selectedImage!:File;
-  totalPages: number = 0;
-  page: number = 1;
-  _pagination: any = [];
-  isAdded:boolean=false;
-  isEdit:boolean=false;
+  @Output()isAdded: EventEmitter<boolean> =   new EventEmitter();
   error:Boolean=false;
 
   constructor(private fb: FormBuilder, private api: ApiService) {
@@ -55,12 +51,13 @@ export class AdminAuthorsAddComponent {
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
 
 
+
     this.api.post(`${environment.baseUrl}/admin/author`,formdata).subscribe({
       next:()=>{
-        this.isAdded=true;
-       // this.authors();
+
+        this.isAdded.emit(true);
         setTimeout(() => {
-          this.isAdded= false;
+          this.isAdded.emit(false);
         }, 3000);
       },
       error:()=>
@@ -70,7 +67,7 @@ export class AdminAuthorsAddComponent {
           this.error= false;
         }, 3000);
       }
-    })
+    });
 
   }
 
