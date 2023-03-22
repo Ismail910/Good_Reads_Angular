@@ -39,7 +39,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UserAuthorCardComponent,
     NotFoundComponent,
     SlideshowComponent,
-    BookCardComponent
+     BookCardComponent,
   ],
   imports: [
     CommonModule,

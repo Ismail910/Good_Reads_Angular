@@ -22,13 +22,13 @@ export class UserBooksComponent implements OnChanges,OnInit{
   _pagination:any=[];
   constructor(
     private ActvetedRoute: ActivatedRoute,
-    // private bookService: BookServiceService,
+    private bookService: BookServiceService,
     private Api: ApiService
     ){
     this.ActvetedRoute.paramMap.subscribe((parmMap)=>{
-    //  this.bookId =  parmMap.get('id') || ''
+     this.bookId =  parmMap.get('id') || ''
       this.status = parmMap.get('status') || "notRead"
-      // this.userId = parmMap.get('userId') ||  '6414d8e6b98388bb550de21d'
+      this.userId = parmMap.get('userId') ||  '641749cca55c37c65c055e40'
     })
   }
 
@@ -42,18 +42,20 @@ export class UserBooksComponent implements OnChanges,OnInit{
 
   getBooks()
     {
-      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}`).subscribe(data=>{ //${this.userId}
+      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
-
+        console.log(data);
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
+        console.log(this.userId);
+
       })
     }
 
     getBooksByStatus()
     {
-      this.Api.get(`${environment.baseUrl}/home/page/${this.page}/?${this.status}?${this.userId}`).subscribe( book =>{
+      this.Api.get(`${environment.baseUrl}/home/page/${this.page}/${this.status}${this.userId}`).subscribe( book =>{
         this.books = book.data
        })
     }
@@ -64,7 +66,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.getBooks();
     }
     }
-
     prev=()=>{
       if(this.page>1){
       this.page--;

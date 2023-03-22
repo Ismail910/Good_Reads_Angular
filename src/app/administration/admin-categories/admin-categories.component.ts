@@ -92,7 +92,7 @@ export class AdminCategoriesComponent implements OnInit {
 
   addCategory()
   {
-    this.api.postJson(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
+    this.api.post(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
     {
       next:()=>{
         this.isAdded=true;
@@ -108,8 +108,6 @@ export class AdminCategoriesComponent implements OnInit {
           this.error= false;
         }, 3000);
       }
-
-
     });
 
   }
@@ -126,7 +124,7 @@ export class AdminCategoriesComponent implements OnInit {
   {
 
     console.log(this.editCategory.get('_id')?.value);
-    this.api.putJson(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
+    this.api.put(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
     ,this.editCategory.value).subscribe({
       next:()=>{
         this.isEdit=true;

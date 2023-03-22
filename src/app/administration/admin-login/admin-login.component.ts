@@ -12,11 +12,13 @@ import { environment } from 'src/environments/environment.development';
 export class AdminLoginComponent {
 
   formLogin:FormGroup;
+  error:boolean=false;
+  message:string="";
 
   constructor(private fb:FormBuilder ,private auth:AuthService,private router:Router){
     this.formLogin=fb.group(
       {
-        email:['',[Validators.required]],
+        email:['',[Validators.required,Validators.email]],
         password:['',[Validators.required]],
       }
     );
@@ -34,19 +36,37 @@ export class AdminLoginComponent {
 
   login()
   {
+    if(this.email?.value=='' || this.password?.value=='')
+    {
+      this.message="Email and Password are required.";
+      this.error=true;
+        setTimeout(()=>{
+          this.error=false;
+        },4000);
+    }else
+    {
     this.auth.login(`${environment.baseUrl}/login`,this.formLogin.value).subscribe(
       {
       next:(data)=>{
       localStorage.setItem('token',data.token);
+      localStorage.setItem('isAdmin',data.isAdmin);
+      localStorage.setItem('fName',data.first_name);
+      localStorage.setItem('lName',data.last_name);
+      localStorage.setItem('isLogin',"true");
       console.log(data);
       this.router.navigate(['/Admin/Categories']);
       },
       error:()=>
       {
-
+        this.message="Email or Password is not vaild";
+        this.error=true;
+        setTimeout(()=>{
+          this.error=false;
+        },4000);
       }
 
      });
+    }
 
   }
 
