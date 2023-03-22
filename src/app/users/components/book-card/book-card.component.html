@@ -5,23 +5,23 @@
     alt="Hollywood Sign on The Hill" />
   <div class="card-body">
     <h1 class="card-title">{{book.book.name}}</h1>
-    <p class="card-text fs-3">
-      Author: <span class="text-danger">{{book?.book.author.firstName}} {{book?.book.author.lastName}}</span>
-    </p>
     <!-- <p class="card-text fs-3">
-      Category: <span class="text-danger">{{book?.book.category.name}}</span>
+      Author: <span class="text-danger">{{book?.book.author.firstName}} {{book?.book.author.lastName}}</span>
     </p> -->
+    <p class="card-text fs-3">
+      Category: <span class="text-danger">{{book?.book.category.name}}</span>
+    </p>
 
 
     <p class="card-text fs-3">
       Average rate: <span class="text-danger">{{book?.book.avg_rate|number: '1.0-0'  }}</span>
     </p>
-    <p class="card-text fs-3">
+    <!-- <p class="card-text fs-3">
       Status: <span class="text-danger">{{book?.status}}</span>
     </p>
     <p class="card-text fs-3">
       Summary: <span class="text-danger">{{book?.book.summary}}</span>
-    </p>
+    </p> -->
 
     <div>
       <div class="fs-1 p-5 ">
