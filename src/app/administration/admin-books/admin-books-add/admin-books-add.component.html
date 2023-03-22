@@ -1,0 +1,48 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog mt-5">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+      <div class="modal-body">
+          <div class="form-group">
+
+            <input type="text" class="form-control" placeholder="Book Name">
+          </div>
+
+          <div class="form-group">
+            <select name="" id="" class="form-select">
+              <option value="" disabled selected>--Category--</option>
+              <option value="">Category1</option>
+              <option value="">Category2</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+
+            <select name="" id="" class="form-select">
+              <option value="" disabled selected>--Author--</option>
+              <ng-container *ngFor="let author of authorList">
+                <option [value]="author._id">{{author.firstName}} {{author.lastName}}</option>
+              </ng-container>
+
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <input type="file" class="form-control">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn" style="background: #18AF9A">Save</button>
+      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
