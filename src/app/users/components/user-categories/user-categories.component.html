@@ -1,15 +1,15 @@
-<!-- <div class="container">
+<div class="container">
   <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
     ALL CATEGORIES
   </h2>
   <div class="row py-5">
     <div *ngFor="let category of categories" class="col-md-2">
       <div class="h-100 w-100" style="margin-left: 30%">
-        <a routerLink="/Categories/{{ category._id }}"
+        <a routerLink="/category/{{ category._id }}"
           ><img  src="../../../../assets/download-removebg-preview.png" />
         </a>
       </div>
-      <div routerLink="/Categories/{{ category._id }}">
+      <div routerLink="/category/{{ category._id }}">
         <h1
           style="
             color: #3c3484;
@@ -24,4 +24,4 @@
     </div>
   </div>
 </div>
-<app-pagination></app-pagination> -->
+<app-pagination></app-pagination>

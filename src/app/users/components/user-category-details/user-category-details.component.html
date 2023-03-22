@@ -1,18 +1,33 @@
-<div class="container ">
-
-    <div class="container d-flex justify-content-center ">
-
-        <div class="card text-center bg-white " style="margin-top: 15%;height: 50vh; ">
-            <div class="card-body text-dark">
-            <div class="img-area">
-              <img src="../../../../assets/author.jpeg"
-              
-              alt="project1" class="img-fluid" style="width:100%; height: 38vh;">
-            </div>
-            <h3 class="text-center">{{category[0].name}}</h3>
-           </div>
-          </div>
+<div >
+  <div *ngFor="let category of categories" class="col-md-8 h2">
     
+    <div routerLink="/category/{{ category._id }}">
+      <h1
+        style="
+          color: #ed553b;
+          font-size: 150%;
+          text-align: center;
+          margin-left: 30%;
+        "
+      >
+        <b>Welcome to : {{category.name }}</b>
+      </h1>
     </div>
-    
+  </div>
 </div>
+
+<div class="container">
+  <div class="row py-5">
+     <div *ngFor="let book of books"  class="col-md-4 unimation">
+             <div class="movie my-2 position-relative">
+                 <div class=" h-75">
+                  <a routerLink='/books/{{ book._id }}' ><img class="w-100" src="../../../../assets/images (1).jfif" >  </a> 
+                 </div>   
+                 <!-- [src]="book.img"        -->
+                 <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h2" style="color:  #3c3484;text-align: center;"><b>{{book.name | titlecase }}</b></h1> </a> 
+                 <!-- <a routerLink='/authors/{{ book?.author.id }}' ><h6 class="my-2 h6" style="color:  #45171d;font-size: 1vw;opacity: 0.9;">{{book?.author.firstName}} {{book?.author.lastName}}</h6> </a>        -->
+             </div>
+     </div>
+  </div>
+</div>
+<app-pagination></app-pagination>

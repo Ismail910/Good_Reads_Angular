@@ -16,7 +16,7 @@ import { AuthService } from 'src/app/services/user/auth.service';
 export class UserBooksComponent implements OnChanges,OnInit{
 
   books!:Book[]
-  
+
   status!:string
   bookId!:string
   totalPages:number=0;
@@ -30,7 +30,9 @@ export class UserBooksComponent implements OnChanges,OnInit{
     private bookService: BookServiceService,
     private Api: ApiService
     ){
-      this.userData = this.Auth.getuser().subscribe(user=>{
+
+
+      this.Auth.getuser().subscribe(user=>{
         this.userData = user;
         this.userId = this.userData.user._id
         console.log("user id",this.userData.user._id);})
@@ -74,8 +76,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
     if(this.page<this.totalPages){
       this.page++;
       this.getBooks();
-    }
-    }
+    }}
     prev=()=>{
       if(this.page>1){
       this.page--;

@@ -108,7 +108,7 @@
                       </div>
                       <div class="col-md-6">
                           <h4 class="mb-4">Leave a review</h4>
-                        
+
 
                           <form  [formGroup]="reviewForm" (ngSubmit)="setReview()" novalidate  class="form-group">
                             <div class="form-group">
@@ -116,8 +116,12 @@
 
                                 <textarea formControlName="description" id="message" cols="30" rows="5" class="form-control"></textarea>
                                 <label for="message"> like*</label>
-
-                                <p formControlName="like" value="1">1</p>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="true"formControlName="like" id="flexCheckDefault">
+                                  <label class="form-check-label" for="flexCheckDefault" >
+                                    Default checkbox
+                                  </label>
+                                </div>
 
                             </div>
 

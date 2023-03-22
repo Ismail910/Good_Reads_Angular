@@ -96,6 +96,8 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
     this.Api.post(`${environment.baseUrl}/bookUser`,data).subscribe(obj=>{
       console.log(obj);
     })
+    console.log(data);
+
   }
   /////// send Reviews form to db
   setReview() {
@@ -105,15 +107,27 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
       comment: this.reviewForm.controls['description'].value,
       like:this.reviewForm.controls['like'].value
     }
-    this.Api.post(`${environment.baseUrl}/reviews`, data).subscribe(datad=>{
+    this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(datad=>{
       console.log(datad);
-      console.log("asd");
-      console.log(data);
-      console.log(this.user_id);
+     
     })
+    console.log(data);
     }
-
-
+    setLikeToReview() {
+      let data = {
+        user: this.user_id,
+        book: this.bookId,
+        comment: this.reviewForm.controls['description'].value,
+        like:this.reviewForm.controls['like'].value
+      }
+      this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(datad=>{
+        console.log(datad);
+        console.log("asd");
+        console.log(data);
+        console.log(this.user_id);
+      })
+      console.log(data);
+      }
 }
 /*
 
