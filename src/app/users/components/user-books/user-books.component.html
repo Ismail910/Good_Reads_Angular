@@ -31,6 +31,7 @@
       *ngFor="let book of books; index as i"
       [attr.data-index]="i"
     >
+    <small> {{ book | json }}</small>
       <app-book-card [book]="book"></app-book-card>
     </div>
 

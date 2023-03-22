@@ -85,40 +85,6 @@
                 </select>
             </div>
 
-              <!-- <div class="row py-5">
-                  <h4 class="text-capitalize fw-bold">To Order Provider :</h4>
-                  <form [formGroup]="orderForm" (ngSubmit)="createBooking()" novalidate class="form-group" >
-                  <form  novalidate class="form-group" >
-                      <div class="row">
-                          <div class="col-sm-6">
-                              <div class="form-group">
-                                  <label class="form-label">The number of hours</label>
-                                  <input min="1" oninput="this.value = Math.abs(this.value) === 0 ? 1: Math.abs(this.value) " type="number" formControlName="hours" class="form-control  border-0 text-center" min="1" value="1">
-                              </div>
-                          </div>
-                          <div class="col-sm-6">
-                              <div class="form-group">
-                                  <label class="form-label"> About the work required </label>
-                                  <textarea class="form-control w-100" id="description" name="description" formControlName="description" placeholder="Details"></textarea>
-                                  <span class="text-danger" role="alert" >
-                                      *ngIf="(orderFormControl['description'].touched || orderFormControl['description'].invalid && submitted) && orderFormControl['description'].errors?.['required']"
-                                    your description is required
-                                  </span>
-                              </div>
-                          </div>
-                      </div>
-
-                  </form>
-
-
-
-
-              </div> -->
-
-
-
-
-
           </div>
       </div>
   </div>
@@ -126,28 +92,23 @@
       <div class="col">
           <div class="bg-light p-30">
               <div class="mb-4">
-                  <h3 class="text-dark">Reviews (reviews)</h3>
-
+                  <h3 class="text-dark">Reviews for "{{book[0].name}}"</h3>
                   <div class="row">
                       <div class="col-md-6">
-                          <h4 class="mb-4"> review for "{{ book[0].author.firstName }} {{ book[0].author.lastName }}"</h4>
-                          <div class="media mb-4" > <!-- *ngFor="let review of reviews"-->
-                              <img src="review['user']['image']" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                          <h4 class="mb-4"> review for author name "{{ book[0].author.firstName }} {{ book[0].author.lastName }}"</h4>
+                          <div class="media mb-4" *ngFor="let review of book[0].reviews">
+                              <img src="{{user_info.img }}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                               <div class="media-body">
-                                  <h6 class="fw-bold text-capitalize">review['user']['name']<small> - <i>review['created_at'] | date :'medium'</i></small></h6>
-                                  <!-- <ngb-rating class="fs-2 text-warning" [rate]="review['rate']" [readonly] = true [max]="5"></ngb-rating> -->
-                                  <p>review['description']</p>
+                                  <h6 class="fw-bold text-capitalize"> user name:{{user_info.first_name}} {{user_info.last_name}}<small> </small></h6>
+                                  <p>{{review.comment}}</p>
+                                  <p>{{review.like}}</p>
+                                  <p>{{review.date}}</p>
                               </div>
                           </div>
                       </div>
                       <div class="col-md-6">
                           <h4 class="mb-4">Leave a review</h4>
-                          <!-- <small>Your email address will not be published. Required fields are marked *</small> -->
-                          <div class="d-flex my-3">
-                              <!-- <ngb-rating class="fs-2 text-warning"="5"></ngb-rating> -->
-                              <hr>
-                              <pre class="fs-4 mx-3 mt-2">Rate: <b>currentRate</b></pre>
-                          </div>
+
 
                           <form  [formGroup]="reviewForm" (ngSubmit)="setReview()" novalidate  class="form-group">
                             <div class="form-group">
@@ -155,8 +116,12 @@
 
                                 <textarea formControlName="description" id="message" cols="30" rows="5" class="form-control"></textarea>
                                 <label for="message"> like*</label>
-
-                                <p formControlName="like" value="1">1</p>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="true"formControlName="like" id="flexCheckDefault">
+                                  <label class="form-check-label" for="flexCheckDefault" >
+                                    Default checkbox
+                                  </label>
+                                </div>
 
                             </div>
 
@@ -171,7 +136,7 @@
       </div>
   </div>
 </div>
-<!-- Shop Detail End -->
+
 
 
 
