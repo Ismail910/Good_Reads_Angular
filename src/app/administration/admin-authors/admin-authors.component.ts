@@ -2,9 +2,8 @@ import { Author } from 'src/app/@shared/model/author';
 import { environment } from './../../../environments/environment.development';
 import { ApiService } from './../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
-import { HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-admin-authors',
@@ -13,7 +12,6 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class AdminAuthorsComponent implements OnInit {
 
-  formAuthor: FormGroup;
   listAuthors: Author[] = [];
   selectedImage!:File;
   totalPages: number = 0;
@@ -22,18 +20,13 @@ export class AdminAuthorsComponent implements OnInit {
   isAdded:boolean=false;
   isEdit:boolean=false;
   error:Boolean=false;
+  EAuthor!:Author;
 
-  constructor(private fb: FormBuilder, private api: ApiService) {
-    this.formAuthor = fb.group(
-      {
-        fName: ['', [Validators.required]],
-        lName: ['', [Validators.required]],
-        dateBirth: ['', [Validators.required]],
-        image: ['', [Validators.required]]
+  constructor(private api: ApiService) {
 
-      });
 
-  }
+
+        }
 
   ngOnInit(): void {
     this.authors();
@@ -68,51 +61,20 @@ export class AdminAuthorsComponent implements OnInit {
     })
   }
 
-  uploadImage(event: any) {
-   this.selectedImage=event.target.files[0];
-   console.log(this.selectedImage);
-
+  receivedNewAuthor(e:any)
+  {
+    this.isAdded=e;
+    this.authors();
   }
 
-  addAuthor() {
 
-
-
-    let formdata= new FormData();
-    let date=(this.dateBirth?.value).replace(/-/g,"/");
-    let d="";
-    for (let char of date) {
-
-
-      d= char + d;
-    }
-
-    console.log(date);
-    formdata.append("firstName", this.firstName?.value);
-    formdata.append("lastName", this.lastName?.value);
-    formdata.append("dateOfBirth", d);
-
-    formdata.append("photo",this.selectedImage,this.selectedImage.name);
-
-    //const form = new FormData();
-
-    /*const headers = new HttpHeaders({
-      'Content-Type': `multipart/form-data; boundary=${formdata._boundary}`,
-   });*/
-
-    //headers['Content-Type'] = `multipart/form-data; boundary=${form._boundary}
-
-    this.api.post(`${environment.baseUrl}/admin/author`,formdata).subscribe({
-      next: (data) => {
-        console.log(data);
-
-      },
-      error: () => {
-
-      }
-    })
-
+  receivedEditAuthor(e:any)
+  {
+    this.isEdit=e;
+    this.authors();
   }
+
+
 
   deleteAuthor(id: Number) {
     Swal.fire({
@@ -144,30 +106,10 @@ export class AdminAuthorsComponent implements OnInit {
 
 
 
-  showAuthor(author:any)
+  showAuthor(author:Author)
   {
-
+    this.EAuthor=author;
   }
-
-
-
-  get firstName() {
-    return this.formAuthor.get('fName');
-  }
-
-  get lastName() {
-    return this.formAuthor.get('lName');
-  }
-
-  get dateBirth() {
-    return this.formAuthor.get('dateBirth');
-  }
-
-  get image()
-  {
-    return this.formAuthor.get("image");
-  }
-
 
 
 
@@ -175,4 +117,3 @@ export class AdminAuthorsComponent implements OnInit {
 
 
 }
-
