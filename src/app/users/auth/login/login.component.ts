@@ -11,7 +11,7 @@ import { User } from 'src/app/@shared/model/user';
 })
 export class LoginComponent implements OnInit{
   error ='';
-   userData:User = {}
+   userData?:any
   constructor(private _AuthService:AuthService ,private _Router:Router){}
   ngOnInit() : void{}
 loginForm =new FormGroup({
@@ -29,7 +29,6 @@ submitloginForm(loginForm:FormGroup){
       console.log(this.userData);
       localStorage.setItem('token',Response.token);
       this._Router.navigate(['/book']);
-      
     }
     else {
       console.log(Response.message)
