@@ -12,7 +12,7 @@
       <span>Edit Successfully!</span>
     </div>
   </ng-container>
-  
+
   <table class="table text-center m-auto">
     <thead style=" background-color: #18AF9A;">
       <tr>
@@ -56,7 +56,7 @@
           <td>{{book.author.firstName}} {{book.author.lastName}}</td>
           <td>
             <button class="btn" (click)="deleteBook(book._id)"><i class="fa fa-trash text-danger"></i></button>
-            <button class="btn" data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary"></i></button>
+            <button class="btn" data-bs-toggle="modal" data-bs-target="#EditModal" (click)="showBook(book)"><i class="fa fa-edit text-primary"></i></button>
           </td>
         </tr>
       </ng-container>
@@ -75,4 +75,4 @@
 
 
 <!---------------------Edit Books----------------------------->
-<app-admin-books-edit></app-admin-books-edit>
+<app-admin-books-edit (isEdit)="receivedEditBook($event)" [book]="EBook"></app-admin-books-edit>
