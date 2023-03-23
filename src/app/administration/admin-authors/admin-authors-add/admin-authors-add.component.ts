@@ -38,16 +38,12 @@ export class AdminAuthorsAddComponent {
   addAuthor() {
 
     let formdata= new FormData();
-    let date=(this.dateBirth?.value).replace(/-/g,"/");
-    let newdate="";
-    for (let char of date) {
-      newdate= char + newdate;
-    }
+    //let date=(this.dateBirth?.value).replace(/-/g,"/");
 
     //console.log(date);
     formdata.append("firstName", this.firstName?.value);
     formdata.append("lastName", this.lastName?.value);
-    formdata.append("dateOfBirth", newdate);
+    formdata.append("dateOfBirth", this.dateBirth?.value);
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
 
 

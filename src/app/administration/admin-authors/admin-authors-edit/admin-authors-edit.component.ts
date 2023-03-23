@@ -54,14 +54,14 @@ export class AdminAuthorsEditComponent implements OnChanges{
     let formdata= new FormData();
     let date=(this.EdateBirth?.value).replace(/-/g,"/");
 
-    let newdate="";
+   /* let newdate="";
     for (let char of date) {
       newdate= char + newdate;
-    }
+    }*/
 
     formdata.append("firstName", this.EfirstName?.value);
     formdata.append("lastName", this.ElastName?.value);
-    formdata.append("dateOfBirth", newdate);
+    formdata.append("dateOfBirth", date);
      if(this.selectedImage)
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
 
