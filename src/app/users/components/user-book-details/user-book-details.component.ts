@@ -17,7 +17,7 @@ import { LoginComponent } from './../../auth/login/login.component'
 })
 export class UserBookDetailsComponent implements OnInit , OnChanges{
   book?:any
-  reviews?:Reviews;
+  reviews!:Reviews[];
   bookId!:string;
   rating!:number;
   status!:string;
@@ -25,6 +25,7 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
   user_id!:User
   user_info!:any
   userData!:any
+
   constructor(
     private Auth: AuthService,
     private ActivatedRoute:ActivatedRoute,
@@ -61,30 +62,41 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
 
   ngOnInit (): void {
      this.getbook();
-    //  console.log(this.userData._id);
+     this.getRivews()
+     //  console.log(this.userData._id);
   }
 
   getbook(){
    this.Api.get(`${environment.baseUrl}/book/${this.bookId}`).subscribe(book=>{
     this.book = book
-    this.setRatin()
+    this.getRatin()
    })
   }
+  // get Reviws
+  getRivews(){
+    this.Api.get(`${environment.baseUrl}/reviews`).subscribe(reviews=>{
+     this.reviews = reviews
+     console.log(this.reviews);
 
-////////// set and get rating
-  setRating(star: number ): void {
+    })
+
+
+  }
+
+//////////   get rating
+  getRating(star: number ): void {
     this.rating = star
     console.log(this.rating);
     console.log(this.book[0].bookUser.rating);
  }
-   setRatin (){
+   getRatin (){
     this.rating = this.book[0].bookUser.rating
   }
   add(stat:any){
     this.status = stat.target.value
     console.log(this.status);
   }
-/////// send Rating form to db
+/////// set Rating form to db
   addRating()
   {
     let data = {
@@ -96,23 +108,24 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
     this.Api.post(`${environment.baseUrl}/bookUser`,data).subscribe(obj=>{
       console.log(obj);
     })
-    console.log(data);
-
   }
   /////// send Reviews form to db
-  setReview() {
+
+  setReview(){
+    // if(this.reviews  ){}
     let data = {
       user: this.user_id,
       book: this.bookId,
       comment: this.reviewForm.controls['description'].value,
-      like:this.reviewForm.controls['like'].value
+      like:false
     }
-    this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(datad=>{
-      console.log(datad);
-     
+    this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(data=>{
+     // this.reviews = data
+      console.log(data);
     })
-    console.log(data);
     }
+
+    ////////////// send set Like To Review form to db
     setLikeToReview() {
       let data = {
         user: this.user_id,
@@ -120,8 +133,8 @@ export class UserBookDetailsComponent implements OnInit , OnChanges{
         comment: this.reviewForm.controls['description'].value,
         like:this.reviewForm.controls['like'].value
       }
-      this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(datad=>{
-        console.log(datad);
+      this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(data=>{
+        console.log(data);
         console.log("asd");
         console.log(data);
         console.log(this.user_id);
@@ -197,7 +210,7 @@ export class UserBookDetailsComponent implements OnInit {
 
   // }
 
-  setRating(star: number ): void {
+  getRating(star: number ): void {
      this.rating = star
      console.log(this.rating);
      console.log(this.book);
