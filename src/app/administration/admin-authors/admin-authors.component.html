@@ -60,7 +60,7 @@
           <td>{{author.dateOfBirth}}</td>
 
           <td>
-            <button class="btn" (click)="deleteAuthor(author.ID)"><i class="fa fa-trash text-danger"></i></button>
+            <button class="btn" (click)="deleteAuthor(author._id)"><i class="fa fa-trash text-danger"></i></button>
             <button class="btn"  data-bs-toggle="modal" data-bs-target="#EditModal"><i class="fa fa-edit text-primary" (click)="showAuthor(author)"
               ></i></button>
           </td>
