@@ -13,6 +13,8 @@ import { SharedModule } from '../@shared/@shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AdminAuthorsEditComponent } from './admin-authors/admin-authors-edit/admin-authors-edit.component';
 import { AdminAuthorsAddComponent } from './admin-authors/admin-authors-add/admin-authors-add.component';
+import { AdminBooksAddComponent } from './admin-books/admin-books-add/admin-books-add.component';
+import { AdminBooksEditComponent } from './admin-books/admin-books-edit/admin-books-edit.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { AdminAuthorsAddComponent } from './admin-authors/admin-authors-add/admi
     AdminHeaderComponent,
     AdminLoginComponent,
     AdminAuthorsEditComponent,
-    AdminAuthorsAddComponent
+    AdminAuthorsAddComponent,
+    AdminBooksAddComponent,
+    AdminBooksEditComponent
   ],
   imports: [
     CommonModule,

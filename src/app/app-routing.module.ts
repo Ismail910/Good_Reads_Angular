@@ -6,7 +6,6 @@ import { RegisterComponent } from './users/auth/register/register.component';
 import { UserCategoryDetailsComponent } from './users/components/user-category-details/user-category-details.component';
 import { NotFoundComponent } from './users/error/not-found/not-found.component';
 import { HomeComponent } from './users/home/home/HomeComponent.1';
-
 const routes: Routes = [
 
   {path:'',loadChildren:()=>import('./users/users.module').then(m=>m.UsersModule)},

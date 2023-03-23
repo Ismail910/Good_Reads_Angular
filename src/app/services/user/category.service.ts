@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class CategoryService {
 
- 
+
   constructor(private http: HttpClient) { }
 
   getCategories(numPage:number) :Observable<any> {
+    numPage=2;
    return this.http.get<any>(`${environment.baseUrl}/category/page/${numPage}`);
   }
 
@@ -21,13 +22,13 @@ export class CategoryService {
     return this.http.get<any>(`${environment.baseUrl}/category/${id}`);
 
 
-  
+
 
   }
 
 getcategorybooks(id:any):Observable<any> {
     return this.http.get<any>(
       `${environment.baseUrl}/category/${id}/page/1`
-    );
+    )
 
 }}
