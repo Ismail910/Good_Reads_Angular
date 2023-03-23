@@ -71,13 +71,16 @@
             <input type="file"   (change)="uploadImage($event)"  name="image" formControlName="image"
             [class.is-valid]="image?.valid"
             [class.is-invalid]="image?.invalid" >
-            <img src="http://localhost:5000/{{book?.img}}" alt="" style="width:15%; border:1px solid black;" >
+            <ng-container *ngIf="book?.img">
+              <img src="http://localhost:5000/{{book?.img}}" alt="" style="width:15%; border:1px solid black;" >
+            </ng-container>
+
           </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn" style="background: #18AF9A"
-        data-bs-dismiss="modal"
+        data-bs-dismiss="modal" [disabled]="editBook.invalid"
         >Save</button>
       </div>
       </form>
