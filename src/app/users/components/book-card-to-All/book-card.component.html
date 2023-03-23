@@ -1,0 +1,32 @@
+
+
+<div class=" card text-center " >
+  <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp" [routerLink]="['/book/', books._id]" class="card-img-top"
+    alt="Hollywood Sign on The Hill" />
+  <div class="card-body">
+    <h1 class="card-title">{{books.name}}</h1>
+    <p class="card-text fs-3">
+      Author: <span class="text-danger">{{books?.author.firstName}} {{books?.author.lastName}}</span>
+    </p>
+    <p class="card-text fs-3">
+      Category: <span class="text-danger">{{books?.category.name}}</span>
+    </p>
+    <p class="card-text fs-3">
+      Average rate: <span class="text-danger">{{books?.avg_rate|number: '1.0-0'  }}</span>
+    </p>
+    <div>
+      <div class="fs-1 p-5 ">
+        Average rate::
+        <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating()">
+          <i class="fa fa-star fs-3" [ngClass]="{'active': star <= rating}"></i>
+        </span>
+      </div></div>
+      <div>
+      <!-- <select class="select btn btn-secondary dropdown-toggle"type="button" (click)="setRating()">
+         <option value="{{books?.status}}">{{books?.status}}</option>
+      </select> -->
+    </div>
+  </div>
+</div>
+<small>{{books | json}}</small>
+

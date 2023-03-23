@@ -12,4 +12,5 @@ export interface Reviews {
   date:Date;
   book:Book;
   user:User;
+  _id:string
 }
