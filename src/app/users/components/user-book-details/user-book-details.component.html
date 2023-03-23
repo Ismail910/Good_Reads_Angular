@@ -27,7 +27,7 @@
            <div>
             <div class="fs-1 p-5 ">
               rating:
-              <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating(star)">
+              <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="getrating(star)">
                 <i class="fa fa-star fs-3" [ngClass]="{'active': star <= rating }"></i>
               </span>
             </div>
@@ -73,17 +73,18 @@
               <h5 class="font-weight-semi-bold mb-4"> rating: <span class="text-success"> {{book[0].bookUser.rating}}</span></h5>
               <div class="fs-1  " (click)="addRating()" >
                 rating:
-                <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating(star)">
+                <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="getRating(star)">
                   <i class="fa fa-star fs-3" [ngClass]="{'active': star <= rating }"></i>
                 </span>
+                <div class="fs-1  "> Status:
+                  <select  class="select btn btn-secondary dropdown-toggle"type="button"  value="{{book[0].bookUser.status}}" (click)="add($event)"  >
+                    <option value="Read">Read</option>
+                    <option value="Reading">Reading</option>
+                    <option value="wantToRead">Want To Read</option>
+                  </select>
               </div>
-              <div class="fs-1  "> Status:
-                <select  class="select btn btn-secondary dropdown-toggle"type="button"  value="{{book[0].bookUser.status}}" (click)="add($event)"  >
-                  <option value="Read">Read</option>
-                  <option value="Reading">Reading</option>
-                  <option value="wantToRead">Want To Read</option>
-                </select>
-            </div>
+              </div>
+
 
           </div>
       </div>
@@ -101,6 +102,14 @@
                               <div class="media-body">
                                   <h6 class="fw-bold text-capitalize"> user name:{{user_info.first_name}} {{user_info.last_name}}<small> </small></h6>
                                   <p>{{review.comment}}</p>
+                                  <form  [formGroup]="reviewForm" (ngSubmit)="setReview()" novalidate  class="form-group">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="true" formControlName="like" id="flexCheckDefault">
+                                      <label class="form-check-label" for="flexCheckDefault" >
+                                        Default checkbox
+                                      </label>
+                                    </div>
+                                  </form>
                                   <p>{{review.like}}</p>
                                   <p>{{review.date}}</p>
                               </div>
@@ -110,18 +119,14 @@
                           <h4 class="mb-4">Leave a review</h4>
 
 
+
                           <form  [formGroup]="reviewForm" (ngSubmit)="setReview()" novalidate  class="form-group">
                             <div class="form-group">
                                 <label for="message">Your Review *</label>
 
                                 <textarea formControlName="description" id="message" cols="30" rows="5" class="form-control"></textarea>
                                 <label for="message"> like*</label>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" value="true"formControlName="like" id="flexCheckDefault">
-                                  <label class="form-check-label" for="flexCheckDefault" >
-                                    Default checkbox
-                                  </label>
-                                </div>
+
 
                             </div>
 
