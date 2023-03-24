@@ -38,8 +38,7 @@ export class AdminAuthorsAddComponent {
   addAuthor() {
 
     let formdata= new FormData();
-    let date=(this.dateBirth?.value).replace(/-/g,"/");
-
+    let date=(this.dateBirth?.value);
     console.log(this.dateBirth?.value);
     formdata.append("firstName", this.firstName?.value);
     formdata.append("lastName", this.lastName?.value);
