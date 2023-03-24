@@ -32,7 +32,7 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
   user_id!: User;
   user_info!: any;
   userData!: any;
-
+  bookUserId!:BookUser
   constructor(
     private Auth: AuthService,
     private ActivatedRoute: ActivatedRoute,
@@ -106,10 +106,22 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
       book: this.bookId,
       user: this.user_id,
     };
-    this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
+    if(!this.book[0].bookUser._id)
+    {
+      this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
+        this.bookUserId = obj.id
+        console.log(obj);
+        console.log("create");
 
-      console.log(obj);
-    });
+      });
+    }else{
+      this.Api.put(`${environment.baseUrl}/bookUser/${this.book[0].bookUser._id}`, data).subscribe((obj) => {
+        console.log(obj);
+        console.log("update");
+
+      });
+    }
+
   }
   /////// send Reviews form to db
 
