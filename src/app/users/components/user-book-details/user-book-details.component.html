@@ -127,19 +127,19 @@
                     user name:{{ user_info.first_name }} {{ user_info.last_name
                     }}<small> </small>
                   </h6>
-                  <div ((click))="setLikeToReview(review)">
+                  <div (click)="setLikeToReview(review)">
                     <p>{{ review.comment }}</p>
-                    <div class="form-check">
-                      <!-- <input
+                    <div class="form-check" (click)="getLike($event)">
+                      <input
                         class="form-check-input"
                         type="checkbox"
-                        value="true"
+                        
                         formControlName="like"
                         id="flexCheckDefault"
                       />
                       <label class="form-check-label" for="flexCheckDefault">
                         like or dislike
-                      </label> -->
+                      </label>
                     </div>
 
                     <p >{{ review.like }}</p>

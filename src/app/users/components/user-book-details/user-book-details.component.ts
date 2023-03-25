@@ -29,6 +29,7 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
   rating!: number;
   status!: string;
   reviewForm: FormGroup;
+  // likeForm:FormGroup ;
   user_id!: User;
   user_info!: any;
   userData!: any;
@@ -50,8 +51,11 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
 
     this.reviewForm = new FormGroup({
       description: new FormControl('', [Validators.required]),
-      like: new FormControl('', [Validators.required]),
+      // like: new FormControl('', [Validators.required]),
     });
+    // this.likeForm =new FormGroup({
+    //   like: new FormControl(''),
+    // })
 
     this.ActivatedRoute.paramMap.subscribe((paramMap) => {
       this.bookId = paramMap.get('id') || '';
@@ -139,20 +143,25 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
   }
 
   ////////////// put and set Like To Review form to db
-  setLikeToReview(data:any) {
+  getLike(event:any){
+  console.log("ismaillllllllllll",event.target.value);
+
+  }
+  setLikeToReview(oldreview:any) {
 
 
-     data = {
-      userId: data.userid,
-      like: this.reviewForm.controls['like'].value,
+    const data:any = {
+
+      userId: this.user_id,
+      like: !(oldreview.like)  ,
     };
-    this.Api.put(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
+    this.Api.put(`${environment.baseUrl}/reviews/${oldreview._id}`, data).subscribe((data) => {
       console.log(data);
       console.log('asd');
       console.log(data);
       console.log(this.user_id);
     });
-    console.log(data.target);
+    console.log(oldreview);
   }
 
 
