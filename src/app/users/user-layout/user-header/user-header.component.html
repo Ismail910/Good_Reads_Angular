@@ -1,7 +1,7 @@
 
 
 
- <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color: #3C3484;color: #E1D5D3;">
+ <!-- <nav class="navbar navbar-expand-lg navbar-dark  " style="background-color: #3C3484;color: #E1D5D3;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img  src="../../../../assets/logo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
       </div>
     </div>
   </nav> 
- <!-- 
+  -->
 
   <nav class="navbar navbar-expand-lg navBar">
     <div class="container-fluid">
@@ -93,30 +93,29 @@
         </ul>
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+              <a class="nav-link" routerLink="/register" routerLinkActive="active" *ngIf="!isLoginUser">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+              <a class="nav-link" routerLink="/login" routerLinkActive="active" *ngIf="!isLoginUser">Login</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link Logout"  routerLinkActive="active"  *ngIf="isLoginUser" (click)="isLogOut()">Logout</a>
+            </li>
+            <!-- <div class="dropdown">
+              <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"    data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="assets/admin.png" alt="">
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+               <li> <span> Ibrahim Salah</span></li>
+                <li><a class="dropdown-item" href="#" style="color:#18AF9A;">
+                  <i class="fa-solid fa-right-from-bracket"></i>
+                  Logout</a></li>
+              </ul>
+          </div> -->
           </ul>
-          
-        <li>
-            <div class="dropdown">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"    data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="assets/images (3).jpg" alt=""><span style="color: #E1D5D3;"> User Name</span> 
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#" style="color:#3C3484;">
-            <i class="fa-solid fa-right-from-bracket"></i>
-                 Logout</a></li>
-            </ul>
-            </div>
-          </li>
-       
-   
       </div>
     </div>
   </nav>
 
- -->
- 
+
+
