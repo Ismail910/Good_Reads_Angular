@@ -21,15 +21,18 @@ import { LoginComponent } from './../../auth/login/login.component';
   templateUrl: './user-book-details.component.html',
   styleUrls: ['./user-book-details.component.css'],
 })
-export class UserBookDetailsComponent implements OnInit, OnChanges {
+export class UserBookDetailsComponent implements OnInit {
+
+isChecked = false;
+
   book?: any;
-  reviews!: Reviews[];
+  reviews!: any;
   reviewsId!:any;
   bookId!: string;
   rating!: number;
   status!: string;
   reviewForm: FormGroup;
-  // likeForm:FormGroup ;
+  likeForm:FormGroup ;
   user_id!: User;
   user_info!: any;
   userData!: any;
@@ -51,20 +54,17 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
 
     this.reviewForm = new FormGroup({
       description: new FormControl('', [Validators.required]),
-      // like: new FormControl('', [Validators.required]),
+
     });
-    // this.likeForm =new FormGroup({
-    //   like: new FormControl(''),
-    // })
+    this.likeForm =new FormGroup({
+      like: new FormControl(''),
+    })
 
     this.ActivatedRoute.paramMap.subscribe((paramMap) => {
       this.bookId = paramMap.get('id') || '';
     });
   }
-  ngOnChanges(): void {
-    // this.rating = this.book[0].bookUser.reating
-    // console.log(this.book[0].bookUser.reating);
-  }
+
 
   ngOnInit(): void {
     this.getbook();
@@ -82,9 +82,9 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
   }
   // get Reviws
   getRivews() {
-    this.Api.get(`${environment.baseUrl}/reviews/`).subscribe((reviews) => {
+    this.Api.get(`${environment.baseUrl}/reviews/${this.bookId}`).subscribe((reviews) => {
       this.reviews = reviews;
-      this.reviewsId = this.reviews.map(ele=>{ele._id})
+      this.reviewsId = this.reviews.map((ele:any)=>{ele._id})
       console.log(this.reviews);
     });
   }
@@ -110,13 +110,12 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
       book: this.bookId,
       user: this.user_id,
     };
-    if(!this.book[0].bookUser._id)
+    if(this.book[0].bookUser.user._id == this.user_id)
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
         console.log(obj);
         console.log("create");
-
       });
     }else{
       this.Api.put(`${environment.baseUrl}/bookUser/${this.book[0].bookUser._id}`, data).subscribe((obj) => {
@@ -137,32 +136,26 @@ export class UserBookDetailsComponent implements OnInit, OnChanges {
       like: false,
     };
     this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
-      // this.reviews = data
       console.log(data);
     });
   }
 
   ////////////// put and set Like To Review form to db
-  getLike(event:any){
-  console.log("ismaillllllllllll",event.target.value);
 
-  }
-  setLikeToReview(oldreview:any) {
-
-
+  setLikeToReview(oldreview:any, Reviewdata:any ) {
+    console.log(oldreview.target.value);
     const data:any = {
-
       userId: this.user_id,
-      like: !(oldreview.like)  ,
+      like: oldreview.target.value,
     };
-    this.Api.put(`${environment.baseUrl}/reviews/${oldreview._id}`, data).subscribe((data) => {
+    this.Api.put(`${environment.baseUrl}/reviews/${Reviewdata._id}`, data).subscribe((data) => {
       console.log(data);
       console.log('asd');
-      console.log(data);
-      console.log(this.user_id);
     });
-    console.log(oldreview);
+    console.log(data);
+
   }
+
 
 
 }
