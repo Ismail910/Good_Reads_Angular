@@ -12,7 +12,7 @@
             <input type="text" class="form-control" name="name"
             placeholder="Book Name" formControlName="name"
             [class.is-valid]="name?.valid"
-            [class.is-invalid]="name?.invalid"
+            [class.is-invalid]="name?.errors?.['required']"
             >
 
             <div class="alert alert-warning" [hidden]="name?.valid || name?.untouched" >
@@ -55,7 +55,6 @@
             <textarea type="text" class="form-control" placeholder="Summary"
             name="summary"
             formControlName="summary"
-
             [class.is-valid]="summary?.valid"
             [class.is-invalid]="summary?.invalid">
             </textarea>
@@ -79,7 +78,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button type="submit" class="btn" style="background: #18AF9A"
-        data-bs-dismiss="modal"
+        data-bs-dismiss="modal" [disabled]="formBook.invalid"
         >Save</button>
       </div>
       </form>

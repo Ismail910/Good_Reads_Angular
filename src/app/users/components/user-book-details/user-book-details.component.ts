@@ -6,129 +6,181 @@ import { ReviewService } from './../../../services/user/review.service';
 import { BookServiceService } from './../../../services/user/book-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { Reviews, BookUser } from './../../../@shared/model/book-user';
-import { Component, OnInit, Output, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginComponent } from './../../auth/login/login.component'
+import { LoginComponent } from './../../auth/login/login.component';
 
 @Component({
   selector: 'app-user-book-details',
   templateUrl: './user-book-details.component.html',
-  styleUrls: ['./user-book-details.component.css']
+  styleUrls: ['./user-book-details.component.css'],
 })
-export class UserBookDetailsComponent implements OnInit , OnChanges{
-  book?:any
-  reviews?:Reviews;
-  bookId!:string;
-  rating!:number;
-  status!:string;
+export class UserBookDetailsComponent implements OnInit, OnChanges {
+  book?: any;
+  reviews!: Reviews[];
+  reviewsId!:any;
+  bookId!: string;
+  rating!: number;
+  status!: string;
   reviewForm: FormGroup;
-  user_id!:User
-  user_info!:any
-  userData!:any
+  user_id!: User;
+  user_info!: any;
+  userData!: any;
+  bookUserId!:BookUser
   constructor(
     private Auth: AuthService,
-    private ActivatedRoute:ActivatedRoute,
-    private BookService:BookServiceService,
-    private ReviewsService:ReviewService,
-    private Api : ApiService,
+    private ActivatedRoute: ActivatedRoute,
+    private BookService: BookServiceService,
+    private ReviewsService: ReviewService,
+    private Api: ApiService
+  ) {
+    this.userData = this.Auth.getuser().subscribe((user) => {
+      this.userData = user;
+      console.log(this.userData);
+      console.log(this.userData.user.first_name);
+      this.user_id = this.userData.user._id;
+      this.user_info = this.userData.user;
+    });
 
-    ){
-      this.userData = this.Auth.getuser().subscribe(user=>{
-        this.userData = user;
-        console.log(this.userData);
-        console.log(this.userData.user.first_name);
-        this.user_id = this.userData.user._id
-        this.user_info = this.userData.user
+    this.reviewForm = new FormGroup({
+      description: new FormControl('', [Validators.required]),
+      like: new FormControl('', [Validators.required]),
+    });
 
-
-     } )
-      console.log("users",this.userData.user);
-
-      this.reviewForm = new FormGroup({
-        description: new FormControl('', [Validators.required]),
-        like: new FormControl('', [Validators.required])
-      });
-
-      this.ActivatedRoute.paramMap.subscribe((paramMap)=>{
-        this.bookId = paramMap.get("id") || ""
-      })
-    }
+    this.ActivatedRoute.paramMap.subscribe((paramMap) => {
+      this.bookId = paramMap.get('id') || '';
+    });
+  }
   ngOnChanges(changes: SimpleChanges): void {
     // this.rating = this.book[0].bookUser.reating
     // console.log(this.book[0].bookUser.reating);
   }
 
-
-  ngOnInit (): void {
-     this.getbook();
+  ngOnInit(): void {
+    this.getbook();
+    this.getRivews();
     //  console.log(this.userData._id);
   }
 
-  getbook(){
-   this.Api.get(`${environment.baseUrl}/book/${this.bookId}`).subscribe(book=>{
-    this.book = book
-    this.setRatin()
-   })
+  getbook() {
+    this.Api.get(
+      `${environment.baseUrl}/book/${this.bookId}/${this.user_id}`
+    ).subscribe((book) => {
+      this.book = book;
+      this.getRatin();
+    });
+  }
+  // get Reviws
+  getRivews() {
+    this.Api.get(`${environment.baseUrl}/reviews/`).subscribe((reviews) => {
+      this.reviews = reviews;
+      this.reviewsId = this.reviews.map(ele=>{ele._id})
+      console.log(this.reviews);
+    });
   }
 
-////////// set and get rating
-  setRating(star: number ): void {
-    this.rating = star
+  //////////   get rating
+  getRating(star: number): void {
+    this.rating = star;
     console.log(this.rating);
     console.log(this.book[0].bookUser.rating);
- }
-   setRatin (){
-    this.rating = this.book[0].bookUser.rating
   }
-  add(stat:any){
-    this.status = stat.target.value
+  getRatin() {
+    this.rating = this.book[0].bookUser.rating;
+  }
+  add(stat: any) {
+    this.status = stat.target.value;
     console.log(this.status);
   }
-/////// send Rating form to db
-  addRating()
-  {
+  /////// set Rating form to db
+  addRating() {
     let data = {
-      rating:this.rating,
-      status:this.status,
-      book:this.bookId,
-      user:this.user_id
+      rating: this.rating,
+      status: this.status,
+      book: this.bookId,
+      user: this.user_id,
+    };
+    if(!this.book[0].bookUser._id)
+    {
+      this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
+        this.bookUserId = obj.id
+        console.log(obj);
+        console.log("create");
+
+      });
+    }else{
+      this.Api.put(`${environment.baseUrl}/bookUser/${this.book[0].bookUser._id}`, data).subscribe((obj) => {
+        console.log(obj);
+        console.log("update");
+
+      });
     }
-    this.Api.post(`${environment.baseUrl}/bookUser`,data).subscribe(obj=>{
-      console.log(obj);
-    })
-    console.log(data);
 
   }
   /////// send Reviews form to db
+
   setReview() {
     let data = {
       user: this.user_id,
       book: this.bookId,
       comment: this.reviewForm.controls['description'].value,
-      like:this.reviewForm.controls['like'].value
-    }
-    this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(datad=>{
-      console.log(datad);
-     
-    })
-    console.log(data);
-    }
-    setLikeToReview() {
-      let data = {
-        user: this.user_id,
-        book: this.bookId,
-        comment: this.reviewForm.controls['description'].value,
-        like:this.reviewForm.controls['like'].value
-      }
-      this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe(datad=>{
-        console.log(datad);
-        console.log("asd");
-        console.log(data);
-        console.log(this.user_id);
-      })
+      like: false,
+    };
+    this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
+      // this.reviews = data
       console.log(data);
-      }
+    });
+  }
+
+  ////////////// put and set Like To Review form to db
+  // setLikeToReview(data:any) {
+
+
+    //  data = {
+    //   user: data.userid,
+    //   book: this.bookId,
+    //   comment: this.reviewForm.controls['description'].value,
+    //   like: this.reviewForm.controls['like'].value,
+    // };
+    // this.Api.put(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
+    //   console.log(data);
+    //   console.log('asd');
+    //   console.log(data);
+    //   console.log(this.user_id);
+    // });
+    // console.log(data.target);
+  // }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 
 import { ApiService } from 'src/app/@core/api.service';
@@ -197,7 +249,7 @@ export class UserBookDetailsComponent implements OnInit {
 
   // }
 
-  setRating(star: number ): void {
+  getRating(star: number ): void {
      this.rating = star
      console.log(this.rating);
      console.log(this.book);

@@ -1,3 +1,4 @@
+import { PopularComponent } from './users/home/popular/popular.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryService } from './services/user/category.service';
@@ -13,8 +14,8 @@ const routes: Routes = [
   import('./administration/administration.module').
   then(m=>m.AdministrationModule)
   },
-  {path:'home', component:HomeComponent},
-  
+  {path:'home', component:PopularComponent},
+
   {path:'login', component:LoginComponent},
   {path:'register', component:RegisterComponent},
   {path:'**',component:NotFoundComponent}

@@ -10,6 +10,7 @@ import { NotFoundComponent } from './error/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
+import { PopularComponent } from './home/popular/popular.component';
 
 const routes: Routes = [
    {path:'',component:HomeComponent,children:
@@ -20,7 +21,7 @@ const routes: Routes = [
 
     {path:'book',component:UserBooksComponent},
 
-
+    {path:'home',component:PopularComponent},
     {path:'book/:id',component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},

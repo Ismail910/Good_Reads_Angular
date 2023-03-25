@@ -68,8 +68,8 @@ export class AdminBooksAddComponent  implements OnInit {
 
 
     this.api.post(`${environment.baseUrl}/book`,formdata).subscribe({
-      next:()=>{
-
+      next:(data)=>{
+        console.log(data);
         this.isAdded.emit(true);
         setTimeout(() => {
           this.isAdded.emit(false);

@@ -47,7 +47,10 @@
             formControlName="image" name="image"
              (change)="uploadImage($event)" >
 
-          <img src="http://localhost:5000/{{author?.photo}}" alt="" style="width:15%; border:1px solid black;" >
+             <ng-container *ngIf="author?.photo">
+              <img src="http://localhost:5000/{{author?.photo}}" alt="" style="width:15%; border:1px solid black;" >
+             </ng-container>
+
 
           </div>
       </div>

@@ -20,6 +20,7 @@ import { NotFoundComponent } from './error/not-found/not-found.component';
 import { SlideshowComponent } from './user-layout/slideshow/slideshow.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BookCardAllComponent } from './components/book-card-to-All/book-card.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     NotFoundComponent,
     SlideshowComponent,
      BookCardComponent,
+     BookCardAllComponent
   ],
   imports: [
     CommonModule,
