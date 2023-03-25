@@ -14,7 +14,9 @@ export class BookCardComponent implements OnInit{
   rating: number = 1 ;
   bookId?:string
    constructor(private _Router : Router){
+    
    }
+
 
 
   setRating(): void {
