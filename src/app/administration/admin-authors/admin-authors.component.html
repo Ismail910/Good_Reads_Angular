@@ -1,5 +1,5 @@
 
-<div class="container mt-5">
+<div class="container mt-2">
   <ng-container *ngIf="isAdded">
     <div class="alert alert-success alert-dismissible fade show mx-4" role="alert">
       <span>Added Successfully!</span>
@@ -17,7 +17,7 @@
     <span>Category is already exist!</span>
   </div>
   </ng-container>-->
-  <table class="table text-center m-auto mb-2">
+  <table class="table text-center m-auto mb-2 ">
     <thead style=" background-color: #18AF9A;">
       <tr>
         <th style="background-color: rgb(237, 237, 237);" colspan="4">
@@ -57,7 +57,7 @@
           </td>
           <td>{{author.firstName}}</td>
           <td>{{author.lastName}}</td>
-          <td>{{author.dateOfBirth}}</td>
+          <td>{{author.dateOfBirth | date: 'dd/MM/YYYY'}}</td>
 
           <td>
             <button class="btn" (click)="deleteAuthor(author._id)"><i class="fa fa-trash text-danger"></i></button>

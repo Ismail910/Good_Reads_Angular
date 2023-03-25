@@ -49,23 +49,20 @@ export class AdminAuthorsEditComponent implements OnChanges{
     this.editAuthor.get('dateBirth')?.setValue(this.author?.dateOfBirth);
   }
 
+
    edit()
   {
     let formdata= new FormData();
-    let date=(this.EdateBirth?.value).replace(/-/g,"/");
+    let date=(this.EdateBirth?.value);
 
-   /* let newdate="";
-    for (let char of date) {
-      newdate= char + newdate;
-    }*/
-
+    console.log(date);
     formdata.append("firstName", this.EfirstName?.value);
     formdata.append("lastName", this.ElastName?.value);
     formdata.append("dateOfBirth", date);
      if(this.selectedImage)
     formdata.append("photo",this.selectedImage,this.selectedImage.name);
 
-     this.api.put(`${environment.baseUrl}/admin/author/${this.author.ID}`,formdata).subscribe(
+   this.api.put(`${environment.baseUrl}/admin/author/${this.author.ID}`,formdata).subscribe(
       {
       next:(data)=>{
         this.editAuthor.reset();
