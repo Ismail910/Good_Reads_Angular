@@ -18,9 +18,22 @@
 .vl {
   border-left: 1px solid #E1D5D3;
   height: 5vh;
+  margin: 0 2vw 0 2vw;
 }
-.navbar-brand img{
-  width: 50px;
-  height: 50px;
+
+ .navbar-brand img{
+  width: 4vw;
+  height: 3vh;
   margin-left: 100%;
+} 
+/*
+.navBar{
+  background-color: #3C3484;
 }
+.navBar a{
+  color: #E1D5D3;
+  font-weight: 500;
+}
+.navItames{
+  margin-left:7vw ;
+} */
