@@ -1,7 +1,7 @@
 
 import { Router } from '@angular/router';
 import { Book } from 'src/app/@shared/model/book';
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-book-card',
