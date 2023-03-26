@@ -1,5 +1,5 @@
 import { NavigationEnd, Router } from '@angular/router';
-import { Component, OnChanges, SimpleChanges, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-admin-panel',
@@ -7,7 +7,7 @@ import { Component, OnChanges, SimpleChanges, OnInit, Output } from '@angular/co
   styleUrls: ['./admin-panel.component.css']
 })
 export class AdminPanelComponent {
-  @Output() toggle:boolean=false;
+   toggle:boolean=false;
   namePage:String=this.router.url;
 
   constructor(private router:Router){
@@ -18,7 +18,7 @@ export class AdminPanelComponent {
       }
   });
   }
-  
+
   sidbar(status:boolean)
   {
     this.toggle=status;
