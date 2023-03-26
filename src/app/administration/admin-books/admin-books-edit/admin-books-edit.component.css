@@ -1,27 +1,3 @@
-table
-{
- width: 1140px;
-}
-
-tr td
-{
-  padding: 1% 0% .6% 0%;
-}
-tr th
-{
-  padding: 1% 0%;;
-}
-
-tbody tr:nth-child(odd)
-{
-
-  background-color: gainsboro;
-}
-
-td button i
-{
-  font-size: 1.3rem;
-}
 .add
 {
   margin-left: 40%;

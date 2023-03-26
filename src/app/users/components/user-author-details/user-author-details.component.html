@@ -1,4 +1,4 @@
-<div class="container ">
+<div class="container mb-5">
 
     <div class="container d-flex justify-content-center ">
 
@@ -9,20 +9,29 @@
               
               alt="project1" class="img-fluid" style="width:100%; height: 38vh;border-radius: 50px;">
             </div>
-            <h3 class="text-center m-4">{{author.firstName}} {{ author.lastName}}</h3>
-                <h3 class="text-center">{{author.dateOfBirth}}</h3>
+            <h3 class="text-center m-4" style="color: #3c3484;">{{author.firstName}} {{ author.lastName}}</h3>
+                <h3 class="text-center" style="color: #ed553b;">{{author.dateOfBirth}}</h3>
            </div>
           </div>
     
     </div>
     
     <div class="m-5 " style="width: 15rem; height: 5rem; border-radius:50% ; background-color: #ED553B;">
-       <h2 class="text-center pt-3">book</h2>
+       <h2 class="text-center pt-3 text-white">book</h2>
     </div>
-    <div class="col-12 col-md-12 col-lg-4 mt-5"
+
+    <div class="container">
+        <div class="row ">
+           
+           <div class="col-12 col-md-12 col-lg-4 mt-5"
         *ngFor="let book of author.books; index as i; "[attr.data-index]="i">
-        <p>{{book |json}}</p>
         <app-book-card [book]="book"></app-book-card>
     </div>
+        </div>
+    
+    </div> 
    
 </div>
+
+
+<app-pagination></app-pagination>

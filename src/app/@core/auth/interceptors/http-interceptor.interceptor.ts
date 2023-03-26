@@ -24,12 +24,8 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
 
 
     this.isLogin=this.auth.isLogin();
-
-    console.log(this.isLogin);
-    //console.log(Jthis.token));
      if(this.isLogin==true)
       {
-        console.log("y");
      request = request.clone({
       setHeaders: {
        'x-token': `${localStorage.getItem('token')}`,

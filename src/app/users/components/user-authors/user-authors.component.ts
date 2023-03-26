@@ -24,6 +24,7 @@ export class UserAuthorsComponent implements OnInit,OnChanges {
     .subscribe((aut) => this.authors = aut);*/
     this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
       this.authors=data;
+
     })
 
   }

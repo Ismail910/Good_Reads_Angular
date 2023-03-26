@@ -14,7 +14,9 @@ export class AdminBooksComponent implements OnInit {
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
-
+  isAdded:boolean=false;
+  isEdit:boolean=false;
+  EBook!:Book;
   constructor(private api:ApiService){}
   ngOnInit(): void {
     this.books();
@@ -79,6 +81,23 @@ export class AdminBooksComponent implements OnInit {
       });
     }
 
+
+
+  receivedNewBook(e:any)
+  {
+    this.isAdded=e;
+    this.books();
+  }
+  showBook(book:Book)
+  {
+    this.EBook=book;
+  }
+
+  receivedEditBook(e:any)
+  {
+    this.isEdit=e;
+    this.books();
+  }
 
 
 }

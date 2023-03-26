@@ -3,17 +3,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject, Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
-import jwtDecode from 'jwt-decode';
+import jwtDecode from 'jwt-decode'
+import { Router } from '@angular/router';
+Router
 @Injectable({
   providedIn: 'root'
 
 })
 export class AuthService {
-  currentuser = new BehaviorSubject(null)
-  constructor(private _HttpClient:HttpClient) {
+  currentUser= new BehaviorSubject(null) 
+  constructor(private _HttpClient:HttpClient,private _Router:Router) {
 
     if(localStorage.getItem('token') != null) {
-      this.savecurrentuser();
+      this.saveCurrentUser();
   }
   }
 
@@ -24,15 +26,22 @@ export class AuthService {
     return this._HttpClient.post(`${environment.baseUrl}/login`,data)
   }
 
-
-  savecurrentuser()
+  saveCurrentUser()
   {
-    let token:any =localStorage.getItem('token')
-    this.currentuser.next( jwtDecode(token)) ;
+    let token:any = localStorage.getItem('token');
+    this.currentUser.next(jwtDecode(token))
+    console.log(this.currentUser)
   }
 
   getuser():Observable<User | null>
   {
-    return this.currentuser.asObservable();
+    return this.currentUser.asObservable();
+  }
+  logout(){
+    this.currentUser.next(null)
+    localStorage.removeItem('token')
+    localStorage.removeItem('isLogin')
+    this._Router.navigate(['/login']);
   }
 }
+

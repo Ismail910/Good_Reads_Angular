@@ -5,6 +5,8 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/@shared/model/user';
+import { AuthService } from 'src/app/services/user/auth.service';
 
 @Component({
   selector: 'app-user-books',
@@ -14,21 +16,31 @@ import { Observable } from 'rxjs';
 export class UserBooksComponent implements OnChanges,OnInit{
 
   books!:Book[]
-  userId?:string
+
   status!:string
   bookId!:string
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
+  userId!:User
+  userData?:any
   constructor(
+    private Auth: AuthService,
     private ActvetedRoute: ActivatedRoute,
     private bookService: BookServiceService,
     private Api: ApiService
     ){
+
+
+      this.Auth.getuser().subscribe(user=>{
+        this.userData = user;
+        this.userId = this.userData.user._id
+        console.log("user id",this.userData.user._id);})
+
     this.ActvetedRoute.paramMap.subscribe((parmMap)=>{
      this.bookId =  parmMap.get('id') || ''
       this.status = parmMap.get('status') || "notRead"
-      this.userId = parmMap.get('userId') ||  '641749cca55c37c65c055e40'
+
     })
   }
 
@@ -64,8 +76,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
     if(this.page<this.totalPages){
       this.page++;
       this.getBooks();
-    }
-    }
+    }}
     prev=()=>{
       if(this.page>1){
       this.page--;
@@ -78,6 +89,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.page=p;
       this.getBooks();
     }
+
 
 
 
@@ -95,4 +107,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
 
 
 
-}
+
+
+  }
