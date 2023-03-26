@@ -167,7 +167,12 @@
         </ul>
         <form class="d-flex " >
         
-          <button class="btn btn-outline-success login" type="submit" routerLink="/login" >LOGIN</button>
+          <button class="btn btn-outline-success login" type="submit" routerLink="/login" *ngIf="!isLoginUser" >LOGIN</button>
+        </form>
+        <form class="d-flex " *ngIf="isLoginUser" (click)="isLogOut()">
+        
+          <button class="btn btn-outline-success login"  routerLink="/logout"   >LOGOUT</button>
+          <img src="../../../../assets/user.png" style=" width:2rem;height: 2rem;">
         </form>
       </div>
 

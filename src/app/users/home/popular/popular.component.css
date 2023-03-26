@@ -60,7 +60,7 @@
       text-align: center;
       margin-bottom: 4%;
   }
-  .books{
+  /* .books{
       display: flex;
       margin-left: 8%;
       margin-bottom: 6%;
@@ -74,7 +74,7 @@
       font-size: 300%;
       margin-left: 8%;
       color: #3c3484;
-  }
+  } */
   .checked {
       color: #ed553b;
     }
@@ -86,12 +86,12 @@
     .first_section img{
       width: 70%;
       margin-left: 20%;
-<<<<<<< HEAD
     }
+    
 
 
 
     /* final */
-=======
-    }
->>>>>>> 5893608f9c3b12f33ef59c92173aa1a268d3d0da
+
+    
+
