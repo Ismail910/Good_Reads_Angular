@@ -4,13 +4,24 @@ export interface BookUser {
   id: string;
   rating: number;
   status: string;
+  user: User
 }
 export interface Reviews {
-  id: string;
-  comment: number;
-  like: boolean;
-  date:Date;
-  book:Book;
-  user:User;
-  _id:string
+  changeLike: ChangeLike
+  _id: string
+  comment: string
+  like: boolean
+  date: Date
+  book: Book
+  user: User
+  id: number
+
 }
+////////////////////
+
+
+export interface ChangeLike {
+  like: boolean
+  dateLike: string
+}
+

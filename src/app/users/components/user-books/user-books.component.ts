@@ -48,8 +48,10 @@ export class UserBooksComponent implements OnChanges,OnInit{
     this.getBooks()
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this. getBooksByStatus()
+  ngOnChanges(): void {
+    console.log("asd");
+
+
   }
 
   getBooks()
@@ -65,10 +67,16 @@ export class UserBooksComponent implements OnChanges,OnInit{
       })
     }
 
-    getBooksByStatus()
+    getBooksByStatus(status:string)
     {
-      this.Api.get(`${environment.baseUrl}/home/page/${this.page}/${this.status}${this.userId}`).subscribe( book =>{
+      console.log("asd1");
+      this.Api.get(`${environment.baseUrl}/home/home/page/${this.page}/${status}/${this.userId}`).subscribe( book =>{
         this.books = book.data
+        console.log(this.books);
+        console.log(book);
+        this.totalPages=book.pages.totalPages;
+        this._pagination=[...Array(this.totalPages).keys()];
+        console.log(this.userId);
        })
     }
 
@@ -89,22 +97,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.page=p;
       this.getBooks();
     }
-
-
-
-
- // getBooksByStatus(status:string,userID:string):Observable<any>{
-    //   return this.Http.get<Book[]>(`${environment.baseUrl}/home/page/1/?${status}?${userID}` ,{
-    //     headers: new HttpHeaders().set('Authorization','secrt token')
-    //   })
-    // }
-
-  // this.bookService.getAllBooks(this.userId).subscribe( books =>{
-  //   this.books = books
-  //   console.log(books);
-  //   console.log("this user id" , this.userId);
-  //  })
-
 
 
 

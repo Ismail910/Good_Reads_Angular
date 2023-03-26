@@ -70,6 +70,7 @@ cursor: pointer;
 margin-left: 2rem;
 transition: all 0.8s ease ;
 border-bottom: transparent solid 3px;
+
 }
 .nav-item a{
 color: #E1D5D3;
@@ -79,7 +80,7 @@ text-align: center;
 background-color:#E1D5D3 ;
 border-radius: 10px;
 border-bottom: gray solid 3px;
-
+transform: scale(1.1);
 
 }
 .nav-item a:hover{
@@ -91,11 +92,13 @@ color: #3C3484;
   color: #E1D5D3;
   transition: all 0.8s ease;
  
+ 
 }
 .login:hover{
   border-color: transparent ;
   color: #E1D5D3;
   background-color: #ED553B;
+transform: scale(1.1);
  
 }
 
@@ -118,11 +121,13 @@ color: #3C3484;
   .nav-item{
     margin-left: 0;
     border-bottom: none;
+    
   }
   .nav-item:hover{
     background-color:#3C3484;
     border-radius: 0px;
     border-bottom: none;
+    
     }
     .nav-item a:hover{
       color: #E1D5D3;
