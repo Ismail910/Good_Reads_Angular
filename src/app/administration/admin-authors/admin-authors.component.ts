@@ -32,6 +32,7 @@ export class AdminAuthorsComponent implements OnInit {
     this.authors();
   }
 
+
   next = () => {
     if (this.page < this.totalPages) {
       this.page++;
@@ -48,10 +49,12 @@ export class AdminAuthorsComponent implements OnInit {
   }
 
 
+
   currentPage(p: number) {
     this.page = p;
     this.authors();
   }
+  
 
   authors() {
     this.api.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data => {

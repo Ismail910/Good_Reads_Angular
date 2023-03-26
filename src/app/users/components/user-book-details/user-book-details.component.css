@@ -6,3 +6,19 @@
 .fa.active {
   color: gold;
 }
+.button{
+  border-color: #E1D5D3 ;
+  color: #E1D5D3;
+  transition: all 0.8s ease;
+  background-color: #ED553B;
+  border-radius: 50%;
+  width: 5rem;
+  height: 5rem;
+}
+.button:hover{
+  border-color: transparent ;
+  color: #E1D5D3;
+  background-color: #ED553B;
+transform: scale(1.1);
+
+}

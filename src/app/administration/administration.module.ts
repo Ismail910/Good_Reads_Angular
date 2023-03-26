@@ -15,6 +15,8 @@ import { AdminAuthorsEditComponent } from './admin-authors/admin-authors-edit/ad
 import { AdminAuthorsAddComponent } from './admin-authors/admin-authors-add/admin-authors-add.component';
 import { AdminBooksAddComponent } from './admin-books/admin-books-add/admin-books-add.component';
 import { AdminBooksEditComponent } from './admin-books/admin-books-edit/admin-books-edit.component';
+import { AdminChartComponent } from './admin-dashboard/admin-chart/admin-chart.component';
+
 
 
 @NgModule({
@@ -30,13 +32,14 @@ import { AdminBooksEditComponent } from './admin-books/admin-books-edit/admin-bo
     AdminAuthorsEditComponent,
     AdminAuthorsAddComponent,
     AdminBooksAddComponent,
-    AdminBooksEditComponent
+    AdminBooksEditComponent,
+    AdminChartComponent
   ],
   imports: [
     CommonModule,
     AdministrationRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class AdministrationModule { }
