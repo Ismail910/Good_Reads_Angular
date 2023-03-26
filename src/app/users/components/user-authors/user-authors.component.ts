@@ -12,6 +12,9 @@ import { AuthorService } from 'src/app/services/user/author.service';
 })
 export class UserAuthorsComponent implements OnInit,OnChanges {
   authors!: any
+  totalPages:number=0;
+  page:number=1;
+  _pagination:any=[];
   constructor (private authorService : AuthorService,private spi:ApiService){
 
   }
@@ -22,12 +25,30 @@ export class UserAuthorsComponent implements OnInit,OnChanges {
   ngOnInit() {
     /*this.authorService.getAllAuthors()
     .subscribe((aut) => this.authors = aut);*/
-    this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
-      this.authors=data;
-      console.log(this.authors);
-
-    })
-
+    
+    this.getAuthor();
   }
+
+  getAuthor(){
+    this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
+      this.authors=data;})
+  }
+  next=()=>{
+    if(this.page<this.totalPages){
+      this.page++;
+      this.getAuthor();
+    }}
+    prev=()=>{
+      if(this.page>1){
+      this.page--;
+      this.getAuthor();
+      }
+    }
+
+    currentPage(p:number)
+    {
+      this.page=p;
+      this.getAuthor();
+    }
 
 }
