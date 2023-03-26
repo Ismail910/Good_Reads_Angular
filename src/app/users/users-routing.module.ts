@@ -11,18 +11,19 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
 import { PopularComponent } from './home/popular/popular.component';
+import { AuthGuard } from '../auth.guard';
 
 const routes: Routes = [
    {path:'',component:HomeComponent,children:
    [
 
 
-    {path:'books',component:UserBooksComponent},
+    {path:'books',canActivate:[AuthGuard] ,component:UserBooksComponent},
 
-    {path:'book',component:UserBooksComponent},
+    {path:'book',canActivate:[AuthGuard],component:UserBooksComponent},
 
     {path:'home',component:PopularComponent},
-    {path:'book/:id',component:UserBookDetailsComponent},
+    {path:'book/:id',canActivate:[AuthGuard],component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},
     {path:'category',component:UserCategoriesComponent},

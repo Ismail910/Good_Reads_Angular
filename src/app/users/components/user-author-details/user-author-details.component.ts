@@ -18,12 +18,15 @@ export class UserAuthorDetailsComponent implements OnInit,OnChanges{
                   })
                  }
   ngOnChanges() {
-   
+
   }
 
   ngOnInit() {
     this.authorService.getAuthorByID(this.autherID)
-    .subscribe((aut) => this.author = aut);
-    
+    .subscribe((aut) => {
+      this.author = aut
+    console.log(aut);
+    });
+
   }
 }

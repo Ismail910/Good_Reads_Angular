@@ -68,8 +68,8 @@ isChecked = false;
 
   ngOnInit(): void {
     this.getbook();
-    this.getRivews();
-    //  console.log(this.userData._id);
+    // this.getRivews();
+
   }
 
   getbook() {
@@ -93,10 +93,10 @@ isChecked = false;
   getRating(star: number): void {
     this.rating = star;
     console.log(this.rating);
-    console.log(this.book[0].bookUser.rating);
+    console.log(this.book.bookUser.rating);
   }
   getRatin() {
-    this.rating = this.book[0].bookUser.rating;
+    this.rating = this.book.bookUser.rating;
   }
   add(stat: any) {
     this.status = stat.target.value;
@@ -110,7 +110,7 @@ isChecked = false;
       book: this.bookId,
       user: this.user_id,
     };
-    if(this.book[0].bookUser.user._id == this.user_id)
+    if(this.book.bookUser.user != this.user_id)
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
@@ -118,7 +118,7 @@ isChecked = false;
         console.log("create");
       });
     }else{
-      this.Api.put(`${environment.baseUrl}/bookUser/${this.book[0].bookUser._id}`, data).subscribe((obj) => {
+      this.Api.put(`${environment.baseUrl}/bookUser/${this.book.bookUser._id}`, data).subscribe((obj) => {
         console.log(obj);
         console.log("update");
 
