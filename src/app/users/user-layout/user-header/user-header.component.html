@@ -63,7 +63,7 @@
   </nav> 
   -->
 
-  <nav class="navbar navbar-expand-lg navBar">
+  <!-- <nav class="navbar navbar-expand-lg navBar">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="/home"><img  src="../../../../assets/logo.png" alt=""></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +100,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link Logout"  routerLinkActive="active"  *ngIf="isLoginUser" (click)="isLogOut()">Logout</a>
-            </li>
+            </li> -->
             <!-- <div class="dropdown">
               <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1"    data-bs-toggle="dropdown" aria-expanded="false">
                 <img src="assets/admin.png" alt="">
@@ -112,10 +112,69 @@
                   Logout</a></li>
               </ul>
           </div> -->
-          </ul>
+          <!-- </ul>
       </div>
     </div>
+  </nav> -->
+
+
+
+
+
+
+
+  <!-- Final header -->
+
+
+<!-- navbar-expand-lg ==> دي علشان الريسبونسف بتاع الشاشات -->
+ <!-- bg-body-tertiary دي لون الباكجروند -->
+ <section  class="navbarBackground">
+ <div class="container ">
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <a class="navbar-brand " href="#"><img class="navLogo"  src="../../../../assets/logo.png" alt=""></a>
+      <!--  دي زرار المنيو اللي بتظهرلي  في الشاشات الصغيرة-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <span class="navbar-toggler-icon "> </span> -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+      </button>
+
+
+
+      <div class="collapse navbar-collapse navLinks" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/home">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/Aboutus" routerLinkActive="active">ABOUTUS</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link " routerLink="/category" >
+            CATEGORIES
+            </a>
+           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/author">AUTHORS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/books">BOOKS</a>
+          </li>
+
+        </ul>
+        <form class="d-flex " >
+        
+          <button class="btn btn-outline-success login" type="submit" routerLink="/login" >LOGIN</button>
+        </form>
+      </div>
+
+
+
+
+    </div>
   </nav>
-
-
-
+</div>
+</section>
