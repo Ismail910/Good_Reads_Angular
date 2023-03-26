@@ -35,5 +35,6 @@ export class PopularComponent implements OnInit{
 
       })
     }
+    
 
 }
