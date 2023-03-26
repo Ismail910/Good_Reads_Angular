@@ -20,6 +20,7 @@ export class PopularComponent implements OnInit{
   }
   ngOnInit(): void {
    this.getBooks();
+   
   }
 
   getBooks()

@@ -29,7 +29,7 @@ submitloginForm(loginForm:FormGroup){
       localStorage.setItem('token',Response.token);
       localStorage.setItem('isLogin',"true");
       this._AuthService.saveCurrentUser();
-      this._Router.navigate(['/book']);
+      this._Router.navigate(['/home']);
     }
     else {
       console.log(Response.message)
