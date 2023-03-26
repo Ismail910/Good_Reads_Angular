@@ -1,7 +1,7 @@
 
 import { Router } from '@angular/router';
 import { Book } from 'src/app/@shared/model/book';
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-book-card',
@@ -12,9 +12,12 @@ export class BookCardComponent implements OnInit{
 
   @Input() book!:any;
   rating: number = 1 ;
+  avgRating :number = 1;
   bookId?:string
    constructor(private _Router : Router){
+    
    }
+
 
 
   setRating(): void {
@@ -27,6 +30,7 @@ export class BookCardComponent implements OnInit{
   ngOnInit(): void {
     console.log(this.book?.rating );
     this.rating = this.book?.rating
+    this.avgRating = this.book?.book.avg_rate
   }
 
 }

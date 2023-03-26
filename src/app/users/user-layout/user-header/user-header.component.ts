@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/user/auth.service';
   styleUrls: ['./user-header.component.css']
 })
 export class UserHeaderComponent implements OnInit {
+firstName?:string
+lastName?:string
 isLoginUser:boolean = false;
 constructor(private _AuthService:AuthService){
 _AuthService.currentUser.subscribe(()=>{
