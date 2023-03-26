@@ -31,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     SharedModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {
