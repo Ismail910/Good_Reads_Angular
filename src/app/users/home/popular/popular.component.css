@@ -1,0 +1,97 @@
+.first_section {
+    display: flex;
+  }
+  .img1 {
+    margin-right: 0;
+    width: 40%;
+  }
+  .title {
+    font-size: 500%;
+    margin-top: 30px;
+    margin-left: 10%;
+    width: auto;
+    color: #3c3484;
+  }
+  .description {
+    width: 80%;
+    font-size: 200%;
+    margin-left: 10%;
+    margin-top: 15px;
+  }
+  /* popular categories */
+  .popular_categories {
+    margin: 7%;
+  }
+  .first {
+    display: flex;
+    margin-bottom: 10%;
+    width: 95%;
+  }
+  .viewAll {
+    margin-right: 4%;
+    width: 200%;
+    border-radius: 12%;
+    border: 2px solid #3c3484;
+    text-align: center;
+  }
+  .viewAll p{
+      font-size: 350%;
+      color: #3c3484;
+  }
+  .viewAll button{
+      width: 50%;
+      height: 30%;
+      border-radius: 12%;
+      font-size: 200%;
+      background-color: #ed553b;
+      color: white;
+  }
+  .second {
+    display: flex;
+  }
+  .category_img img {
+    width: 180%;
+    border-radius: 12%;
+  }
+  /* popular books */
+  .popular_books h1{
+      font-size: 400%;
+      color: #ed553b;
+      text-align: center;
+      margin-bottom: 4%;
+  }
+  /* .books{
+      display: flex;
+      margin-left: 8%;
+      margin-bottom: 6%;
+  }
+  
+  .book img{
+      width: 60%;
+  
+  }
+  .book p{
+      font-size: 300%;
+      margin-left: 8%;
+      color: #3c3484;
+  } */
+  .checked {
+      color: #ed553b;
+    }
+    .fa{
+      font-size: 200%;
+      margin-right: 3%;
+    }
+    /* best book */
+    .first_section img{
+      width: 70%;
+      margin-left: 20%;
+    }
+    
+
+
+
+    /* final */
+
+    
+
