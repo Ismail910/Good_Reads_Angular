@@ -1,5 +1,5 @@
 import { NavigationEnd, Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-admin-panel',
@@ -21,6 +21,7 @@ export class AdminPanelComponent {
 
   sidbar(status:boolean)
   {
+    console.log(status);
     this.toggle=status;
   }
 
