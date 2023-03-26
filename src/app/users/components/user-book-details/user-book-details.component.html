@@ -1,49 +1,7 @@
-<!-- <app-book-card [book]="book"></app-book-card> -->
-
-<p>{{ book | json }}</p>
-<!-- <div *ngFor="let  of book"> -->
-<!--
- <div class="container ">
-  <div class=" row row-cols-1 row-cols-md-3 g-3 p-5 d-flex justify-content-evenly">
-    <div class="col-4 " >
-      <div class=" card text-center" >
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"  class="card-img-top"
-          alt="Hollywood Sign on The Hill" />
-        <div class="card-body">
-          <h1 class="card-title">{{book[0].name}}</h1>
-          <h1 class="card-title">Author: {{book[0].author.firstName}} {{book[0].author.lastName}}</h1>
-          <h1 class="card-title">Category: {{book[0].category.name}}</h1> -->
-
-<!-- <h1 class="card-title">rating: {{book[0].bookUser.rating}}</h1> -->
-
-<!-- <p class="card-text">
-          <b>Summary:</b>{{book[0].summary}}
-          </p>
-          <p><b>Average rate: </b>{{book[0].avg_rate | number: '1.0-0'}}</p>
-           <div>
-            <div class="fs-1 p-5 ">
-              rating:
-              <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="getrating(star)">
-                <i class="fa fa-star fs-3" [ngClass]="{'active': star <= rating }"></i>
-              </span>
-            </div>
-          </div>
-            <div>
-              <select class="select btn btn-secondary dropdown-toggle"type="button"value="{{book[0].bookUser.status}}">
-                <option value="Read">Read</option>
-                <option value="Reading">Reading</option>
-                <option value="wantToRead">Want To Read</option>
-              </select>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div> -->
 
 <!-- ///////////////////////////////////////////////////// -->
 
-<!-- Shop Detail Start -->
+
 <div class="container-fluid pb-5">
   <div class="row px-xl-5">
     <div class="col-lg-5 mb-30">
@@ -62,22 +20,22 @@
 
     <div class="col-lg-7 h-auto mb-30">
       <div class="h-100 bg-light p-30">
-        <h3>Book Name: "{{ book[0].name }}"</h3>
+        <h3>Book Name: "{{ book.name }}"</h3>
         <h3>
-          Author: "{{ book[0].author.firstName }} {{ book[0].author.lastName }}"
+          Author: "{{ book.author.firstName }} {{ book.author.lastName }}"
         </h3>
-        <h3>Category: "{{ book[0].category.name }}"</h3>
+        <h3>Category: "{{ book.category.name }}"</h3>
         <h5 class="font-weight-semi-bold mb-4">
           Average rate: :
           <span class="text-success">{{
-            book[0].avg_rate | number : "1.0-0"
+            book.avg_rate | number : "1.0-0"
           }}</span>
         </h5>
         <h3>Description</h3>
-        <p class="mb-4">{{ book[0].summary }}</p>
+        <p class="mb-4">{{ book.summary }}</p>
         <h5 class="font-weight-semi-bold mb-4">
           rating:
-          <span class="text-success"> {{ book[0].bookUser.rating }}</span>
+          <span class="text-success"> {{ book.bookUser.rating }}</span>
         </h5>
         <div class="fs-1" (click)="addRating()">
           rating:
@@ -92,7 +50,7 @@
             <select
               class="select btn btn-secondary dropdown-toggle"
               type="button"
-              value="{{ book[0].bookUser.status }}"
+              value="{{ book.bookUser.status }}"
               (click)="add($event)"
             >
               <option value="Read">Read</option>
@@ -108,45 +66,50 @@
     <div class="col">
       <div class="bg-light p-30">
         <div class="mb-4">
-          <h3 class="text-dark">Reviews for "{{ book[0].name }}"</h3>
+          <h3 class="text-dark">Reviews for "{{ book.name }}"</h3>
           <div class="row">
             <div class="col-md-6">
               <h4 class="mb-4">
-                review for author name "{{ book[0].author.firstName }}
-                {{ book[0].author.lastName }}"
+                review for author name "{{ book.author.firstName }}
+                {{ book.author.lastName }}"
               </h4>
-              <div class="media mb-4" *ngFor="let review of book[0].reviews">
+              <div class="media mb-4" *ngFor="let review of book.reviews">
+              <p>like----------------{{review|json}}</p>
+
                 <img
-                  src="{{ user_info.img }}"
+                  src="{{ review.user.img }}"
                   alt="Image"
                   class="img-fluid mr-3 mt-1"
-                  style="width: 45px"
-                />
+                  style="width: 45px"/>
                 <div class="media-body">
                   <h6 class="fw-bold text-capitalize">
-                    user name:{{ user_info.first_name }} {{ user_info.last_name
+                    user name:{{ review.user.first_name }} {{ review.user.last_name
                     }}<small> </small>
                   </h6>
-                  <!-- <div (click)="setLikeToReview($event)"> -->
-                    <p>{{ review.comment }}</p>
-                    <!-- <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="true"
-                        formControlName="like"
-                        id="flexCheckDefault"
-                      />
-                      <label class="form-check-label" for="flexCheckDefault">
-                        like or dislike
-                      </label>
-                    </div> -->
+                  <div >
 
-                    <p>{{ review.like }}</p>
+                    <p>{{ review.comment }}</p>
                     <p>{{ review.date }}</p>
+
+                    <div class="fs-1">
+                      like:
+                      <select
+                        class="select btn btn-secondary dropdown-toggle"
+                        type="button"
+                        value="{{ review.changeLike.like }}"
+                        (click)="setLikeToReview($event, review)"
+                      >
+                        <option value="true">like</option>
+                        <option value="false">dislike</option>
+                      </select>
+                    </div>
+
+
+
                   </div>
+
                 </div>
-              <!-- </div> -->
+              </div>
             </div>
             <div class="col-md-6">
               <h4 class="mb-4">Leave a review</h4>
@@ -167,7 +130,7 @@
                     rows="5"
                     class="form-control"
                   ></textarea>
-                  <label for="message"> like*</label>
+
                 </div>
 
                 <div class="form-group mb-0">
@@ -185,3 +148,4 @@
     </div>
   </div>
 </div>
+

@@ -33,15 +33,24 @@ export class UserAuthorDetailsComponent implements OnInit,OnChanges{
                   })
                  }
   ngOnChanges() {
-   
+
   }
 
   ngOnInit() {
+
     /*this.authorService.getAuthorByID(this.autherID)
     .subscribe((aut) => this.author = aut);*/
     
     this.Api.get(`${environment.baseUrl}/admin/author/${this.autherID}/${this.userId}`)
     .subscribe((aut) => this.author = aut);
     
+// =======
+//     this.authorService.getAuthorByID(this.autherID)
+//     .subscribe((aut) => {
+//       this.author = aut
+//     console.log(aut);
+//     });
+
+// >>>>>>> 65ff8df27ea4976ae1d258f5d0fdd4f63442f9c3
   }
 }
