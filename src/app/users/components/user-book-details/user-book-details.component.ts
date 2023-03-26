@@ -110,21 +110,22 @@ isChecked = false;
       book: this.bookId,
       user: this.user_id,
     };
-    if(this.book.bookUser.user != this.user_id)
+
+    if(this.book.bookUser._id  == null)
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
         console.log(obj);
         console.log("create");
       });
+
     }else{
       this.Api.put(`${environment.baseUrl}/bookUser/${this.book.bookUser._id}`, data).subscribe((obj) => {
         console.log(obj);
         console.log("update");
-
       });
     }
-
+   
   }
   /////// send Reviews form to db
 
