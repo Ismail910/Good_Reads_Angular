@@ -23,11 +23,9 @@ import { LoginComponent } from './../../auth/login/login.component';
 })
 export class UserBookDetailsComponent implements OnInit {
 
-isChecked = false;
-
   book?: any;
-  reviews!: any;
-  reviewsId!:any;
+  // reviews!: any;
+  // reviewsId!:any;
   bookId!: string;
   rating!: number;
   status!: string;
@@ -37,6 +35,7 @@ isChecked = false;
   user_info!: any;
   userData!: any;
   bookUserId!:BookUser
+
   constructor(
     private Auth: AuthService,
     private ActivatedRoute: ActivatedRoute,
@@ -68,7 +67,7 @@ isChecked = false;
 
   ngOnInit(): void {
     this.getbook();
-    // this.getRivews();
+
 
   }
 
@@ -81,13 +80,13 @@ isChecked = false;
     });
   }
   // get Reviws
-  getRivews() {
-    this.Api.get(`${environment.baseUrl}/reviews/${this.bookId}`).subscribe((reviews) => {
-      this.reviews = reviews;
-      this.reviewsId = this.reviews.map((ele:any)=>{ele._id})
-      console.log(this.reviews);
-    });
-  }
+  // getRivews() {
+  //   this.Api.get(`${environment.baseUrl}/reviews/${this.bookId}`).subscribe((reviews) => {
+  //     this.reviews = reviews;
+  //     this.reviewsId = this.reviews.map((ele:any)=>{ele._id})
+  //     console.log(this.reviews);
+  //   });
+  // }
 
   //////////   get rating
   getRating(star: number): void {
@@ -102,6 +101,7 @@ isChecked = false;
     this.status = stat.target.value;
     console.log(this.status);
   }
+
   /////// set Rating form to db
   addRating() {
     let data = {
@@ -125,7 +125,7 @@ isChecked = false;
         console.log("update");
       });
     }
-   
+
   }
   /////// send Reviews form to db
 
@@ -154,10 +154,7 @@ isChecked = false;
       console.log('asd');
     });
     console.log(data);
-
   }
-
-
 
 }
 
