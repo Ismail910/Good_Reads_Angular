@@ -11,14 +11,14 @@
 .title h2
 {
   padding: 2% 2% 4% 2%;
-  font-weight: 700;
-  font-size: 35px;
+  font-weight: 600;
+  font-size: 2em;
 }
 
 .content-page
 {
   box-shadow: 5px 5px 20px 0 rgb(0 0 0 / 20%);
-  height: 75vh;
+  min-height: 76vh;
   width: 96%;
   position: absolute;
   top:73%;
@@ -28,5 +28,6 @@
   -moz-border-radius: 10px;
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
-  overflow: auto;
+   overflow-x: auto;
+
 }
