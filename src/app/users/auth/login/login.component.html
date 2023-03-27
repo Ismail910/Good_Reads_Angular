@@ -7,8 +7,12 @@
     <div class="container ">
         <div class="row">
             <div class="w-50 m-auto py-5 card">
+                <div class="logo-user text-center">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <h3 class="text-center">User</h3>
                 <div class="alert alert-danger" *ngIf="error">
-                    <p>{{error}}</p>
+                    <p>{{message}}</p>
                 </div>
                 <form method="POST" [formGroup]='loginForm' (ngSubmit)='submitloginForm(loginForm)'>
 
@@ -27,7 +31,6 @@
                         <div class="alert alert-danger my-2"
                         *ngIf="loginForm.get('password')?.errors !=null && loginForm.get('password')?.touched">
                         <p *ngIf="loginForm.get('password')?.errors?.['required']">password is required</p>
-                        <!-- <p *ngIf="loginForm.get('password')?.errors?.['pattern']">Please provide a valid Password</p> -->
                         </div>
                     </div>
                     <div class="form-group">
