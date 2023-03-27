@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/user/auth.service';
 export class UserHeaderComponent implements OnInit {
 firstName?:string
 lastName?:string
+userData?:any
 isLoginUser:boolean = false;
 constructor(private _AuthService:AuthService){
 _AuthService.currentUser.subscribe(()=>{
@@ -18,7 +19,11 @@ _AuthService.currentUser.subscribe(()=>{
     this.isLoginUser = false;
   }
 })
-
+this._AuthService.getuser().subscribe(user=>{
+  this.userData = user;
+  this.firstName = this.userData.user.first_name
+  this.lastName = this.userData.user.last_name
+ })
 }
 ngOnInit(){}
 isLogOut(){
