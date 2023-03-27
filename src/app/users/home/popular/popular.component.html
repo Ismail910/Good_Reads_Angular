@@ -1,28 +1,18 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-<div class="popular_categories">
-  <div class="first">
-    <div class="category_img" style="margin-right: 18%">
-      <img src="../../../../assets/1.jpg" alt="" />
-    </div>
-    <div class="viewAll" style="">
-      <p>Explore our top categories</p>
-      <button>View all</button>
-    </div>
-    <div class="category_img" style="margin-right: 10%">
-      <img src="../../../../assets/1.jpg" alt="" />
-    </div>
+<!-- first section -->
+<div class="first_section">
+  <div style="width: 50%; margin-left: 5%">
+    <h2 class="title">READS</h2>
+    <p class="description">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi laudantium
+      delectus minus est placeat praesentium sunt nesciunt quidem quaerat
+      voluptas vitae accusantium voluptatem provident, esse quas aliquam
+      distinctio iure laboriosam.
+    </p>
   </div>
-  <div class="second">
-    <div class="category_img" style="margin-right: 16%">
-      <img src="../../../../assets/1.jpg" alt="" />
-    </div>
-    <div class="category_img" style="margin-right: 16%">
-      <img src="../../../../assets/1.jpg" alt="" />
-    </div>
-    <div class="category_img" style="margin-right: 16%">
-      <img src="../../../../assets/1.jpg" alt="" />
-    </div>
+  <div class="img1" style="width: 50%">
+    <img src="../../../../assets/new_intro_books_8_11.png" alt="" />
   </div>
 </div>
 
@@ -51,20 +41,20 @@
   </div>
 </div>
 
-<div class="first_section">
-  <div style="width: 50%; margin-left: 5%">
-    <h2 class="title">READS</h2>
-    <p class="description">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi laudantium
-      delectus minus est placeat praesentium sunt nesciunt quidem quaerat
-      voluptas vitae accusantium voluptatem provident, esse quas aliquam
-      distinctio iure laboriosam.
-    </p>
+<!--  popular books -->
+
+<div class="container">
+  <div class="popular_books">
+    <h1>View Books</h1>
+    <div class="books row">
+      <div class="book col-3 mb-5" *ngFor="let book of books" > 
+        <div  class="col-10"> 
+        <app-all-book-card [books]="book"></app-all-book-card> 
+        </div> 
+    </div>
+      </div>
   </div>
-  <div class="img1" style="width: 50%">
-    <img src="../../../../assets/new_intro_books_8_11.png" alt="" />
   </div>
-</div>
 
 <!-- popular categories -->
 
@@ -93,46 +83,4 @@
     </div>
   </div>
 </div>
-
-<!--  popular books -->
-
-<div class="container">
-<div class="popular_books">
-  <h1>View Books</h1>
-  <div class="books  d-flex justify-content-between">
-    <div class="book col-3">
-        
-        <div
-        class="col-10"
-        *ngFor="let book of books "
-        >
-        <app-all-book-card [books]="book"></app-all-book-card>
-        </div>
-    </div>
-    <div class="book col-3">
-        <div
-        class="col-10"
-        *ngFor="let book of books "
-        >
-        <app-all-book-card [books]="book"></app-all-book-card>
-        </div>
-    </div>
-    <div class="book col-3">
-        <div
-        class="col-10"
-        *ngFor="let book of books "
-        >
-        <app-all-book-card [books]="book"></app-all-book-card>
-        </div>
-    </div>
-    <div class="book col-3">
-        <div
-        class="col-10"
-        *ngFor="let book of books "
-        >
-        <app-all-book-card [books]="book"></app-all-book-card>
-        </div>
-    </div>
-    </div>
-</div>
-</div>
+<!-- popular author -->
