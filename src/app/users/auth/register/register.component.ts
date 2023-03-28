@@ -14,6 +14,8 @@ export class RegisterComponent implements OnInit {
   passwordRegex = '^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$'
   error:boolean=false
   message?:string=''
+  selectedImage!:File;
+  isAdded:boolean=false;
   constructor(private _AuthService:AuthService,private _Router:Router){}
   passwordMatching(){
   }
@@ -44,10 +46,16 @@ submitRegisterForm(registerForm:FormGroup){
   //     this.error=response.register.error.message;
   //   }
   // })
+  let formdata= new FormData();
+  formdata.append("img",this.selectedImage,this.selectedImage.name);
   this._AuthService.register(registerForm.value).subscribe({
     next: (Response)=>{
       console.log(Response)
+      this.isAdded=true;
       this._Router.navigate(['/login']);
+      setTimeout(() => {
+        this.isAdded= false;
+      }, 3000);
     },
     error:()=>{
       this.message="User Already Exist. Please Login";
@@ -59,8 +67,9 @@ submitRegisterForm(registerForm:FormGroup){
   })
 
 }
-onFileSelected(event:any) {
-  const selectedFile = event.target.files[0];
-}
+
+uploadImage(event: any) {
+  this.selectedImage=event.target.files[0];
+ }
 }
 
