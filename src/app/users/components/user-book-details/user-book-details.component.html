@@ -75,6 +75,7 @@
                 {{ book?.author?.lastName }}"
               </h4>
               <div class="media mb-4" *ngFor="let review of book?.reviews">
+                <p>{{ review| json}}</p>
                 <img
                   src="http://localhost:5000/{{ review?.user.img }}"
                   alt="Image"
@@ -82,7 +83,7 @@
                   style="width: 45px"/>
                 <div class="media-body">
                   <h6 class="fw-bold text-capitalize">
-                    user name:{{ review?.user.first_name }} {{ review?.user.last_name
+                    user name:{{ review?.user.first_name}} {{ review?.user.last_name
                     }}<small> </small>
                   </h6>
                   <div >

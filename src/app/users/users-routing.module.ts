@@ -1,3 +1,4 @@
+import { AllBookComponent } from './components/all-book/all-book.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserBooksComponent } from './components/user-books/user-books.component';
@@ -21,7 +22,7 @@ const routes: Routes = [
 
     {path:'books',canActivate:[AuthGuard] ,component:UserBooksComponent},
 
-    {path:'book',canActivate:[AuthGuard],component:UserBooksComponent},
+    {path:'allBooks',component:AllBookComponent},
 
     {path:'home',component:PopularComponent},
     {path:'Aboutus',component:AboutusComponent},
