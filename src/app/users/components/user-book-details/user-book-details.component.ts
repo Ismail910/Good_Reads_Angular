@@ -111,17 +111,20 @@ export class UserBookDetailsComponent implements OnInit {
       user: this.user_id,
     };
 
+
     if(this.book.bookUser._id  == null)
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
         console.log(obj);
+        this.getbook();
         console.log("create");
       });
 
     }else{
       this.Api.put(`${environment.baseUrl}/bookUser/${this.book.bookUser._id}`, data).subscribe((obj) => {
         console.log(obj);
+        this.getbook();
         console.log("update");
       });
     }
