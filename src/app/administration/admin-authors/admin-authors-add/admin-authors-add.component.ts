@@ -29,7 +29,7 @@ export class AdminAuthorsAddComponent {
     }
 
 
-  uploadImage(event: any) {
+   uploadImage(event: any) {
     this.selectedImage=event.target.files[0];
     console.log(this.selectedImage);
 

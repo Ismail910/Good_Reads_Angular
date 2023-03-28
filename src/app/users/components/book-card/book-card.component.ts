@@ -30,7 +30,7 @@ export class BookCardComponent implements OnInit{
   ngOnInit(): void {
     // console.log(this.book?.rating );
     this.rating = this.book?.rating
-    this.avgRating = this.book?.book.avg_rate
+    this.avgRating = this.book?.book?.avg_rate
   }
 
 }
