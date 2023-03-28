@@ -44,4 +44,3 @@ export class AuthService {
     this._Router.navigate(['/login']);
   }
 }
-

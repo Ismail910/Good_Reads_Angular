@@ -15,6 +15,7 @@ export class AdminCategoriesComponent implements OnInit {
   formCategory:FormGroup;
   editCategory:FormGroup;
   listCategories:ICategory[]=[];
+  selectedImage!:File;
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
@@ -28,6 +29,7 @@ export class AdminCategoriesComponent implements OnInit {
       this.formCategory=fb.group(
       {
         name:['',[Validators.required]],
+        image:['',Validators.required]
       });
 
         this.editCategory=fb.group(
@@ -71,6 +73,9 @@ export class AdminCategoriesComponent implements OnInit {
   get nameCategory(){
     return this.formCategory.get('name');
   }
+  get image(){
+    return this.formCategory.get('image');
+  }
 
   get oldNameCategory(){
     return this.editCategory.get('name');
@@ -90,9 +95,18 @@ export class AdminCategoriesComponent implements OnInit {
 
   }
 
+  uploadImage(event: any) {
+    this.selectedImage=event.target.files[0];
+   }
+
   addCategory()
   {
-    this.api.post(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
+
+    let formdata= new FormData();
+
+    formdata.append("name", this.nameCategory?.value);
+    formdata.append("img",this.selectedImage,this.selectedImage.name);
+    this.api.post(`${environment.baseUrl}/category`,formdata).subscribe(
     {
       next:()=>{
         this.isAdded=true;

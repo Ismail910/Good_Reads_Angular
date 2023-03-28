@@ -1,6 +1,6 @@
 <!-- ///////////////////////////////////////////////////// -->
 
-<div class="container-fluid pb-5">
+<!-- <div class="container-fluid pb-5">
   <div class="row px-xl-5">
     <div class="col-lg-5 mb-30">
       <div id="" class="carousel slide" data-ride="carousel">
@@ -33,7 +33,7 @@
         <p class="mb-4">{{ book.summary }}</p>
         <h5 class="font-weight-semi-bold mb-4">
           rating:
-          <!-- <span class="text-success"> {{ book.bookUser.rating }}</span> -->
+           <span class="text-success"> {{ book.bookUser.rating }}</span>
         </h5>
         <div class="fs-1" (click)="addRating()">
           rating:
@@ -48,7 +48,7 @@
             <select
               class="select btn btn-secondary dropdown-toggle"
               type="button"
-              value="{{ book.bookUser.status }}"
+              value="{{book.bookUser.status}}"
               (click)="add($event)"
             >
               <option value="Read">Read</option>
@@ -64,15 +64,12 @@
     <div class="col">
       <div class="bg-light p-30">
         <div class="mb-4">
-          <h3 class="text-dark">Reviews for "{{ book.name }}"</h3>
+     
           <div class="row">
             <div class="col-md-6">
-              <h4 class="mb-4">
-                review for author name "{{ book.author.firstName }}
-                {{ book.author.lastName }}"
-              </h4>
+             
               <div class="media mb-4" *ngFor="let review of book.reviews">
-                <!-- <p>like----------------{{ review | json }}</p> -->
+                 <p>like----------------{{ review | json }}</p> 
 
                 <img
                   src="{{ review.user.img }}"
@@ -116,7 +113,6 @@
               >
                 <div class="form-group">
                   <label for="message">Your Review *</label>
-
                   <textarea
                     formControlName="description"
                     id="message"
@@ -140,30 +136,31 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Begin -->
 
 <section class="mb-5">
   <div class="container">
     <div class="row justify-content-around">
-      <div class="col-5">
+      <div class="col-5 m-5 p-0 " style="box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);" >
         <img
-          class="w-100 h-100"
+          class="w-100 h-100 "
           src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
           alt="Image"
+          style="border-radius: 15px;"
         />
       </div>
-      <div class="col-5">
-        <h2>{{ book.name }}</h2>
-        <h4>{{ book.author.firstName }} {{ book.author.lastName }}</h4>
-        <p>{{ book.category.name }}</p>
+      <div class="col-5 p-5">
+        <h2 style="color:#ED553B; font-size: 60px;">{{ book.name }}</h2>
+        <h4 style="color:#3C3484; font-size: 40px;">{{ book.author.firstName }} {{ book.author.lastName }}</h4>
+        <p style="font-size: 30px;">{{ book.category.name }}</p>
         <p>Book overview :</p>
-        <div class="avgContainer">
+        <div class="avgContainer mb-5">
           <p>
-            <span class="AvgRate">{{ book.avg_rate|number }}</span>
+            <span class="AvgRate ">{{ book.avg_rate|number:'1.1-1' }}</span>
           </p>
-        </div>
+        </div >
         <p>
           {{ book.summary }} Lorem ipsum, dolor sit amet consectetur adipisicing
           elit. Consequatur quibusdam officia aspernatur non, magnam temporibus
@@ -177,22 +174,23 @@
 <section>
   <div class="container mb-5">
     <div class="row justify-content-around">
-      <div class="rating col-5">
-        <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="getRating(star)">
-          <i class="stars fa fa-star fs-3" [ngClass]="{ active: star <= rating }"></i>
-        </span>
-      </div>
-      <div class="buttons col-5" >
+      
+      <div class=" selection  col-7" >
         <select 
-        class="select dropdown-toggle"
+       
         type="button"
         value="{{ book.bookUser.status }}"
         (click)="add($event)"
       >
-        <option class="options" value="Read">Read</option>
-        <option class="options" value="Reading">Reading</option>
-        <option class="options" value="wantToRead">Want To Read</option>
+        <option value="Read">Read</option>
+        <option  value="Reading">Reading</option>
+        <option  value="wantToRead">Want To Read</option>
       </select>
+      </div>
+      <div class="rating col-5" >
+        <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="getRating(star)">
+          <i class="stars fa fa-star fs-3" [ngClass]="{ active: star <= rating }"></i>
+        </span>
       </div>
     </div>
   </div>
@@ -202,9 +200,10 @@
 
 <!-- comments -->
 <section>
-  <div class="row d-flex justify-content-center">
-    <div class="col-md-8 col-lg-6">
-      <div class="card shadow-0 border" style="background-color: #f0f2f5;">
+  <div class="container">
+  <div class="row d-flex mb-5  Comment">
+    <div class="col-md-8 col-lg-7">
+      <div class="card shadow-0 border" style="background-color:#E1D5D3;">
         <div class="card-body p-4">
           <form
                 [formGroup]="reviewForm"
@@ -221,20 +220,24 @@
             <input class="form-label"  type="submit" value="+ Add a note">
           </div>
   </form>
-          <div class="card mb-4">
+          <div class="card mb-3" style="overflow: scroll; height: 300px;">
             <div class="card-body">
               <p>Type your note, and hit enter to add it</p>
-  
-              <div class="d-flex justify-content-between">
-                <div class="d-flex flex-row align-items-center">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
-                    height="25" />
-                  <p class="small mb-0 ms-2">Martha</p>
+  <!-- Start of comment view -->
+              <div class="d-flex justify-content-between" *ngFor="let review of book.reviews">
+                <div class="d-flex flex-row ">
+                  <img src="{{ review.user.img }} ../../../../../../assets/download.jfif"
+                  alt="Image"
+                  class=" commentImg img-fluid mr-1 mt-1"
+                 alt="avatar"  />
+                  <p class="small mb-0 ms-2" >{{ review.user.first_name }}
+                    {{ review.user.last_name }} <br> {{ review.comment }} <br>{{ review.date |date:'medium'}}</p>
+                    
                 </div>
                 <div class="d-flex flex-row align-items-center">
                   <p class="small text-muted mb-0">Upvote?</p>
                   <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
-                  <p class="small text-muted mb-0">3</p>
+                 
                 </div>
               </div>
             </div>
@@ -242,5 +245,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div></div>
 </section>
