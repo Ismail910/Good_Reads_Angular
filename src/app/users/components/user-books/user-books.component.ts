@@ -51,12 +51,13 @@ export class UserBooksComponent implements OnChanges,OnInit{
   ngOnChanges(): void {
     console.log("asd");
 
-
   }
-
-    getBooks()
+//
+///all/page/:page/:userID
+//${environment.baseUrl}/home/all/page/${this.page}/${this.userId}
+  getBooks()
     {
-
+      console.log("asd");
       this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
@@ -64,7 +65,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
         console.log(this.userId);
-
       })
     }
 

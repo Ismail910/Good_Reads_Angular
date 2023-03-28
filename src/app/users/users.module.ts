@@ -22,6 +22,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookCardAllComponent } from './components/book-card-to-All/book-card.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { AllBookComponent } from './components/all-book/all-book.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
     SlideshowComponent,
      BookCardComponent,
      BookCardAllComponent,
-     AboutusComponent
+     AboutusComponent,
+     AllBookComponent
   ],
   imports: [
     CommonModule,

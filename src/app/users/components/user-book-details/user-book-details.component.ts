@@ -79,14 +79,7 @@ export class UserBookDetailsComponent implements OnInit {
       this.getRatin();
     });
   }
-  // get Reviws
-  // getRivews() {
-  //   this.Api.get(`${environment.baseUrl}/reviews/${this.bookId}`).subscribe((reviews) => {
-  //     this.reviews = reviews;
-  //     this.reviewsId = this.reviews.map((ele:any)=>{ele._id})
-  //     console.log(this.reviews);
-  //   });
-  // }
+
 
   //////////   get rating
   getRating(star: number): void {
@@ -140,6 +133,7 @@ export class UserBookDetailsComponent implements OnInit {
       like: false,
     };
     this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
+      this.getbook();
       console.log(data);
     });
   }

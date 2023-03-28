@@ -68,7 +68,7 @@
 
 
           <div class="form-group">
-            <input type="file"   (change)="uploadImage($event)"  name="image" formControlName="image"
+            <input type="file"   (change)="uploadImage($event)"  name="image" formControlName="image" accept=".png,.jpg,.jpeg"
             [class.is-valid]="image?.valid"
             [class.is-invalid]="image?.invalid" >
             <ng-container *ngIf="book?.img">

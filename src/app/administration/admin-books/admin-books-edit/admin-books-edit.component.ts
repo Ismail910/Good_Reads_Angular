@@ -37,7 +37,7 @@ export class AdminBooksEditComponent implements OnInit , OnChanges{
 
   ngOnInit(): void {
 
-    this.api.get(`${environment.baseUrl}/admin/author`).subscribe({
+    this.api.get(`${environment.baseUrl}/admin/author/all`).subscribe({
       next:(data)=>{
         this.authorList=data;
       },

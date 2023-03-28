@@ -1,7 +1,7 @@
 
 
 <div class=" card col-12  " >
-  <img src="../../../../assets/book.jpg" [routerLink]="['/book/', books._id]" class="card-img-top"
+  <img src="http://localhost:5000/{{books?.img}}" [routerLink]="['/book/', books._id]" class="card-img-top"
     alt="Hollywood Sign on The Hill" />
   <div class="card-body">
     <h2 class="bookName ">{{books.name}}</h2>
@@ -15,7 +15,7 @@
   </div>
     <div>
       <div class="fs-1 p-2 ">
-        
+
         <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating()">
           <i class="fa fa-star fs-4" [ngClass]="{'active': star <= rating}"></i>
         </span>

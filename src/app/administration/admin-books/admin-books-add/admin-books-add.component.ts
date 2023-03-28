@@ -31,9 +31,10 @@ export class AdminBooksAddComponent  implements OnInit {
 
   ngOnInit(): void {
 
-    this.api.get(`${environment.baseUrl}/admin/author`).subscribe({
+    this.api.get(`${environment.baseUrl}/admin/author/all`).subscribe({
       next:(data)=>{
         this.authorList=data;
+        console.log("Author : "+data);
       },
       error:()=>{
 
