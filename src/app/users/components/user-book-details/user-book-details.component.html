@@ -1,6 +1,6 @@
 <!-- ///////////////////////////////////////////////////// -->
 
-<div class="container-fluid pb-5">
+<!-- <div class="container-fluid pb-5">
   <div class="row px-xl-5">
     <div class="col-lg-5 mb-30">
       <div id="" class="carousel slide" data-ride="carousel">
@@ -158,17 +158,17 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- Begin -->
 
 <section class="mb-5">
   <div class="container">
-    <div class="row justify-content-around">
-      <div class="col-5 m-5 p-0 " style="box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);" >
+    <div class="row justify-content-between">
+      <div class="col-5 my-5 p-0 " style="box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);border-radius: 15px;" >
         <img
           class="w-100 h-100 "
-          src="https://mdbcdn.b-cdn.net/img/new/standard/city/041.webp"
+          src="http://localhost:5000/{{book?.img}}"
           alt="Image"
           style="border-radius: 15px;"
         />
@@ -184,10 +184,7 @@
           </p>
         </div >
         <p>
-          {{ book.summary }} Lorem ipsum, dolor sit amet consectetur adipisicing
-          elit. Consequatur quibusdam officia aspernatur non, magnam temporibus
-          labore molestiae ad ipsum incidunt deleniti possimus maiores soluta
-          blanditiis. Illo cum nihil voluptates veniam!
+          {{ book.summary }} 
         </p>
       </div>
     </div>
