@@ -58,14 +58,14 @@ export class UserBooksComponent implements OnChanges,OnInit{
   getBooks()
     {
       console.log("asd");
-      this.Api.get(`${environment.baseUrl}/home/all/page/1/${this.userId}`).subscribe(data=>{
+      this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
         console.log(data);
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
         console.log(this.userId);
-      })ad
+      })
     }
 
     getBooksByStatus(status:string)

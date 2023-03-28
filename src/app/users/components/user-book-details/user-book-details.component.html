@@ -10,10 +10,10 @@
           <div class="carousel-item active">
             <img
               class="w-100 h-100"
-              src=" assets/books/2023-03-26T21-44-51.002ZScreenshot from 2023-03-12 14-32-42.png"
+              src="http://localhost:5000/{{book?.img}}"
               alt="Image"
             />
-            {{book.img}}
+
           </div>
         </div>
       </div>
@@ -21,22 +21,22 @@
 
     <div class="col-lg-7 h-auto mb-30">
       <div class="h-100 bg-light p-30">
-        <h3>Book Name: "{{ book.name }}"</h3>
+        <h3>Book Name: "{{ book?.name }}"</h3>
         <h3>
-          Author: "{{ book.author.firstName }} {{ book.author.lastName }}"
+          Author: "{{ book?.author.firstName }} {{ book?.author.lastName }}"
         </h3>
-        <h3>Category: "{{ book.category.name }}"</h3>
+        <h3>Category: "{{ book?.category.name }}"</h3>
         <h5 class="font-weight-semi-bold mb-4">
           Average rate: :
           <span class="text-success">{{
-            book.avg_rate | number : "1.0-0"
+            book?.avg_rate | number : "1.0-0"
           }}</span>
         </h5>
         <h3>Description</h3>
-        <p class="mb-4">{{ book.summary }}</p>
+        <p class="mb-4">{{ book?.summary }}</p>
         <h5 class="font-weight-semi-bold mb-4">
           rating:
-          <span class="text-success"> {{ book.bookUser.rating }}</span>
+          <span class="text-success"> {{ book?.bookUser.rating }}</span>
         </h5>
         <div class="fs-1" (click)="addRating()">
           rating:
@@ -51,7 +51,7 @@
             <select
               class="select btn btn-secondary dropdown-toggle"
               type="button"
-              value="{{book.bookUser.status}}"
+              value="{{book?.bookUser.status}}"
               (click)="add($event)"
             >
               <option value="Read">Read</option>
@@ -67,37 +67,35 @@
     <div class="col">
       <div class="bg-light p-30">
         <div class="mb-4">
-          <h3 class="text-dark">Reviews for "{{ book.name }}"</h3>
+          <h3 class="text-dark">Reviews for "{{ book?.name }}"</h3>
           <div class="row">
             <div class="col-md-6">
               <h4 class="mb-4">
-                review for author name "{{ book.author.firstName }}
-                {{ book.author.lastName }}"
+                review for author name "{{ book?.author?.firstName }}
+                {{ book?.author?.lastName }}"
               </h4>
-              <div class="media mb-4" *ngFor="let review of book.reviews">
-              <p>like----------------{{review|json}}</p>
-
+              <div class="media mb-4" *ngFor="let review of book?.reviews">
                 <img
-                  src="{{ review.user.img }}"
+                  src="http://localhost:5000/{{ review?.user.img }}"
                   alt="Image"
                   class="img-fluid mr-3 mt-1"
                   style="width: 45px"/>
                 <div class="media-body">
                   <h6 class="fw-bold text-capitalize">
-                    user name:{{ review.user.first_name }} {{ review.user.last_name
+                    user name:{{ review?.user.first_name }} {{ review?.user.last_name
                     }}<small> </small>
                   </h6>
                   <div >
 
-                    <p>{{ review.comment }}</p>
-                    <p>{{ review.date }}</p>
+                    <p>{{ review?.comment }}</p>
+                    <p>{{ review?.date }}</p>
 
                     <div class="fs-1">
                       like:
                       <select
                         class="select btn btn-secondary dropdown-toggle"
                         type="button"
-                        value="{{ review.changeLike.like }}"
+                        value="{{ review?.changeLike.like }}"
                         (click)="setLikeToReview($event, review)"
                       >
                         <option value="true">like</option>
