@@ -81,14 +81,7 @@ export class UserBookDetailsComponent implements OnInit {
       
     });
   }
-  // get Reviws
-  // getRivews() {
-  //   this.Api.get(`${environment.baseUrl}/reviews/${this.bookId}`).subscribe((reviews) => {
-  //     this.reviews = reviews;
-  //     this.reviewsId = this.reviews.map((ele:any)=>{ele._id})
-  //     console.log(this.reviews);
-  //   });
-  // }
+
 
   //////////   get rating
   getRating(star: number): void {
@@ -117,12 +110,14 @@ export class UserBookDetailsComponent implements OnInit {
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
+        this.getbook();
         console.log(obj);
         console.log("create");
       });
 
     }else{
       this.Api.put(`${environment.baseUrl}/bookUser/${this.book.bookUser._id}`, data).subscribe((obj) => {
+        this.getbook();
         console.log(obj);
         console.log("update");
       });

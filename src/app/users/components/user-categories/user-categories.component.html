@@ -6,7 +6,7 @@
     <div *ngFor="let category of categories" class="col-md-2">
       <div class="h-100 w-100" style="margin-left: 30%" routerLink="/category/{{ category._id }}">
         <a routerLink="/category/{{ category._id }}"
-          ><img  src="../../../../assets/download-removebg-preview.png" />
+          ><img width="30%" src="http://localhost:5000/{{category?.img}}" />
         </a>
       </div>
       <div >
