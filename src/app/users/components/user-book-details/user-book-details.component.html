@@ -20,9 +20,9 @@
 
     <div class="col-lg-7 h-auto mb-30">
       <div class="h-100 bg-light p-30">
-        <h3>Book Name: "{{ book.name }}"</h3>
+        <h3>Book Name: "{{ book?.name }}"</h3>
         <h3>
-          Author: "{{ book.author.firstName }} {{ book.author.lastName }}"
+          Author: "{{ book.author?.firstName }} {{ book.author?.lastName }}"
         </h3>
         <h3>Category: "{{ book.category.name }}"</h3>
         <h5 class="font-weight-semi-bold mb-4">
@@ -35,7 +35,7 @@
         <p class="mb-4">{{ book.summary }}</p>
         <h5 class="font-weight-semi-bold mb-4">
           rating:
-          <span class="text-success"> {{ book.bookUser.rating }}</span>
+          <span class="text-success"> {{ book.bookUser?.rating }}</span>
         </h5>
         <div class="fs-1" (click)="addRating()">
           rating:
@@ -49,9 +49,8 @@
             Status:
             <select
               class="select btn btn-secondary dropdown-toggle"
-              type="button"
-              value="{{book.bookUser.status}}"
-              (click)="add($event)"
+              type="button" name="statusReading"
+              value="{{book.bookUser.status}}" (change)="add($event)"
             >
               <option value="Read">Read</option>
               <option value="Reading">Reading</option>

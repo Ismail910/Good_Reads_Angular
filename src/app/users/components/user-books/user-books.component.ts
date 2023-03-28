@@ -54,8 +54,9 @@ export class UserBooksComponent implements OnChanges,OnInit{
 
   }
 
-  getBooks()
+    getBooks()
     {
+
       this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
