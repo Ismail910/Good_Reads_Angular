@@ -1,6 +1,7 @@
 <div>
   <div class="container p-5">
     <a
+    
        href="/book/"
       class="badge bg-primary p-5 m-5 fs-5"
       >All Books</a
@@ -21,37 +22,17 @@
   </div>
 </div>
 
-<!-- <small> {{book | json}}</small> -->
+
 
 <div class="container ">
   <div class="row">
-<!-- <<<<<<< HEAD
-    <div
-      class="col-12 col-md-12 col-lg-4 mt-5"
-      *ngFor="let book of books"
-    >
-      <app-book-card [book]="book"></app-book-card>
-    </div>
 
-
- 
-
-  <div class="container mt-5">
-    <app-pagination
-      [pagination]="_pagination"
-      [next]="next"
-      [prev]="prev"
-      [page]="page"
-      (currPage)="currentPage($event)"
-    >
-    </app-pagination>
-======= -->
     <div class="col-12 col-md-12 col-lg-4 mt-5" *ngFor="let book of books">
-      <!-- <small> {{ book | json }}</small> -->
+
       <app-book-card [book]="book"></app-book-card>
     </div>
 
-    <!-- <small> {{ books | json }}</small> -->
+
 
     <div class="container">
       <app-pagination
