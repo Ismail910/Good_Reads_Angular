@@ -133,6 +133,7 @@ export class UserBookDetailsComponent implements OnInit {
     };
     this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
       console.log(data);
+      this.getbook();
     });
   }
 
