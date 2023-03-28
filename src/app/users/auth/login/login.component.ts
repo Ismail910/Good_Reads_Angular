@@ -10,31 +10,73 @@ import { User } from 'src/app/@shared/model/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  error ='';
+  error:boolean=false
    userData?:any
+   message?:string=''
   constructor(private _AuthService:AuthService ,private _Router:Router){}
+
   ngOnInit() : void{}
-loginForm =new FormGroup({
-  email:new FormControl(null,[Validators.pattern('^[a-zA-Z0-9_.+]+(?<!^[0-9]*)@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
-  Validators.email,Validators.required]),
-    password:new FormControl(null, [Validators.required,
-      // (c: AbstractControl) => Validators.required(c),
-      // Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')
-    ]),
+
+  loginForm =new FormGroup({
+  email:new FormControl(null,[Validators.required]),
+  password:new FormControl(null, [Validators.required ]),
 })
 submitloginForm(loginForm:FormGroup){
-  this._AuthService.login(loginForm.value).subscribe((Response)=>{
-    if(Response.id){
+  // this._AuthService.login(loginForm.value).subscribe((Response)=>{
+  //   if(Response.id){
+  //     this.userData = Response;
+  //     localStorage.setItem('token',Response.token);
+  //     localStorage.setItem('isLogin',"true");
+  //     this._AuthService.saveCurrentUser();
+  //     this._Router.navigate(['/home']);
+  //   }
+  //   else {
+  //     console.log("xxxxxxxxxxxx")
+  //     this.error=true;
+  //   }
+  // })
+  this._AuthService.login(loginForm.value).subscribe({
+    next: (Response)=>{
       this.userData = Response;
       localStorage.setItem('token',Response.token);
       localStorage.setItem('isLogin',"true");
       this._AuthService.saveCurrentUser();
       this._Router.navigate(['/home']);
-    }
-    else {
-      console.log(Response.message)
-      this.error=Response.message;
+    },
+    error:()=>{
+      this.message="Email or Password is not valid";
+      this.error=true;
+      setTimeout(() => {
+        this.error=false;
+      }, 4000);
     }
   })
 }
 }
+
+
+// this.auth.login(`${environment.baseUrl}/login`,this.formLogin.value).subscribe(
+//   {
+//   next:(data)=>{
+//   localStorage.setItem('token',data.token);
+//   localStorage.setItem('isAdmin',data.isAdmin);
+//   localStorage.setItem('fName',data.first_name);
+//   localStorage.setItem('lName',data.last_name);
+//   localStorage.setItem('isLogin',"true");
+//   console.log(data);
+//   this.router.navigate(['/Admin/Categories']);
+//   },
+//   error:()=>
+//   {
+//     this.message="Email or Password is not vaild";
+//     this.error=true;
+//     setTimeout(()=>{
+//       this.error=false;
+//     },4000);
+//   }
+
+//  });
+// }
+
+// }
+
