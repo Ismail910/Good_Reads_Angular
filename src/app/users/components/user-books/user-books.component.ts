@@ -52,12 +52,10 @@ export class UserBooksComponent implements OnChanges,OnInit{
     console.log("asd");
 
   }
-//
-///all/page/:page/:userID
-//${environment.baseUrl}/home/all/page/${this.page}/${this.userId}
+
   getBooks()
     {
-      console.log("asd");
+
       this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
