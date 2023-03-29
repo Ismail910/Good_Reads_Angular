@@ -48,11 +48,11 @@
       <div class="card overflow-hidden sales-card bg-success bg-gradient pt-3">
         <div class="px-3 pt-2 pb-4 row">
           <div class="col-lg-8">
-            <h5>Total Userss</h5>
+            <h5>Total Users</h5>
           </div>
          <div class="col-lg-4">
 
-          <p> <i class="fas fa-arrow-circle-up text-white"></i> 80</p>
+          <p> <i class="fas fa-arrow-circle-up text-white"></i> {{totalUsers}}</p>
          </div>
 
         </div>
@@ -70,43 +70,30 @@
   <div class="row mt-4 mb-3 p-author">
     <div class="col-lg-5 mt-2">
       <div class="card">
-        <h5>popular author</h5>
+        <h5 class="mb-5">popular author</h5>
 
-        <div class="row pt-4">
-          <div class="col-8 row">
+        <ng-container *ngFor="let author of topAuthors">
+          <div class="row pt-2">
+            <div class="col-8 row">
+              <div class="col-4">
+                <img src='http://localhost:5000/{{author._id[0].photo}}' alt="">
+              </div>
+              <div class="col-7">
+                <h6 style="font-size: 14px;">{{author._id[0].firstName}} {{author._id[0].lastName}}</h6>
+                <p style="font-size: 13px;">{{author._id[0].books.length}} books</p>
+              </div>
+            </div>
             <div class="col-4">
-              <img src="../../../assets/author.jpeg" alt="">
+              <span *ngFor="let star of [1, 2, 3, 4, 5]" >
+                <i class="fa fa-star" [ngClass]="author.avg>=star?'text-warning':''"></i>
+              </span>
+
             </div>
-            <div class="col-7">
-              <h6>user name</h6>
-              <p>33 books</p>
-            </div>
-          </div>
-          <div class="col-4">
-            <span *ngFor="let star of [1, 2, 3, 4, 5]" >
-              <i class="fa fa-star fs-6"></i>
-            </span>
 
           </div>
-        </div>
+          <hr>
+        </ng-container>
 
-        <hr>
-        <div class="row pt-3">
-          <div class="col-8 row">
-            <div class="col-4">
-              <img src="../../../assets/author.jpeg" alt="">
-            </div>
-            <div class="col-7">
-              <h6>user name</h6>
-              <p>33 books</p>
-            </div>
-          </div>
-          <div class="col-4">
-            <span *ngFor="let star of [1, 2, 3, 4, 5]" >
-              <i class="fa fa-star fs-6"></i>
-            </span>
-          </div>
-        </div>
 
       </div>
     </div>

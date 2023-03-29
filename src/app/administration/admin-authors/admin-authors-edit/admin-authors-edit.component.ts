@@ -30,8 +30,6 @@ export class AdminAuthorsEditComponent implements OnChanges{
   }
 
   ngOnChanges(): void {
-    console.log("eee");
-   console.log(this.author);
     this.Author();
   }
 
@@ -55,7 +53,6 @@ export class AdminAuthorsEditComponent implements OnChanges{
     let formdata= new FormData();
     let date=(this.EdateBirth?.value);
 
-    console.log(date);
     formdata.append("firstName", this.EfirstName?.value);
     formdata.append("lastName", this.ElastName?.value);
     formdata.append("dateOfBirth", date);

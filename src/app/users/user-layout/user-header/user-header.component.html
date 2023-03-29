@@ -67,7 +67,7 @@
  <div class="container ">
   <nav class="navbar navbar-expand-lg ">
     <div class="container-fluid">
-      <a class="navbar-brand " href="#"><img class="navLogo"  src="../../../../assets/logo.png" alt=""></a>
+      <a class="navbar-brand " routerLink="/home"><img class="navLogo"  src="../../../../assets/logo.png" alt=""></a>
       <!--  دي زرار المنيو اللي بتظهرلي  في الشاشات الصغيرة-->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <!-- <span class="navbar-toggler-icon "> </span> -->
@@ -90,28 +90,37 @@
             <a class="nav-link " routerLink="/category" >
             CATEGORIES
             </a>
-           
+
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/author">AUTHORS</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/books">BOOKS</a>
+            <a class="nav-link" routerLink="/allBooks">BOOKS</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/books">MY BOOKS</a>
+          </li>
+
 
         </ul>
         <form class="d-flex " >
-        
           <button class="btn btn-outline-success login" type="submit" routerLink="/login" *ngIf="!isLoginUser" >LOGIN</button>
         </form>
-        <form class="d-flex " *ngIf="isLoginUser" (click)="isLogOut()">
+        <!-- <form class="d-flex " *ngIf="isLoginUser" (click)="isLogOut()">
           <button class="btn btn-outline-success login">LOGOUT</button>
-        </form>
+        </form> -->
+        <div class="dropdown" *ngIf="isLoginUser">
+          <button class="btn dropdown-toggle logout" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"style="color:#E1D5D3;">
+            <img src="assets/admin.png" alt=""><span> {{firstName}} {{lastName}}</span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" (click)="isLogOut()">
+            <li><a class="dropdown-item" style="color:#ED553B;cursor: pointer;">
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout</a></li>
+          </ul>
       </div>
-
-
-
-
+      </div>
     </div>
   </nav>
 </div>

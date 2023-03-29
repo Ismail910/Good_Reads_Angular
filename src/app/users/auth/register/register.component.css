@@ -8,12 +8,18 @@
 
 .registerButton{
     background-color: #3C3484;
-    color: white;
+    color: #E1D5D3;
     border: none;
    width: 80%;
    height: 7vh;
    border-radius: 1vw;
    font-size: 2vw;
+   transition: all 0.8s ease;
+}
+.registerButton:hover{
+  color: #E1D5D3;
+  background-color: #ED553B;
+  transform: scale(1.1);
 }
 section
 {
@@ -50,3 +56,59 @@ section
     border-width: 2px;
     border-color: rgb(248, 90, 33);
   }
+  .userText
+  {
+    color: #3C3484;
+    margin: 3% 0%;
+    transition: all 0.8s ease;
+    cursor:context-menu;
+    font-size: 28px;
+    font-weight: 600;
+  }
+  
+  .logo-user
+  {
+    width: 100px;;
+    height: 100px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #3C3484;
+    color: #E1D5D3;
+    margin: 0% auto;
+    transition: all 0.8s ease;
+    cursor:auto;
+  }
+  .userText:hover{
+      color: #ED553B;
+      font-size: 30px;
+      transform: scale(1.1);
+  }
+  .logo-user:hover{
+      color: #E1D5D3;
+      background-color: #ED553B;
+      transform: scale(1.1);
+  }
+  .logo-user i
+  {
+    font-size: 50px;
+    margin-top: 30%;
+  }
+  @media only screen and (width<768px) {
+      .logo-user{
+          width: 70px;;
+          height: 70px;
+          border-radius: 50%;
+      }
+      .logo-user i{
+          font-size: 30px;
+      }
+      .userText{
+          font-size: 20px;
+      }
+      .userText:hover{
+          font-size: 23px;
+      }
+    }

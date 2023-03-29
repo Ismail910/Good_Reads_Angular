@@ -23,11 +23,9 @@ import { LoginComponent } from './../../auth/login/login.component';
 })
 export class UserBookDetailsComponent implements OnInit {
 
-isChecked = false;
-
   book?: any;
-  reviews!: any;
-  reviewsId!:any;
+  // reviews!: any;
+  // reviewsId!:any;
   bookId!: string;
   rating!: number;
   status!: string;
@@ -37,6 +35,7 @@ isChecked = false;
   user_info!: any;
   userData!: any;
   bookUserId!:BookUser
+
   constructor(
     private Auth: AuthService,
     private ActivatedRoute: ActivatedRoute,
@@ -68,7 +67,7 @@ isChecked = false;
 
   ngOnInit(): void {
     this.getbook();
-    // this.getRivews();
+
 
   }
 
@@ -78,16 +77,11 @@ isChecked = false;
     ).subscribe((book) => {
       this.book = book;
       this.getRatin();
+      console.log(book);
+      
     });
   }
-  // get Reviws
-  getRivews() {
-    this.Api.get(`${environment.baseUrl}/reviews/${this.bookId}`).subscribe((reviews) => {
-      this.reviews = reviews;
-      this.reviewsId = this.reviews.map((ele:any)=>{ele._id})
-      console.log(this.reviews);
-    });
-  }
+
 
   //////////   get rating
   getRating(star: number): void {
@@ -102,6 +96,7 @@ isChecked = false;
     this.status = stat.target.value;
     console.log(this.status);
   }
+
   /////// set Rating form to db
   addRating() {
     let data = {
@@ -110,18 +105,22 @@ isChecked = false;
       book: this.bookId,
       user: this.user_id,
     };
-    if(this.book.bookUser.user != this.user_id)
+
+
+    if(this.book.bookUser._id  == null)
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
         console.log(obj);
+        this.getbook();
         console.log("create");
       });
+
     }else{
       this.Api.put(`${environment.baseUrl}/bookUser/${this.book.bookUser._id}`, data).subscribe((obj) => {
         console.log(obj);
+        this.getbook();
         console.log("update");
-
       });
     }
 
@@ -136,7 +135,9 @@ isChecked = false;
       like: false,
     };
     this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
+      this.getbook();
       console.log(data);
+      this.getbook();
     });
   }
 
@@ -153,10 +154,7 @@ isChecked = false;
       console.log('asd');
     });
     console.log(data);
-
   }
-
-
 
 }
 

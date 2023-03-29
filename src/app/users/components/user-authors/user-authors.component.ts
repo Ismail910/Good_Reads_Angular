@@ -37,10 +37,17 @@ titlename="author"
   }
 
   getAuthor(){
-    this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
+// <<<<<<< HEAD
+//     this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
+//       this.authors=data;
+//       this.totalPages=data.pages.totalPages;
+//       this._pagination=[...Array(this.totalPages).keys()];})
+// =======
+    this.spi.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data=>{
       this.authors=data;
-      this.totalPages=data.pages.totalPages;
-      this._pagination=[...Array(this.totalPages).keys()];})
+      this.totalPages = data.pages.totalPages;
+      this._pagination = [...Array(this.totalPages).keys()];
+    })
   }
   search(searchText:string) {
     this.showResults=true;

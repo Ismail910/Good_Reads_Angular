@@ -13,14 +13,16 @@ import Swal from 'sweetalert2';
 export class AdminCategoriesComponent implements OnInit {
 
   formCategory:FormGroup;
-  editCategory:FormGroup;
   listCategories:ICategory[]=[];
+  selectedImage!:File;
+  categoryImage:String='';
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
   isAdded:boolean=false;
   isEdit:boolean=false;
   error:boolean=false;
+  ECategory!:ICategory;
 
   constructor(private api:ApiService,private fb:FormBuilder)
   {
@@ -28,13 +30,9 @@ export class AdminCategoriesComponent implements OnInit {
       this.formCategory=fb.group(
       {
         name:['',[Validators.required]],
+        image:['',Validators.required]
       });
 
-        this.editCategory=fb.group(
-        {
-          name:['',[Validators.required]],
-          _id:['',Validators.required]
-        });
   }
 
   ngOnInit(): void {
@@ -71,13 +69,11 @@ export class AdminCategoriesComponent implements OnInit {
   get nameCategory(){
     return this.formCategory.get('name');
   }
+  get image(){
+    return this.formCategory.get('image');
+  }
 
-  get oldNameCategory(){
-    return this.editCategory.get('name');
-  }
-  get idCategory(){
-    return this.editCategory.get('_id');
-  }
+
 
 
   categories()
@@ -90,9 +86,18 @@ export class AdminCategoriesComponent implements OnInit {
 
   }
 
+  uploadImage(event: any) {
+    this.selectedImage=event.target.files[0];
+   }
+
   addCategory()
   {
-    this.api.post(`${environment.baseUrl}/category`,this.formCategory.value).subscribe(
+
+    let formdata= new FormData();
+
+    formdata.append("name", this.nameCategory?.value);
+    formdata.append("img",this.selectedImage,this.selectedImage.name);
+    this.api.post(`${environment.baseUrl}/category`,formdata).subscribe(
     {
       next:()=>{
         this.isAdded=true;
@@ -114,33 +119,21 @@ export class AdminCategoriesComponent implements OnInit {
 
   showCategory(category:ICategory)
   {
-    //console.log("cat",category);
-    this.editCategory.get('name')?.setValue(category.name);
-    this.editCategory.get('_id')?.setValue(category._id);
-
+    this.ECategory=category;
   }
 
-  EditCategory()
+  receivedEditCategory(e:any)
   {
-    this.api.put(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
-    ,this.editCategory.value).subscribe({
-      next:()=>{
-        this.isEdit=true;
-        this.categories();
-        setTimeout(() => {
-          this.isEdit= false;
-        }, 3000);
-
-      },
-      error:()=>{
-        this.error=true;
-        setTimeout(() => {
-          this.error= false;
-        }, 3000);
-      }
-    });
-
+    this.isEdit=e;
+    this.categories();
   }
+
+  receivedErrorCategory(e:any)
+  {
+    this.error=e;
+    this.categories();
+  }
+
 
 
   deleteCategory(id:string)

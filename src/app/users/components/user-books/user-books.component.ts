@@ -38,7 +38,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
     // private http: HttpClient
     ){
 
-
       this.Auth.getuser().subscribe(user=>{
         this.userData = user;
         this.userId = this.userData.user._id
@@ -58,11 +57,11 @@ export class UserBooksComponent implements OnChanges,OnInit{
   ngOnChanges(): void {
     console.log("asd");
 
-
   }
 
   getBooks()
     {
+
       this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}/${this.userId}`).subscribe(data=>{
         this.books=data.data;
         console.log(this.books);
@@ -70,7 +69,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
         console.log(this.userId);
-
       })
     }
 
@@ -86,7 +84,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
         console.log(this.userId);
        })
     }
-
    next=()=>{
     if(this.page<this.totalPages){
       this.page++;
@@ -104,6 +101,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.page=p;
       this.getBooks();
     }
+
 
 
     // search(searchText:string) {
@@ -125,3 +123,4 @@ export class UserBooksComponent implements OnChanges,OnInit{
     // }
 
   }
+

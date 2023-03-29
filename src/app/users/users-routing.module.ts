@@ -1,3 +1,4 @@
+import { AllBookComponent } from './components/all-book/all-book.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserBooksComponent } from './components/user-books/user-books.component';
@@ -12,6 +13,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
 import { PopularComponent } from './home/popular/popular.component';
 import { AuthGuard } from '../auth.guard';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 const routes: Routes = [
    {path:'',component:HomeComponent,children:
@@ -20,9 +22,10 @@ const routes: Routes = [
 
     {path:'books',canActivate:[AuthGuard] ,component:UserBooksComponent},
 
-    {path:'book',canActivate:[AuthGuard],component:UserBooksComponent},
+    {path:'allBooks',component:AllBookComponent},
 
     {path:'home',component:PopularComponent},
+    {path:'Aboutus',component:AboutusComponent},
     {path:'book/:id',canActivate:[AuthGuard],component:UserBookDetailsComponent},
     {path:'author',component:UserAuthorsComponent},
     {path:'author/:id',component:UserAuthorDetailsComponent},

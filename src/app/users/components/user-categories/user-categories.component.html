@@ -1,3 +1,4 @@
+
 <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
   
 <!-- <div class="content" role="main" *ngIf="showResults"> -->
@@ -20,18 +21,18 @@
 </div>
 
 
-<div class="container">
+<!-- <div class="container">
   <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
     ALL CATEGORIES
   </h2>
-  <div class="row py-5">
+  <div class="row py-5" >
     <div *ngFor="let category of categories" class="col-md-2">
-      <div class="h-100 w-100" style="margin-left: 30%">
+      <div class="h-100 w-100" style="margin-left: 30%" routerLink="/category/{{ category._id }}">
         <a routerLink="/category/{{ category._id }}"
-          ><img  src="../../../../assets/download-removebg-preview.png" />
+          ><img width="30%" src="http://localhost:5000/{{category?.img}}" />
         </a>
       </div>
-      <div routerLink="/category/{{ category._id }}">
+      <div >
         <h1
           style="
             color: #3c3484;
@@ -45,5 +46,39 @@
       </div>
     </div>
   </div>
+</div> -->
+
+
+
+
+
+<!-- Begin -->
+
+
+
+<div class="container">
+  <div class="row">
+    <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
+      ALL CATEGORIES
+    </h2>
+
+    <div class="card m-3" style="width: 18rem; height: 23rem;" *ngFor="let category of categories"  routerLink="/category/{{ category._id }}" >
+      <!-- <div class="h-100 w-100 " routerLink="/category/{{ category._id }}"> -->
+      <img src="http://localhost:5000/{{category?.img}}" class="card-img-top h-75 " >
+      <div class="card-body">
+        <h5 class="card-title"  style="
+        color: #3c3484;
+        font-size: 160%;
+        text-align: center;
+        margin-left: 5%;
+        font-weight: bold;
+      ">{{ category.name }}</h5>
+        
+      </div>
+    <!-- </div> -->
+    </div>
+  </div>
 </div>
-<app-pagination></app-pagination>
+
+
+

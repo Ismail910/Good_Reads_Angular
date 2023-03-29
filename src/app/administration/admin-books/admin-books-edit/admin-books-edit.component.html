@@ -2,7 +2,7 @@
   <div class="modal-dialog mt-5">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Book</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Edit Book</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form [formGroup]="editBook" (ngSubmit)="edit()">
@@ -68,7 +68,7 @@
 
 
           <div class="form-group">
-            <input type="file"   (change)="uploadImage($event)"  name="image" formControlName="image"
+            <input type="file"   (change)="uploadImage($event)"  name="image" formControlName="image" accept=".png,.jpg,.jpeg"
             [class.is-valid]="image?.valid"
             [class.is-invalid]="image?.invalid" >
             <ng-container *ngIf="book?.img">
