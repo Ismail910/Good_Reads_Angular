@@ -51,20 +51,23 @@ color: #3C3484;
   border-color: #E1D5D3 ;
   color: #E1D5D3;
   transition: all 0.8s ease;
+  
 }
 .logout{
   transition: all 0.8s ease;
+ 
 }
 .login:hover{
   border-color: transparent;
   color: #E1D5D3;
   background-color: #ED553B;
   transform: scale(1.1);
+
  
 }
 .logout:hover{
   border-bottom: transparent solid 3px;
-  border-color: #ED553B;
+  border-color: #E1D5D3;
   transform: scale(1.1);
 }
 .navbar-toggler{
