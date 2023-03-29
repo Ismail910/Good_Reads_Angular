@@ -40,3 +40,8 @@ canvas
   -ms-border-radius:50% ;
   -o-border-radius:50% ;
 }
+
+.fa-star
+{
+  font-size: 13px;
+}
