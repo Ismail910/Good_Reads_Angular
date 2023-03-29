@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/@shared/model/user';
 import { AuthService } from 'src/app/services/user/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-books',
@@ -24,11 +25,17 @@ export class UserBooksComponent implements OnChanges,OnInit{
   _pagination:any=[];
   userId!:User
   userData?:any
+
+  // characters: any=[];
+  // showResults:boolean=false;
+  // titlename="book"
+
   constructor(
     private Auth: AuthService,
     private ActvetedRoute: ActivatedRoute,
     private bookService: BookServiceService,
-    private Api: ApiService
+    private Api: ApiService,
+    // private http: HttpClient
     ){
 
 
@@ -99,6 +106,22 @@ export class UserBooksComponent implements OnChanges,OnInit{
     }
 
 
-
+    // search(searchText:string) {
+    //   this.showResults=true;
+      
+    //   if(searchText==""){
+       
+    //     this.characters=[]
+    //   }else{
+    //     this.http.get<any[]>(`${environment.baseUrl}/book/search/${searchText}`).subscribe(
+    //       (book) => {
+    //         this.characters = book;
+    //       },
+    //       (err) => {
+    //         console.error(err);
+    //       }
+    //     );
+    //   }
+    // }
 
   }

@@ -41,7 +41,8 @@ import { BookCardAllComponent } from './components/book-card-to-All/book-card.co
     NotFoundComponent,
     SlideshowComponent,
      BookCardComponent,
-     BookCardAllComponent
+     BookCardAllComponent,
+     
   ],
   imports: [
     CommonModule,

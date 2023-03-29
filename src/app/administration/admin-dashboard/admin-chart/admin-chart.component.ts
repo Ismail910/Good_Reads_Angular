@@ -1,8 +1,8 @@
 import { environment } from './../../../../environments/environment';
 import { ApiService } from './../../../@core/api.service';
 import { Component, OnInit } from '@angular/core';
-// import {Chart , registerables} from 'node_modules/chart.js';
-// Chart.register(...registerables);
+import {Chart , registerables} from 'node_modules/chart.js';
+Chart.register(...registerables);
 
 @Component({
   selector: 'app-admin-chart',

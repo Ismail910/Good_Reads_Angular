@@ -6,3 +6,12 @@
 .fa.active {
   color: gold;
 }
+.card{
+  transition: all 0.7s ease;
+  border-radius: 50px;
+}
+.card:hover{
+  box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
+  transform: scale(1.05);
+  
+      }

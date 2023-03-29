@@ -22,15 +22,8 @@
   .searchTerm:focus {
     color: #00B4CC;
   }
- 
 
-.content {
-  display: flex;
-  justify-content: center; /* center horizontally */
-}
-
-.center {
-  display: flex;
-  justify-content: center; /* center horizontally */
-  align-items: center; /* center vertically */
+input {
+  width: 50% !important;
+  margin: 2px 0 20px 20px;
 }
