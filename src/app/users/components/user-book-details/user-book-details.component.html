@@ -1,11 +1,11 @@
 <!-- ///////////////////////////////////////////////////// -->
 
-<<<<<<< HEAD
+
 <!-- <div class="container-fluid pb-5">
 =======
 
 <div class="container-fluid pb-5" >
->>>>>>> 994eff9093f8260d424d94ffdc85906e7c661a63
+
   <div class="row px-xl-5">
     <div class="col-lg-5 mb-30">
       <div id="" class="carousel slide" data-ride="carousel">
@@ -170,12 +170,12 @@
 <section class="mb-5">
   <div class="container">
     <div class="row justify-content-between">
-      <div class="col-5 my-5 p-0 " style="box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);border-radius: 15px;" >
+      <div class="col-4 my-5 p-0  " style="box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);border-radius: 15px;height: 55vh;" >
         <img
-          class="w-100 h-100 "
+          
           src="http://localhost:5000/{{book?.img}}"
           alt="Image"
-          style="border-radius: 15px;"
+          style="border-radius: 15px; height: 55vh; width: 30vw;"
         />
       </div>
       <div class="col-5 p-5">
@@ -199,7 +199,7 @@
   <div class="container mb-5">
     <div class="row justify-content-around">
       
-      <div class=" selection  col-7" >
+      <div class=" selection  col-7" (click)="addRating()">
         <select 
        
         type="button"
@@ -211,7 +211,7 @@
         <option  value="wantToRead">Want To Read</option>
       </select>
       </div>
-      <div class="rating col-5" >
+      <div class="rating col-5" (click)="addRating()">
         <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="getRating(star)">
           <i class="stars fa fa-star fs-3" [ngClass]="{ active: star <= rating }"></i>
         </span>
