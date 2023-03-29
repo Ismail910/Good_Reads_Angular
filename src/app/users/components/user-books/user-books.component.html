@@ -1,36 +1,26 @@
 <div>
-  <div class="container p-5">
-    <a
-      href="/books"
-      class="badge bg-primary p-5 m-5 fs-5"
-      >All Books</a
-    >
-    <a
-    (click)="getBooksByStatus('Read')"
-    class="badge bg-primary p-5 m-5 fs-5"
-      >Read
-    </a>
-    <a
-      (click)="getBooksByStatus('Reading')"
-      class="badge bg-primary p-5 m-5 fs-5"
-      >Currently Reading
-    </a>
-    <a  (click)="getBooksByStatus('wantToRead')"
-      class="badge bg-primary p-5 m-5 fs-5">Want To Read
-    </a>
-  </div>
+
+  <div class="container p-5 d-flex">
+    <div class="buttons"  href="/books" >
+      <a >All </a>
+    </div>
+    <div class="buttons" (click)="getBooksByStatus('Read')">
+      <a>Read </a>
+    </div>
+    <div class="buttons" (click)="getBooksByStatus('Reading')">
+      <a>Reading </a>
+    </div>
+    <div class="buttons" (click)="getBooksByStatus('wantToRead')">
+      <a>Favourite </a>
+    </div>
+ 
 </div>
 
-
-<div class="container ">
+<div class="container">
   <div class="row">
-
     <div class="col-12 col-md-12 col-lg-4 mt-5" *ngFor="let book of books">
-
       <app-book-card [book]="book"></app-book-card>
     </div>
-
-
 
     <div class="container">
       <app-pagination
