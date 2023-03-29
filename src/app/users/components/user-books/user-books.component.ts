@@ -31,7 +31,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
     private Api: ApiService
     ){
 
-
       this.Auth.getuser().subscribe(user=>{
         this.userData = user;
         this.userId = this.userData.user._id
@@ -95,8 +94,4 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.page=p;
       this.getBooks();
     }
-
-
-
-
-  }
+}

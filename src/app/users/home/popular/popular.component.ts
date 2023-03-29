@@ -9,19 +9,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./popular.component.css']
 })
 export class PopularComponent implements OnInit{
-  books!:any
+
   totalPages:number=0;
   page:number=1;
-  _pagination:any=[];
+  _pagination:any;
+  popularBook:any;
+  popularAuthor:any;
 
   constructor(private Api: ApiService){
 
-
   }
+
   ngOnInit(): void {
-   
+      this.getpopularBook()
 
   }
+
+  getpopularBook(){
+    this.Api.get(`${environment.baseUrl}/popular/popularBook`).subscribe(data=>{
+      this.popularBook = data;
+    })
+  }
+
+
 
 
   
