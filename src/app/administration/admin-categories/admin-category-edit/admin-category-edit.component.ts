@@ -14,6 +14,7 @@ export class AdminCategoryEditComponent  implements OnChanges{
   editCategory:FormGroup;
   selectedImage!:File;
   @Output()isEdit:EventEmitter<boolean> = new EventEmitter();
+  @Output()isError:EventEmitter<boolean> = new EventEmitter();
   constructor(private api:ApiService,private fb:FormBuilder)
   {
     this.editCategory=fb.group(
@@ -34,13 +35,15 @@ export class AdminCategoryEditComponent  implements OnChanges{
 
    Category()
    {
+    this.editCategory?.get('name')?.setValue(this.category.name);
+    this.editCategory.get('_id')?.setValue(this.category._id);
 
    }
 
    EditCategory()
    {
      let formdata= new FormData();
-     formdata.append("name", this.editCategory?.value);
+     formdata.append("name", this.ECategory?.value);
      if(this.selectedImage)
      formdata.append("img",this.selectedImage,this.selectedImage.name);
      this.api.put(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
@@ -53,9 +56,9 @@ export class AdminCategoryEditComponent  implements OnChanges{
 
        },
        error:()=>{
-         //this.error=true;
+         this.isError.emit(true);
          setTimeout(() => {
-           //this.error= false;
+           this.isError.emit(false);
          }, 3000);
        }
      });

@@ -22,6 +22,7 @@ export class AdminCategoriesComponent implements OnInit {
   isAdded:boolean=false;
   isEdit:boolean=false;
   error:boolean=false;
+  ECategory!:ICategory;
 
   constructor(private api:ApiService,private fb:FormBuilder)
   {
@@ -116,15 +117,22 @@ export class AdminCategoriesComponent implements OnInit {
 
   }
 
-  /*showCategory(category:ICategory)
+  showCategory(category:ICategory)
   {
-    //console.log("cat",category);
-    this.categoryImage=category.img;
-    this.editCategory.get('name')?.setValue(category.name);
-    this.editCategory.get('_id')?.setValue(category._id);
+    this.ECategory=category;
+  }
 
-  }*/
+  receivedEditCategory(e:any)
+  {
+    this.isEdit=e;
+    this.categories();
+  }
 
+  receivedErrorCategory(e:any)
+  {
+    this.error=e;
+    this.categories();
+  }
 
 
 

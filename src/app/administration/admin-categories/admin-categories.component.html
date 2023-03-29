@@ -53,9 +53,10 @@
 
       <ng-container *ngFor="let category of listCategories; let i=index;">
         <tr>
-          <td> {{i+1}}</td>
-          <td>
-            <img src="http://localhost:5000/{{category?.img}}" alt="" style="height: 6vh;">
+          <td class="px-1"> {{i+1}}</td>
+          <td style="width: 4%;">
+            <img src="http://localhost:5000/{{category?.img}}" alt="" style="height: 5vh;
+            width: 100%;">
           </td>
           <td>{{category.name}}</td>
           <td>
@@ -126,4 +127,6 @@
 
 
 <!---------------------EditCategory----------------------------->
-<app-admin-category-edit></app-admin-category-edit>
+<app-admin-category-edit
+ (isEdit)="receivedEditCategory($event)" (isError)="receivedErrorCategory($event)"
+[category]="ECategory"></app-admin-category-edit>

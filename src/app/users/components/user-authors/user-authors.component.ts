@@ -25,13 +25,16 @@ export class UserAuthorsComponent implements OnInit,OnChanges {
   ngOnInit() {
     /*this.authorService.getAllAuthors()
     .subscribe((aut) => this.authors = aut);*/
-    
+
     this.getAuthor();
   }
 
   getAuthor(){
-    this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
-      this.authors=data;})
+    this.spi.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data=>{
+      this.authors=data;
+      this.totalPages = data.pages.totalPages;
+      this._pagination = [...Array(this.totalPages).keys()];
+    })
   }
   next=()=>{
     if(this.page<this.totalPages){

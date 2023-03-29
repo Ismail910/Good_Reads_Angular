@@ -9,12 +9,11 @@
       <div class="modal-body">
           <div class="form-group">
 
-            <input type="hidden"  formControlName="_id"   [value]="idCategory">
+            <input type="hidden"  formControlName="_id"  >
 
             <input type="text" class="form-control" placeholder="Category Name"
               formControlName="name"
               name="name"
-              [value]="ECategory"
               [class.is-invalid]="ECategory?.invalid"
               [class.is-valid]="ECategory?.valid"
             >
@@ -29,8 +28,8 @@
             formControlName="image" name="image" accept=".png,.jpg,.jpeg"
              (change)="uploadImage($event)" >
 
-             <ng-container *ngIf="categoryImage">
-              <img src="http://localhost:5000/{{categoryImage}}" alt="" style="width:15%; border:1px solid black;" >
+             <ng-container *ngIf="category?.img">
+              <img src="http://localhost:5000/{{category?.img}}" alt="" style="width:15%; border:1px solid black;" >
              </ng-container>
           </div>
       </div>
