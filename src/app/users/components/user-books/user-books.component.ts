@@ -95,6 +95,4 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.page=p;
       this.getBooks();
     }
-
-
-  }
+}
