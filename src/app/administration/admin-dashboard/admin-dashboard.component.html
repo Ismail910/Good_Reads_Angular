@@ -70,17 +70,17 @@
   <div class="row mt-4 mb-3 p-author">
     <div class="col-lg-5 mt-2">
       <div class="card">
-        <h5>popular author</h5>
+        <h5 class="mb-5">popular author</h5>
 
         <ng-container *ngFor="let author of topAuthors">
-          <div class="row pt-3">
+          <div class="row pt-2">
             <div class="col-8 row">
               <div class="col-4">
                 <img src='http://localhost:5000/{{author._id[0].photo}}' alt="">
               </div>
               <div class="col-7">
-                <h6>{{author._id[0].firstName}} {{author._id[0].lastName}}</h6>
-                <p>{{author._id[0].books.length}} books</p>
+                <h6 style="font-size: 14px;">{{author._id[0].firstName}} {{author._id[0].lastName}}</h6>
+                <p style="font-size: 13px;">{{author._id[0].books.length}} books</p>
               </div>
             </div>
             <div class="col-4">
