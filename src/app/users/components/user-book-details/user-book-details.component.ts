@@ -77,6 +77,8 @@ export class UserBookDetailsComponent implements OnInit {
     ).subscribe((book) => {
       this.book = book;
       this.getRatin();
+      console.log(book);
+      
     });
   }
 

@@ -77,7 +77,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
         console.log(this.userId);
        })
     }
-
    next=()=>{
     if(this.page<this.totalPages){
       this.page++;

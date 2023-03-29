@@ -1,6 +1,6 @@
 .fa {
   font-size: 24px;
-  color: gray;
+  color: rgb(210, 203, 203);
   cursor: pointer;
 }
 .fa.active {
@@ -21,8 +21,8 @@
 color: #ED553B;
       }
 .avgContainer{
-  height: 4rem;
-  width: 4rem;
+  height: 2.5rem;
+  width: 2.5rem;
   background-color:#E1D5D3;
   border-radius: 50%;
   display:flex;

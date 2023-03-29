@@ -12,6 +12,7 @@ export class AdminDashboardComponent implements OnInit{
   totalAuthors:Number=0;
   totalBooks:Number=0;
   totalUsers:Number=0;
+  topAuthors:any;
 constructor(private api:ApiService){}
   ngOnInit(): void {
 
@@ -28,6 +29,10 @@ constructor(private api:ApiService){}
       this.api.get(`${environment.baseUrl}/dashboard/users`).subscribe(
         data=>{
         this.totalUsers=data.totalUsers;
+        });
+
+        this.api.get(`${environment.baseUrl}/dashboard/topAuthors`).subscribe(data=>{
+          this.topAuthors=data.topAuthors;
         });
 
   }

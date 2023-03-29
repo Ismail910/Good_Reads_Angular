@@ -1,31 +1,44 @@
-
-
-<div class=" card col-12  " >
-  <img src="http://localhost:5000/{{books?.img}}" [routerLink]="['/book/', books._id]" class="card-img-top "
-    alt="Hollywood Sign on The Hill" />
-  <div class="card-body">
-    <h2 class="bookName ">{{books.name}}</h2>
-    <h5 class="card-text ">
-  <span class="authName">{{books?.author.firstName}} {{books?.author.lastName}}</span>
-    </h5>
-    <div class="avgContainer">
-    <p class="card-text fs-3 d-flex justify-content-center align-items-center">
-      <span class="AvgRate">{{books?.avg_rate|number: '1.0-0'  }}</span>
-    </p>
-  </div>
-    <div>
-      <div class="fs-1 p-2 ">
-
-        <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating()">
-          <i class="fa fa-star fs-4" [ngClass]="{'active': star <= rating}"></i>
-        </span>
-      </div></div>
+<div class="card col-12">
+  <img
+    src="http://localhost:5000/{{ books?.img }}"
+    [routerLink]="['/book/', books._id]"
+    class="card-img-top"
+    alt="Hollywood Sign on The Hill"
+    style="height: 210px"
+  />
+  <!-- <div class="card col-12"> -->
+    <div class="card-body">
+      <h4 class="bookName">{{ books.name }}</h4>
+      <h6 class="card-text">
+        <span class="authName"
+          >{{ books?.author.firstName }} {{ books?.author.lastName }}</span
+        >
+      </h6>
+      <div class="avgContainer">
+        <p
+          class="card-text fs-5 d-flex justify-content-center align-items-center"
+        >
+          <span class="AvgRate">{{ books?.avg_rate | number : "1.1-1" }}</span>
+        </p>
+      </div>
       <div>
-      <!-- <select class="select btn btn-secondary dropdown-toggle"type="button" (click)="setRating()">
+        <div class="fs-1">
+          <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating()">
+            <i
+              class="fa fa-star fs-5"
+              [ngClass]="{ active: star <= rating }"
+            ></i>
+          </span>
+        </div>
+      <!-- </div> -->
+      
+        <!-- <select class="select btn btn-secondary dropdown-toggle"type="button" (click)="setRating()">
          <option value="{{books?.status}}">{{books?.status}}</option>
       </select> -->
+        <!-- </div>
+  </div>
+</div> -->
+      
     </div>
   </div>
 </div>
-
-
