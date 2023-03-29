@@ -13,7 +13,6 @@ import Swal from 'sweetalert2';
 export class AdminCategoriesComponent implements OnInit {
 
   formCategory:FormGroup;
-  editCategory:FormGroup;
   listCategories:ICategory[]=[];
   selectedImage!:File;
   categoryImage:String='';
@@ -33,12 +32,6 @@ export class AdminCategoriesComponent implements OnInit {
         image:['',Validators.required]
       });
 
-        this.editCategory=fb.group(
-        {
-          name:['',[Validators.required]],
-          image:[''],
-          _id:['']
-        });
   }
 
   ngOnInit(): void {
@@ -79,17 +72,7 @@ export class AdminCategoriesComponent implements OnInit {
     return this.formCategory.get('image');
   }
 
-  get oldNameCategory(){
-    return this.editCategory.get('name');
-  }
-  get idCategory(){
-    return this.editCategory.get('_id');
-  }
 
-  get oldImage()
-  {
-    return this.editCategory.get('image');
-  }
 
 
   categories()
@@ -133,40 +116,16 @@ export class AdminCategoriesComponent implements OnInit {
 
   }
 
-  showCategory(category:ICategory)
+  /*showCategory(category:ICategory)
   {
     //console.log("cat",category);
     this.categoryImage=category.img;
     this.editCategory.get('name')?.setValue(category.name);
     this.editCategory.get('_id')?.setValue(category._id);
 
-  }
+  }*/
 
-  EditCategory()
-  {
-    let formdata= new FormData();
-    formdata.append("name", this.editCategory?.value);
-    if(this.selectedImage)
-    formdata.append("img",this.selectedImage,this.selectedImage.name);
-    this.api.put(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
-    ,formdata).subscribe({
-      next:()=>{
-        this.isEdit=true;
-        this.categories();
-        setTimeout(() => {
-          this.isEdit= false;
-        }, 3000);
 
-      },
-      error:()=>{
-        this.error=true;
-        setTimeout(() => {
-          this.error= false;
-        }, 3000);
-      }
-    });
-
-  }
 
 
   deleteCategory(id:string)
