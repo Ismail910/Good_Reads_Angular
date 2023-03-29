@@ -52,6 +52,7 @@
              (change)="uploadImage($event)"
              [class.is-invalid]="image?.invalid"
              [class.is-valid]="image?.valid"
+             accept=".png,.jpg,.jpeg"
              >
 
              <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >

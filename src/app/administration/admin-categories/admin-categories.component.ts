@@ -35,6 +35,7 @@ export class AdminCategoriesComponent implements OnInit {
         this.editCategory=fb.group(
         {
           name:['',[Validators.required]],
+          image:[''],
           _id:['',Validators.required]
         });
   }

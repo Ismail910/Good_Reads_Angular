@@ -67,9 +67,9 @@
 
 
           <div class="form-group">
-            <input type="file" class="form-control"  (change)="uploadImage($event)"  name="image" formControlName="image"
+            <input type="file" class="form-control"  (change)="uploadImage($event)"  name="image" formControlName="image" accept=".png,.jpg,.jpeg"
             [class.is-valid]="image?.valid"
-            [class.is-invalid]="image?.invalid" >
+            [class.is-invalid]="image?.invalid"  >
             <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >
               <small *ngIf="image?.errors?.['required']">Image is required </small>
             </div>
