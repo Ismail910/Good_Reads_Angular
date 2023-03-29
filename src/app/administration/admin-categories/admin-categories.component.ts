@@ -16,6 +16,7 @@ export class AdminCategoriesComponent implements OnInit {
   editCategory:FormGroup;
   listCategories:ICategory[]=[];
   selectedImage!:File;
+  categoryImage:String='';
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
@@ -36,7 +37,7 @@ export class AdminCategoriesComponent implements OnInit {
         {
           name:['',[Validators.required]],
           image:[''],
-          _id:['',Validators.required]
+          _id:['']
         });
   }
 
@@ -85,6 +86,11 @@ export class AdminCategoriesComponent implements OnInit {
     return this.editCategory.get('_id');
   }
 
+  get oldImage()
+  {
+    return this.editCategory.get('image');
+  }
+
 
   categories()
   {
@@ -130,6 +136,7 @@ export class AdminCategoriesComponent implements OnInit {
   showCategory(category:ICategory)
   {
     //console.log("cat",category);
+    this.categoryImage=category.img;
     this.editCategory.get('name')?.setValue(category.name);
     this.editCategory.get('_id')?.setValue(category._id);
 
@@ -137,8 +144,12 @@ export class AdminCategoriesComponent implements OnInit {
 
   EditCategory()
   {
+    let formdata= new FormData();
+    formdata.append("name", this.editCategory?.value);
+    if(this.selectedImage)
+    formdata.append("img",this.selectedImage,this.selectedImage.name);
     this.api.put(`${environment.baseUrl}/category/${this.editCategory.get('_id')?.value}`
-    ,this.editCategory.value).subscribe({
+    ,formdata).subscribe({
       next:()=>{
         this.isEdit=true;
         this.categories();

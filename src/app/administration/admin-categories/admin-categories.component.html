@@ -152,14 +152,14 @@
                 * Name category is required </small>
             </div>
           </div>
-
           <div class="form-group">
-            <input type="file" class="form-control"  (change)="uploadImage($event)"
-            name="image" formControlName="image" accept=".png,.jpg,.jpeg"
-            [class.is-valid]="image?.valid" >
-            <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >
-              <small *ngIf="image?.errors?.['required']">Image is required </small>
-            </div>
+            <input type="file" class="file-input"
+            formControlName="image" name="image" accept=".png,.jpg,.jpeg"
+             (change)="uploadImage($event)" >
+
+             <ng-container *ngIf="categoryImage">
+              <img src="http://localhost:5000/{{categoryImage}}" alt="" style="width:15%; border:1px solid black;" >
+             </ng-container>
           </div>
       </div>
       <div class="modal-footer">
