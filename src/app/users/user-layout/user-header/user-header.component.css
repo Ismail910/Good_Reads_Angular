@@ -1,42 +1,4 @@
-/* .mat-toolbar{
-  background-color: cornflowerblue;
-  color: white;
-}
-.mat-button{
-   color: white;
-}
-.spacer{
-  flex: 1 1 auto;
-}
-.nav-item{
-  margin: 0 10% 0 10% ;
 
-}
-.navbar-nav{
-  margin-left: 4%;
-} */
- /* .vl {
-  border-left: 1px solid #E1D5D3;
-  height: 5vh;
-  margin: 0 3vw 0 3vw;
-} 
-
- .navbar-brand img{
-  width: 4vw;
-  height: 3vh;
-  margin-left: 100%;
-} 
-
-.navBar{
-  background-color: #3C3484;
-}
-.navBar a{
-  color: #E1D5D3;
-  font-weight: 500;
-}
-.navItames{
-  margin-left:7vw ;
-} */
 .dropdown img
 {
   width: 50px;
@@ -48,9 +10,7 @@
   -o-border-radius: 50%;
   border: 1px solid black;
 } 
-/* .Logout{
-cursor: pointer;
-} */
+
 
 
 
@@ -64,7 +24,7 @@ cursor: pointer;
   
 }
 .navLinks{
-  padding-left: 10rem;
+  padding-left: 5rem;
 }
 .nav-item{
 margin-left: 2rem;
@@ -141,5 +101,3 @@ color: #3C3484;
       }
  
 }
-
-

@@ -46,16 +46,16 @@ submitRegisterForm(registerForm:FormGroup){
   //     this.error=response.register.error.message;
   //   }
   // })
-  let formdata= new FormData();
-  formdata.append("img",this.selectedImage,this.selectedImage.name);
+  // let formdata= new FormData();
+  // formdata.append("img",);
   this._AuthService.register(registerForm.value).subscribe({
     next: (Response)=>{
       console.log(Response)
-      this.isAdded=true;
+      // this.isAdded=true;
       this._Router.navigate(['/login']);
-      setTimeout(() => {
-        this.isAdded= false;
-      }, 3000);
+      // setTimeout(() => {
+      //   this.isAdded= false;
+      // }, 3000);
     },
     error:()=>{
       this.message="User Already Exist. Please Login";
