@@ -22,6 +22,9 @@ export class AdminAuthorsComponent implements OnInit {
   error:Boolean=false;
   EAuthor!:Author;
 
+  showResults:boolean=false;
+  titlename="author"
+
   constructor(private api: ApiService) {
 
 
@@ -54,7 +57,7 @@ export class AdminAuthorsComponent implements OnInit {
     this.page = p;
     this.authors();
   }
-  
+
 
   authors() {
     this.api.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data => {
@@ -116,7 +119,25 @@ export class AdminAuthorsComponent implements OnInit {
 
 
 
+  search(searchText:string) {
+    this.showResults=true;
 
+    if(searchText==""){
+
+      this.authors();
+    }else{
+      this.api.get(`${environment.baseUrl}/admin/author/search/${searchText}`).subscribe(
+        {
+         next:(data) => {
+          this.listAuthors = data;
+        },
+        error:(err) => {
+          console.error(err);
+        }
+      }
+      );
+    }
+  }
 
 
 }

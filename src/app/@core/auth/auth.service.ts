@@ -31,10 +31,16 @@ isLogin():boolean
   return false;
 }
 
+isAdmin():boolean
+{
+  if(localStorage.getItem('isAdmin')=="true")
+  return true;
+  return false;
+}
 
 logout()
 {
-
+  localStorage.clear();
 }
 
 

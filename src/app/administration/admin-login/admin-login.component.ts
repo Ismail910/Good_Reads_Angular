@@ -48,6 +48,8 @@ export class AdminLoginComponent {
     this.auth.login(`${environment.baseUrl}/login`,this.formLogin.value).subscribe(
       {
       next:(data)=>{
+      if(data.isAdmin==true)
+      {
       localStorage.setItem('token',data.token);
       localStorage.setItem('isAdmin',data.isAdmin);
       localStorage.setItem('fName',data.first_name);
@@ -55,6 +57,14 @@ export class AdminLoginComponent {
       localStorage.setItem('isLogin',"true");
       console.log(data);
       this.router.navigate(['/Admin/Dashboard']);
+        }else
+        {
+         this.message="Email or Password is not vaild";
+        this.error=true;
+        setTimeout(()=>{
+          this.error=false;
+        },4000);
+        }
       },
       error:()=>
       {
