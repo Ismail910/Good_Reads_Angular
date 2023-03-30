@@ -1,31 +1,32 @@
-.team .card-body i{
+/* .team .card-body i{
     font-size: 20px;
-}
+} */
 
 
 
 /* Google Font CDN Link */
-/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins" , sans-serif;
 }
-body{
-  min-height: 150vh;
+.container-fluid{
+  min-height: 200vh;
   width: 100%;
-  background: white;
+  background: #E1D5D3;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .container{
   width: 85%;
-  background: #E1D5D3;
+  background: white;
   border-radius: 6px;
   padding: 20px 60px 30px 40px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  
 }
 .container .content{
   display: flex;
@@ -159,4 +160,4 @@ body{
     width: 7rem;
     height: 6rem;
     border-radius: 60px;
-} */
+}

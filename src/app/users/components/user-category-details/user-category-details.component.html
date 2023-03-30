@@ -1,14 +1,66 @@
-<div >
-<div class="container">
-  <div class="row py-5">
-
-    <h1> {{ categories|json }} </h1>
-
+<div>{{categories.books[0].book.name|json}}</div>
+<!-- <div>
+  <div class="container">
+    <div class="row py-5">
+      <h1>{{ categories | json }}</h1>
+    </div>
   </div>
-</div>
-</div>
+</div> -->
 
-<!--
+<div class="container mb-5">
+  <div class="container d-flex justify-content-center">
+    <div
+      class="card text-center bg-white border-0"
+      style="margin-top: 15%; height: 50vh"
+    >
+      <div class="card-body text-dark">
+        <h3 class="text-center m-4" style="color: #3c3484">
+          Welcome to : {{ categories.name }}
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div
+        class="col-12 col-md-12 col-lg-4 mt-5"
+        *ngFor="let book of categories.books" >
+        <div class="card col-12">
+          <img [routerLink]="['/book/', book?.book._id]"
+            src="http://localhost:5000/{{ book?.book.img }}"
+            
+            class="card-img-top"
+            alt="Hollywood Sign on The Hill"
+            style="height: 250px"
+          />
+          <div class="card-body">
+            <h4 class="bookName fs-1">{{ book.book.name }}</h4>
+            
+            <div class="avgContainer">
+              <p
+                class="card-text fs-5 d-flex justify-content-center align-items-center"
+              >
+                <span class="AvgRate">{{
+                  book?.book.avg_rate | number : "1.1-1"
+                }}</span>
+              </p>
+            </div>
+
+            <div class="fs-1 col-5">
+             
+            </div>
+            <div class="selection col-5">
+              <select class="select btn btn-secondary dropdown-toggle" type="button">
+                <option value="{{ book?.status }}">{{ book?.status }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-pagination></app-pagination>
+
+    <!--
 <div class="container">
   <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
     ALL CATEGORIES
@@ -36,7 +88,7 @@
   </div>
 </div>
 
-<<<<<<< HEAD
+
 <div class="container">
   <div class="row py-5">
      <div *ngFor="let book of books"  class="col-md-4 unimation">
@@ -52,4 +104,5 @@
   </div>
 </div>
 <app-pagination></app-pagination>-->
-
+  </div>
+</div>
