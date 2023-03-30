@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-.card{transition: all 0.7s ease;}
-.card:hover{box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
-    transform: scale(1.05);
-    cursor: pointer;
-    }
-=======
+
 .wrap{
     display: flex;
   justify-content: center; /* center horizontally */
@@ -29,7 +23,7 @@
   .searchTerm:focus {
     color: #00B4CC;
   }
- 
+
 
 .content {
   display: flex;
@@ -41,4 +35,4 @@
   justify-content: center; /* center horizontally */
   align-items: center; /* center vertically */
 }
->>>>>>> b74c1f945d3fd1bf227ce791ad66376e7611b898
+
