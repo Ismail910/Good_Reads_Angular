@@ -131,7 +131,6 @@ export class AdminCategoriesComponent implements OnInit {
   receivedErrorCategory(e:any)
   {
     this.error=e;
-    this.categories();
   }
 
 

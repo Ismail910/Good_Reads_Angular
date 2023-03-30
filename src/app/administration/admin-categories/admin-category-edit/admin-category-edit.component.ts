@@ -35,8 +35,8 @@ export class AdminCategoryEditComponent  implements OnChanges{
 
    Category()
    {
-    this.editCategory?.get('name')?.setValue(this.category.name);
-    this.editCategory.get('_id')?.setValue(this.category._id);
+    this.editCategory?.get('name')?.setValue(this.category?.name);
+    this.editCategory.get('_id')?.setValue(this.category?._id);
 
    }
 

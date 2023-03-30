@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'login',component:AdminLoginComponent},
   {path:'',component:AdminPanelComponent,children:
   [
-   // {path:'' , redirectTo:'Dashboard'},
+    { path:'', redirectTo: 'Dashboard', pathMatch: 'full' },
     {path:'Dashboard',component:AdminDashboardComponent},
     {path:'Books',component:AdminBooksComponent},
     {path:'Authors',component:AdminAuthorsComponent},
