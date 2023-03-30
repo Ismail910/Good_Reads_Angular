@@ -24,6 +24,9 @@ export class AdminCategoriesComponent implements OnInit {
   error:boolean=false;
   ECategory!:ICategory;
 
+  showResults:boolean=false;
+  titlename="category"
+
   constructor(private api:ApiService,private fb:FormBuilder)
   {
 
@@ -166,5 +169,24 @@ export class AdminCategoriesComponent implements OnInit {
 
 
 
+  }
+
+  search(searchText:string) {
+    this.showResults=true;
+
+    if(searchText==""){
+      this.categories();
+    }else{
+      this.api.get(`${environment.baseUrl}/category/search/${searchText}`).subscribe(
+        {
+         next:(data) => {
+          this.listCategories = data;
+        },
+        error:(err) => {
+          console.error(err);
+        }
+      }
+      );
+    }
   }
 }

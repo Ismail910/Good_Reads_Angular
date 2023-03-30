@@ -6,6 +6,11 @@
 .fa.active {
   color: #ED553B;
 }
+
+.card{
+  transition: all 0.7s ease;
+  border-radius: 50px;
+}
 .avgContainer{
   height: 2.5rem;
   width: 2.5rem;
@@ -22,7 +27,10 @@
   box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
   transform: scale(1.05);
 
+
       }
+
+
       .bookName{
         color: #3C3484;
       }

@@ -13,7 +13,7 @@ export class AdminPanelComponent {
   constructor(private router:Router){
     router.events.subscribe((val) => {
       if(val instanceof NavigationEnd){
-         console.log(val.url);
+         //console.log(val.url);
          this.namePage=(val.url.split('/'))[2];
       }
   });
