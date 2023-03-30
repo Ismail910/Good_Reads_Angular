@@ -26,16 +26,13 @@ export class UserBooksComponent implements OnChanges,OnInit{
   userId!:User
   userData?:any
 
-  // characters: any=[];
-  // showResults:boolean=false;
-  // titlename="book"
+  
 
   constructor(
     private Auth: AuthService,
     private ActvetedRoute: ActivatedRoute,
     private bookService: BookServiceService,
-    private Api: ApiService,
-    // private http: HttpClient
+    private Api: ApiService
     ){
 
       this.Auth.getuser().subscribe(user=>{
@@ -102,25 +99,6 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.getBooks();
     }
 
-
-
-    // search(searchText:string) {
-    //   this.showResults=true;
-      
-    //   if(searchText==""){
-       
-    //     this.characters=[]
-    //   }else{
-    //     this.http.get<any[]>(`${environment.baseUrl}/book/search/${searchText}`).subscribe(
-    //       (book) => {
-    //         this.characters = book;
-    //       },
-    //       (err) => {
-    //         console.error(err);
-    //       }
-    //     );
-    //   }
-    // }
 
   }
 

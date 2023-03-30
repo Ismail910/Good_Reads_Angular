@@ -6,11 +6,11 @@
 .fa.active {
   color: #ED553B;
 }
-<<<<<<< HEAD
+
 .card{
   transition: all 0.7s ease;
   border-radius: 50px;
-=======
+}
 .avgContainer{
   height: 2.5rem;
   width: 2.5rem;
@@ -22,16 +22,15 @@
 }
 .card{
   transition: all 0.7s ease;
->>>>>>> 89177cc73493562336868aa85617b93929011969
 }
 .card:hover{
   box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
   transform: scale(1.05);
   
-<<<<<<< HEAD
+
       }
-=======
-      }
+
+      
       .bookName{
         color: #3C3484;
       }
@@ -88,4 +87,3 @@ color: #ED553B;
       .selection:hover {
         padding-bottom:40px;
       }
->>>>>>> 89177cc73493562336868aa85617b93929011969

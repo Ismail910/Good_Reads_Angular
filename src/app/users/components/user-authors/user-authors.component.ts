@@ -56,7 +56,7 @@ titlename="author"
      
       this.characters=[]
     }else{
-      this.http.get<any[]>(`${environment.baseUrl}/admin/author/${searchText}`).subscribe(
+      this.http.get<any[]>(`${environment.baseUrl}/admin/author/search/${searchText}`).subscribe(
         (authors) => {
           this.characters = authors;
         },

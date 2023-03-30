@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/api.service';
 import { environment } from './../../../../environments/environment';
@@ -13,7 +14,10 @@ export class AllBookComponent implements OnInit{
   page:number=1;
   _pagination:any=[];
 
-  constructor(private Api: ApiService){
+  characters: any=[];
+  showResults:boolean=false;
+  titlename="book"
+  constructor(private Api: ApiService, private http: HttpClient){
 
 
   }
@@ -34,5 +38,21 @@ export class AllBookComponent implements OnInit{
 
       })
     }
-
+ search(searchText:string) {
+      this.showResults=true;
+      
+      if(searchText==""){
+       
+        this.characters=[]
+      }else{
+        this.http.get<any[]>(`${environment.baseUrl}/book/search/${searchText}`).subscribe(
+          (book) => {
+            this.characters = book;
+          },
+          (err) => {
+            console.error(err);
+          }
+        );
+      }
+    }
 }
