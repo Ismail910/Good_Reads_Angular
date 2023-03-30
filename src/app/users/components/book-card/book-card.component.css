@@ -6,11 +6,6 @@
 .fa.active {
   color: #ED553B;
 }
-<<<<<<< HEAD
-.card{
-  transition: all 0.7s ease;
-  border-radius: 50px;
-=======
 .avgContainer{
   height: 2.5rem;
   width: 2.5rem;
@@ -22,15 +17,11 @@
 }
 .card{
   transition: all 0.7s ease;
->>>>>>> 89177cc73493562336868aa85617b93929011969
 }
 .card:hover{
   box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
   transform: scale(1.05);
-  
-<<<<<<< HEAD
-      }
-=======
+
       }
       .bookName{
         color: #3C3484;
@@ -62,7 +53,7 @@ color: #ED553B;
           color: #E1D5D3;
           background-color: #ED553B;
         transform: scale(1.1); */
-      
+
         content: "\f13a";
         font-family: FontAwesome;
         position: absolute;
@@ -80,7 +71,7 @@ color: #ED553B;
       .selection:hover::before {
        color: rgba(255, 255, 255, 1);
         background-color: rgba(255, 255, 255, 0.2);
-      
+
       }
       .selection select option {
         padding: 30px;
@@ -88,4 +79,3 @@ color: #ED553B;
       .selection:hover {
         padding-bottom:40px;
       }
->>>>>>> 89177cc73493562336868aa85617b93929011969

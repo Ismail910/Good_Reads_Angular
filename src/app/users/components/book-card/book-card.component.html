@@ -1,17 +1,12 @@
-<!-- 
+<!--
 <div class=" card text-center border-0" >
-<<<<<<< HEAD
-  <img src="../../../../assets/book.jpg" [routerLink]="['/book/', book?.book._id]" class="card-img-top"
-    alt="Hollywood Sign on The Hill"  style="height: 350px;border-radius: 25px;"/>
-=======
   <img src="http://localhost:5000/{{book.book?.img}}" [routerLink]="['/book/', book?.book._id]" class="card-img-top"
     alt="Hollywood Sign on The Hill" style="height: 350px;border-radius: 25px;"/>
->>>>>>> 89177cc73493562336868aa85617b93929011969
   <div class="card-body ">
     <h1 class="card-title" style="color: #ED553B;font-size:50px;">{{book.book.name}}</h1>
     <p class="card-text fs-3">
       <span style="color: #3C3484;font-size: 40px;" >{{book?.book.author.firstName}} {{book?.book.author.lastName}}</span>
-    </p> 
+    </p>
      <p class="card-text fs-3">
        <span >{{book?.book.category.name}}</span>
     </p>
@@ -72,7 +67,7 @@
 
 
   <div class=" card col-12" >
-  
+
     <img src="http://localhost:5000/{{book?.book.img}}" [routerLink]="['/book/', book?.book._id]" class="card-img-top"
       alt="Hollywood Sign on The Hill" style="height: 250px;" />
     <div class="card-body">
@@ -88,7 +83,7 @@
         <span class="AvgRate">{{book?.book.avg_rate|number: '1.1-1'  }}</span>
       </p>
     </div>
-     
+
         <div class="fs-1  col-5">
           <span *ngFor="let star of [1, 2, 3, 4, 5]" (click)="setRating()">
             <i class="fa fa-star fs-5" [ngClass]="{'active': star <= rating}"></i>
@@ -100,7 +95,7 @@
           </select>
         </div>
         <div>
-          
+
         </div>
         <!-- <select class="select btn btn-secondary dropdown-toggle"type="button" (click)="setRating()">
            <option value="{{books?.status}}">{{books?.status}}</option>
@@ -108,6 +103,5 @@
       <!-- </div>
     </div>
   </div> -->
-  
-  
-  
+
+

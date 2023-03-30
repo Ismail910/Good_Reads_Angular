@@ -54,7 +54,7 @@ export class AdminLoginComponent {
       localStorage.setItem('lName',data.last_name);
       localStorage.setItem('isLogin',"true");
       console.log(data);
-      this.router.navigate(['/Admin/Dashboard']);
+     // this.router.navigate(['/Admin/Dashboard']);
       },
       error:()=>
       {

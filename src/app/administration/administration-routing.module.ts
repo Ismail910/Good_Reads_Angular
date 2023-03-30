@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthAdminGuard } from '../@core/auth/guards/authAdmin.guard';
 import { AdminAuthorsComponent } from './admin-authors/admin-authors.component';
 import { AdminBooksComponent } from './admin-books/admin-books.component';
 import { AdminCategoriesComponent } from './admin-categories/admin-categories.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
     {path:'Authors',component:AdminAuthorsComponent},
     {path:'Categories',component:AdminCategoriesComponent}
 
-  ]}
+  ], canActivate:[AuthAdminGuard]}
 ];
 
 
