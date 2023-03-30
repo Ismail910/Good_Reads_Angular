@@ -1,17 +1,50 @@
+<<<<<<< HEAD
 <!-- 
 <h2 class="text-center fs-5 m-5 p-5 text-danger">ALL AUTHORS</h2>
+=======
 
+  <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
+  
+  <div class="content" role="main" *ngIf="showResults">
+  <!-- <div class="content" role="main" > -->
+    <div class="center" >
+      <div class="card" >
+        <div class="form-group">
+          
+          <ul class="list-group list-group-flush">
+            <!-- results of ngFor is passed to appFilter with argument searchText -->
+            <!-- <li class="list-group-item" *ngFor="let c of characters | searchFilter: searchText"> -->
+            <li class="list-group-item" *ngFor="let c of characters ">
+              <a [routerLink]="['/author',c.ID]" style="text-decoration: none;">{{c.firstName}} {{c.lastName}}</a>
+              
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+>>>>>>> b74c1f945d3fd1bf227ce791ad66376e7611b898
+
+
+  <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
 <div class="container">
-    <div class="row ">
-        <div class="col-12 col-md-12 col-lg-4 mt-5"  *ngFor="let author of authors.data"  >
+    <ng-container *ngIf="authors.data">
+    <div class="row " *ngIf="authors">
+        <div class="col-12 col-md-12 col-lg-4 mt-5" *ngFor="let author of authors?.data">
             
             <app-user-author-card [author]="author"></app-user-author-card>
         </div>
       
       
     </div>
+<<<<<<< HEAD
 
 </div>  -->
+=======
+</ng-container>
+</div> 
+>>>>>>> b74c1f945d3fd1bf227ce791ad66376e7611b898
 
     <!--Begin  -->
 
@@ -43,6 +76,7 @@
     <!-- </div> -->
     </div>
   </div>
+<<<<<<< HEAD
 </div>
 
 <div class="container mt-5">
@@ -67,3 +101,5 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item "><a class="page-link" href="#">Next</a></li>
   </ul> -->
+=======
+>>>>>>> b74c1f945d3fd1bf227ce791ad66376e7611b898

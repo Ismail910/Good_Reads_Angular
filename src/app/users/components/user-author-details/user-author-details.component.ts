@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/@core/api.service';
 import { User } from 'src/app/@shared/model/user';
 import { AuthService } from 'src/app/services/user/auth.service';
-import { AuthorService } from 'src/app/services/user/author.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,12 +11,12 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./user-author-details.component.css']
 })
 export class UserAuthorDetailsComponent implements OnInit,OnChanges{
-  author!: any
+  author: any=[]
   autherID !: number
   userId!:User
   userData?:any
   
-  constructor (private authorService : AuthorService,
+  constructor (
                 private ActivatedRoute : ActivatedRoute,
                 private Api: ApiService,
                 private Auth: AuthService,){

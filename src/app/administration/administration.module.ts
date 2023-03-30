@@ -16,6 +16,7 @@ import { AdminAuthorsAddComponent } from './admin-authors/admin-authors-add/admi
 import { AdminBooksAddComponent } from './admin-books/admin-books-add/admin-books-add.component';
 import { AdminBooksEditComponent } from './admin-books/admin-books-edit/admin-books-edit.component';
 import { AdminChartComponent } from './admin-dashboard/admin-chart/admin-chart.component';
+import { AdminCategoryEditComponent } from './admin-categories/admin-category-edit/admin-category-edit.component';
 
 
 
@@ -33,7 +34,8 @@ import { AdminChartComponent } from './admin-dashboard/admin-chart/admin-chart.c
     AdminAuthorsAddComponent,
     AdminBooksAddComponent,
     AdminBooksEditComponent,
-    AdminChartComponent
+    AdminChartComponent,
+    AdminCategoryEditComponent
   ],
   imports: [
     CommonModule,

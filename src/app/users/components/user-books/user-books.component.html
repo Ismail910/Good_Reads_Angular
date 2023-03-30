@@ -1,7 +1,9 @@
+
+
 <div>
   <div class="container p-5 d-flex">
-    <div class="buttons" href="/books">
-      <a>All </a>
+    <div class="buttons" (click)="getBooks()" >
+      <a  >All </a>
     </div>
     <div class="buttons" (click)="getBooksByStatus('Read')">
       <a>Read </a>

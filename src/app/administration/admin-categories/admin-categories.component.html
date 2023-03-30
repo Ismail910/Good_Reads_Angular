@@ -53,9 +53,10 @@
 
       <ng-container *ngFor="let category of listCategories; let i=index;">
         <tr>
-          <td> {{i+1}}</td>
-          <td>
-            <img src="http://localhost:5000/{{category?.img}}" alt="" style="height: 6vh;">
+          <td class="px-1"> {{i+1}}</td>
+          <td style="width: 4%;">
+            <img src="http://localhost:5000/{{category?.img}}" alt="" style="height: 5vh;
+            width: 100%;">
           </td>
           <td>{{category.name}}</td>
           <td>
@@ -126,51 +127,6 @@
 
 
 <!---------------------EditCategory----------------------------->
-<div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog mt-5">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Category</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form [formGroup]="editCategory" (ngSubmit)="EditCategory()">
-      <div class="modal-body">
-          <div class="form-group">
-
-            <input type="hidden"  formControlName="_id"   [value]="idCategory">
-
-            <input type="text" class="form-control" placeholder="Category Name"
-              formControlName="name"
-              name="name"
-              [value]="oldNameCategory"
-              [class.is-invalid]="oldNameCategory?.invalid"
-              [class.is-valid]="oldNameCategory?.valid"
-            >
-            <div class="alert alert-warning"
-              [hidden]="oldNameCategory?.valid || oldNameCategory?.untouched" >
-              <small *ngIf="oldNameCategory?.errors?.['required']">
-                * Name category is required </small>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <input type="file" class="form-control"  (change)="uploadImage($event)"
-            name="image" formControlName="image" accept=".png,.jpg,.jpeg"
-            [class.is-valid]="image?.valid" >
-            <div class="alert alert-warning" [hidden]="image?.valid || image?.untouched" >
-              <small *ngIf="image?.errors?.['required']">Image is required </small>
-            </div>
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn" style="background: #18AF9A"
-        data-bs-dismiss="modal"
-        [disabled]="editCategory.invalid"
-        >Save</button>
-      </div>
-      </form>
-    </div>
-
-  </div>
-</div>
+<app-admin-category-edit
+ (isEdit)="receivedEditCategory($event)" (isError)="receivedErrorCategory($event)"
+[category]="ECategory"></app-admin-category-edit>

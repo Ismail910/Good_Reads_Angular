@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/@core/api.service';
 import { ICategory } from 'src/app/@shared/model/icategory';
@@ -13,8 +14,11 @@ export class UserCategoriesComponent implements OnInit,OnChanges{
  categories!:any
  page!:string
 
+ characters: any=[];
+ showResults:boolean=false;
+ titlename="category"
     constructor (private categoryService :CategoryService,
-      private api:ApiService){
+      private api:ApiService,private http: HttpClient){
       // this.categoryService.getCategories(1).subscribe((aut) => {
       //   this.categories = aut.data;
       //   this.page=aut.pages;
@@ -46,6 +50,24 @@ this.categories=data;
 
   this.getCategories();
  
+    }
+  
+    search(searchText:string) {
+      this.showResults=true;
+      
+      if(searchText==""){
+       
+        this.characters=[]
+      }else{
+        this.http.get<any[]>(`${environment.baseUrl}/category/search/${searchText}`).subscribe(
+          (category) => {
+            this.characters = category;
+          },
+          (err) => {
+            console.error(err);
+          }
+        );
+      }
     }
   
 }

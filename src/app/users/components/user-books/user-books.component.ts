@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/@shared/model/user';
 import { AuthService } from 'src/app/services/user/auth.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-books',
@@ -24,6 +25,9 @@ export class UserBooksComponent implements OnChanges,OnInit{
   _pagination:any=[];
   userId!:User
   userData?:any
+
+  
+
   constructor(
     private Auth: AuthService,
     private ActvetedRoute: ActivatedRoute,
@@ -94,4 +98,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
       this.page=p;
       this.getBooks();
     }
-}
+
+
+  }
+
