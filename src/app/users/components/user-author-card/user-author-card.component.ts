@@ -7,5 +7,5 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class UserAuthorCardComponent {
 
- @Input() author! :any;
+ @Input() author :any=[];
 }
