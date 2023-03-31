@@ -1,8 +1,6 @@
 import { environment } from 'src/environments/environment.development';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
 import { ApiService } from 'src/app/@core/api.service';
-import { Author } from 'src/app/@shared/model/author';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -26,23 +24,12 @@ titlename="author"
   }
 
   ngOnInit() {
-    /*this.authorService.getAllAuthors()
-    .subscribe((aut) => this.authors = aut);*/
-
-    // this.spi.get(`${environment.baseUrl}/admin/author`).subscribe(data=>{
-    //   this.characters=data;;
-    //   });
 
     this.getAuthor();
   }
 
   getAuthor(){
-// <<<<<<< HEAD
-//     this.spi.get(`${environment.baseUrl}/admin/author/page/1`).subscribe(data=>{
-//       this.authors=data;
-//       this.totalPages=data.pages.totalPages;
-//       this._pagination=[...Array(this.totalPages).keys()];})
-// =======
+    
     this.spi.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data=>{
       this.authors=data;
       this.totalPages = data.pages.totalPages;
