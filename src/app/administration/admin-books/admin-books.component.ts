@@ -17,6 +17,9 @@ export class AdminBooksComponent implements OnInit {
   isAdded:boolean=false;
   isEdit:boolean=false;
   EBook!:Book;
+
+  showResults:boolean=false;
+  titlename="books"
   constructor(private api:ApiService){}
   ngOnInit(): void {
     this.books();
@@ -100,4 +103,23 @@ export class AdminBooksComponent implements OnInit {
   }
 
 
+  search(searchText:string) {
+    this.showResults=true;
+
+    if(searchText==""){
+      this.books();
+    }else{
+      this.api.get(`${environment.baseUrl}/book/search/${searchText}`).subscribe(
+        {
+         next:(data) => {
+          this.listBooks = data;
+          console.log("book",data);
+        },
+        error:(err) => {
+          console.error(err);
+        }
+      }
+      );
+    }
+  }
 }

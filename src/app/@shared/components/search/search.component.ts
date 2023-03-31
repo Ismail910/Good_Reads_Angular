@@ -18,7 +18,7 @@ export class SearchComponent {
     this.searchresult.emit(ele)
   }
   changeSHOWresult(){
-    this.searchresult.emit("")
-  //  this.showResult.emit();
+
+  this.showResult.emit(false);
   }
 }
