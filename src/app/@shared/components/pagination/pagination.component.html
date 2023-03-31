@@ -15,8 +15,8 @@
     <button  class="page-link Current">...</button></li>-->
 
   <li class="Next page-item">
-    <button  class="page-link" (click)="next()" [disabled]="page==pagination.length"
-    [class.disabled]="page==pagination.length"
+    <button  class="page-link" (click)="next()" [disabled]="page>=pagination.length"
+    [class.disabled]="page>=pagination.length"
    >N</button></li>
 </ul>
 
