@@ -1,13 +1,10 @@
 
-<<<<<<< HEAD
 .card{transition: all 0.7s ease;}
-.card:hover{box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
-=======
+.card:hover{box-shadow: 5px 5px 10px #333,-5px -5px 10px #333};
 
 
 .author{transition: all 0.7s ease;}
 .author:hover{box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
->>>>>>> 775a055ce9476ead48b2270111c148ef3ea81bb9
     transform: scale(1.05);
     cursor: pointer;
     }

@@ -6,13 +6,18 @@
 
     <!--<li class="page-item">
       <button  class="page-link Current">...</button></li>-->
-  <ng-container *ngFor="let p of pagination; ">
+  <!--<ng-container *ngFor="let p of pagination; ">
     <li class="page-item">
       <button  class="page-link Current" [class.active]="page==p+1" (click)="pageChange(p+1)">{{p+1}}</button></li>
-  </ng-container>
+  </ng-container>-->
 
   <!--<li class="page-item">
     <button  class="page-link Current">...</button></li>-->
+
+
+    <li class="page-item">
+      <button  class="page-link Current active" (click)="pageChange(page)">{{page}}</button>
+    </li>
 
   <li class="Next page-item">
     <button  class="page-link" (click)="next()" [disabled]="page>=pagination.length"

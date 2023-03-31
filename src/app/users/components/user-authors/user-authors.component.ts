@@ -29,7 +29,7 @@ titlename="author"
   }
 
   getAuthor(){
-    
+
     this.spi.get(`${environment.baseUrl}/admin/author/page/${this.page}`).subscribe(data=>{
       this.authors=data;
       this.totalPages = data.pages.totalPages;
@@ -38,9 +38,9 @@ titlename="author"
   }
   search(searchText:string) {
     this.showResults=true;
-    
+
     if(searchText==""){
-     
+
       this.characters=[]
     }else{
       this.http.get<any[]>(`${environment.baseUrl}/admin/author/search/${searchText}`).subscribe(
