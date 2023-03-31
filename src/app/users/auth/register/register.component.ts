@@ -16,46 +16,38 @@ export class RegisterComponent implements OnInit {
   message?:string=''
   selectedImage!:File;
   isAdded:boolean=false;
-  constructor(private _AuthService:AuthService,private _Router:Router){}
+  registerForm!: FormGroup;
+  constructor(private _AuthService:AuthService,private _Router:Router, private fb: FormBuilder){}
   passwordMatching(){
   }
   ngOnInit() : void{
-  
+      this.registerForm =this?.fb.group({
+      first_name : new FormControl(null,[Validators.minLength(3),Validators.maxLength(10),Validators.required]),
+      last_name : new FormControl(null,[Validators.minLength(3),Validators.maxLength(10),Validators.required]),
+      email:new FormControl(null,[Validators.pattern('^[a-zA-Z0-9_.+]+(?<!^[0-9]*)@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
+      Validators.email,Validators.required]),
+      password:new FormControl(null, [Validators.required,Validators.minLength(8)]),
+      confirmPassword:new FormControl(null, [ Validators.required ]),
+      img : new FormControl(null)
+    })
+    // ,[passwordMatch("password","confirmPassword")]
   }
 
-registerForm=new FormGroup({
-  first_name : new FormControl(null,[Validators.minLength(3),Validators.maxLength(10),Validators.required]),
-  last_name : new FormControl(null,[Validators.minLength(3),Validators.maxLength(10),Validators.required]),
-  email:new FormControl(null,[Validators.pattern('^[a-zA-Z0-9_.+]+(?<!^[0-9]*)@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
-Validators.email,Validators.required]),
-  password:new FormControl(null, [Validators.required,Validators.minLength(8)
-    // Validators.pattern(this.passwordRegex)
-  ]),
-  confirmPassword:new FormControl(null, [ Validators.required ]),
-  img : new FormControl(null)
-},[passwordMatch("password","confirmPassword")])
+  // uploadImage(event: any) {
+  //   this.selectedImage=event.target.files[0];
+  //  }
 
-submitRegisterForm(registerForm:FormGroup){
-  // this._AuthService.register(registerForm.value).subscribe((response)=>{
-  //   if(response.id){
-  //     this._Router.navigate(['/login']);
-  //   }
-  //   else {
-  //     console.log("asd")
-  //     console.log(response.message)
-  //     this.error=response.register.error.message;
-  //   }
-  // })
-  // let formdata= new FormData();
-  // formdata.append("img",);
-  this._AuthService.register(registerForm.value).subscribe({
+submitRegisterForm(){
+  const formData = new FormData();
+  formData.append('first_name', this.registerForm.get('first_name')?.value);
+  formData.append('last_name', this.registerForm.get('last_name')?.value);
+  formData.append('email', this.registerForm.get('email')?.value);
+  formData.append('password', this.registerForm.get('password')?.value);
+  formData.append('confirmPassword', this.registerForm.get('confirmPassword')?.value);
+  formData.append('img',this.registerForm.get('img')?.value);
+  this._AuthService.register(formData).subscribe({
     next: (Response)=>{
-      console.log(Response)
-      // this.isAdded=true;
       this._Router.navigate(['/login']);
-      // setTimeout(() => {
-      //   this.isAdded= false;
-      // }, 3000);
     },
     error:()=>{
       this.message="User Already Exist. Please Login";
@@ -67,9 +59,11 @@ submitRegisterForm(registerForm:FormGroup){
   })
 
 }
-
-uploadImage(event: any) {
-  this.selectedImage=event.target.files[0];
- }
+passwordMatch() {
+  const password = this.registerForm.get('password')?.value;
+  const confirmPassword = this.registerForm.get('confirmPassword')?.value;
+  return password === confirmPassword;
 }
+}
+
 
