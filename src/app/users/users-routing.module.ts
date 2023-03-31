@@ -12,7 +12,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';
 import { PopularComponent } from './home/popular/popular.component';
-import { AuthGuard } from '../auth.guard';
+import { AuthGuard } from '../@core/auth/guards/auth.guard';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 const routes: Routes = [

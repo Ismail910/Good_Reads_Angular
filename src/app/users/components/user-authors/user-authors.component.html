@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- 
 <h2 class="text-center fs-5 m-5 p-5 text-danger">ALL AUTHORS</h2>
 =======
@@ -8,14 +9,19 @@
   <div class="content" role="main" > -->
     <div class="center" >
       <div class="card" >
+=======
+
+  <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
+
+
+  <div class="content " role="main" >
+    <div class="center">
+      <div class="card">
+>>>>>>> 775a055ce9476ead48b2270111c148ef3ea81bb9
         <div class="form-group">
-          
-          <ul class="list-group list-group-flush">
-            <!-- results of ngFor is passed to appFilter with argument searchText -->
-            <!-- <li class="list-group-item" *ngFor="let c of characters | searchFilter: searchText"> -->
+          <ul class="list-group list-group-flush" >
             <li class="list-group-item" *ngFor="let c of characters ">
-              <a [routerLink]="['/author',c.ID]" style="text-decoration: none;">{{c.firstName}} {{c.lastName}}</a>
-              
+              <a  [routerLink]="['/author',c.ID]" style="text-decoration: none;">{{c.firstName}} {{c.lastName}}</a>
             </li>
           </ul>
         </div>
@@ -24,26 +30,30 @@
   
   
 
-
-  <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
+  <!-- <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
 <div class="container">
     <ng-container *ngIf="authors.data">
     <div class="row " *ngIf="authors">
         <div class="col-12 col-md-12 col-lg-4 mt-5" *ngFor="let author of authors?.data">
-            
+
             <app-user-author-card [author]="author"></app-user-author-card>
         </div>
-      
-      
+
+
     </div>
+<<<<<<< HEAD
   </ng-container>
 
 </div>  
 
+=======
 
-    <!--Begin  -->
+</ng-container>
+</div> -->
 
-    
+>>>>>>> 775a055ce9476ead48b2270111c148ef3ea81bb9
+
+
 
 
 
@@ -55,8 +65,8 @@
       ALL AUTHORS
     </h2>
 
-    <div class="card m-3" style="width: 18rem; height: 23rem;"*ngFor="let author of authors.data" [routerLink]="['/author',author.ID]" >
-      <!-- <div class="h-100 w-100 " routerLink="/category/{{ category._id }}"> -->
+    <div class="card m-3 author" style="width: 18rem; height: 23rem;"*ngFor="let author of authors.data" [routerLink]="['/author',author.ID]" >
+     
       <img src="http://localhost:5000/{{author?.photo}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
@@ -66,15 +76,18 @@
         margin-left: 5%;
         font-weight: bold;
       ">{{author.firstName}} {{ author.lastName}}</h5>
-        
+
       </div>
     <!-- </div> -->
     </div>
   </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 775a055ce9476ead48b2270111c148ef3ea81bb9
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5 text-center d-flex justify-content-center">
   <app-pagination
     [pagination]="_pagination"
     [next]="next"
@@ -85,6 +98,7 @@
   </app-pagination>
 </div>
 
+<<<<<<< HEAD
 
 
 
@@ -96,3 +110,5 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item "><a class="page-link" href="#">Next</a></li>
   </ul> -->
+=======
+>>>>>>> 775a055ce9476ead48b2270111c148ef3ea81bb9

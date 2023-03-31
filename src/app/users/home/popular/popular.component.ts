@@ -23,7 +23,9 @@ export class PopularComponent implements OnInit{
 
   ngOnInit(): void {
        this.getpopularBook()
+
       //this.getpopularCategory()
+
       this.getpopularAuthor()
   }
 
