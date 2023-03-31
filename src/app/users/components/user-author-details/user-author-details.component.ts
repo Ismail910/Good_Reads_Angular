@@ -15,12 +15,14 @@ export class UserAuthorDetailsComponent implements OnInit,OnChanges{
   autherID !: number
   userId!:User
   userData?:any
-  
+  totalPages:number=0;
+  page:number=1;
+  _pagination:any=[];
   constructor (
                 private ActivatedRoute : ActivatedRoute,
                 private Api: ApiService,
                 private Auth: AuthService,){
-
+                  
                   this.Auth.getuser().subscribe(user=>{
                     this.userData = user;
                     this.userId = this.userData.user._id})
@@ -36,20 +38,28 @@ export class UserAuthorDetailsComponent implements OnInit,OnChanges{
   }
 
   ngOnInit() {
-
-    /*this.authorService.getAuthorByID(this.autherID)
-    .subscribe((aut) => this.author = aut);*/
     
-    this.Api.get(`${environment.baseUrl}/admin/author/${this.autherID}/${this.userId}`)
-    .subscribe((aut) => this.author = aut);
-    
-// =======
-//     this.authorService.getAuthorByID(this.autherID)
-//     .subscribe((aut) => {
-//       this.author = aut
-//     console.log(aut);
-//     });
-
-// >>>>>>> 65ff8df27ea4976ae1d258f5d0fdd4f63442f9c3
+    this.getbookAuthor();
   }
+  getbookAuthor(){
+    this.Api.get(`${environment.baseUrl}/admin/author/authorID/${this.autherID}/${this.userId}`)
+    .subscribe((aut) => this.author = aut);
+  }
+  next=()=>{
+    if(this.page<this.totalPages){
+      this.page++;
+      this.getbookAuthor();
+    }}
+    prev=()=>{
+      if(this.page>1){
+      this.page--;
+      this.getbookAuthor();
+      }
+    }
+
+    currentPage(p:number)
+    {
+      this.page=p;
+      this.getbookAuthor();
+    }
 }
