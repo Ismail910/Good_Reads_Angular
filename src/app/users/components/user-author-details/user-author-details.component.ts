@@ -20,7 +20,7 @@ export class UserAuthorDetailsComponent implements OnInit,OnChanges{
                 private ActivatedRoute : ActivatedRoute,
                 private Api: ApiService,
                 private Auth: AuthService,){
-
+                  
                   this.Auth.getuser().subscribe(user=>{
                     this.userData = user;
                     this.userId = this.userData.user._id})
@@ -40,7 +40,7 @@ export class UserAuthorDetailsComponent implements OnInit,OnChanges{
     /*this.authorService.getAuthorByID(this.autherID)
     .subscribe((aut) => this.author = aut);*/
     
-    this.Api.get(`${environment.baseUrl}/admin/author/${this.autherID}/${this.userId}`)
+    this.Api.get(`${environment.baseUrl}/admin/author/authorID/${this.autherID}/${this.userId}`)
     .subscribe((aut) => this.author = aut);
     
 // =======

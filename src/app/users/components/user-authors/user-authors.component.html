@@ -1,28 +1,24 @@
 
   <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
 
-  <div class="content" role="main" *ngIf="showResults">
-  <!-- <div class="content" role="main" > -->
-    <div class="center" >
-      <div class="card" >
+
+  <div class="content " role="main" >
+    <div class="center">
+      <div class="card">
         <div class="form-group">
-
-          <ul class="list-group list-group-flush">
-            <!-- results of ngFor is passed to appFilter with argument searchText -->
-            <!-- <li class="list-group-item" *ngFor="let c of characters | searchFilter: searchText"> -->
+          <ul class="list-group list-group-flush" >
             <li class="list-group-item" *ngFor="let c of characters ">
-              <a [routerLink]="['/author',c.ID]" style="text-decoration: none;">{{c.firstName}} {{c.lastName}}</a>
-
+              <a  [routerLink]="['/author',c.ID]" style="text-decoration: none;">{{c.firstName}} {{c.lastName}}</a>
             </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
+  
+  
 
-
-
-  <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
+  <!-- <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
 <div class="container">
     <ng-container *ngIf="authors.data">
     <div class="row " *ngIf="authors">
@@ -35,7 +31,7 @@
     </div>
 
 </ng-container>
-</div>
+</div> -->
 
 
 
@@ -50,8 +46,8 @@
       ALL AUTHORS
     </h2>
 
-    <div class="card m-3" style="width: 18rem; height: 23rem;"*ngFor="let author of authors.data" [routerLink]="['/author',author.ID]" >
-      <!-- <div class="h-100 w-100 " routerLink="/category/{{ category._id }}"> -->
+    <div class="card m-3 author" style="width: 18rem; height: 23rem;"*ngFor="let author of authors.data" [routerLink]="['/author',author.ID]" >
+     
       <img src="http://localhost:5000/{{author?.photo}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
