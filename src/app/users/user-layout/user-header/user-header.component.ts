@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/user/auth.service';
 export class UserHeaderComponent implements OnInit {
 firstName?:string
 lastName?:string
+img?:string;
 userData?:any
 isLoginUser:boolean = false;
 constructor(private _AuthService:AuthService){
@@ -23,6 +24,7 @@ this._AuthService.getuser().subscribe(user=>{
   this.userData = user;
   this.firstName = this.userData.user.first_name
   this.lastName = this.userData.user.last_name
+  this.img=this.userData.user.img;
  })
 }
 ngOnInit(){}

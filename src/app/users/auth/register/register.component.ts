@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   passwordMatching(){
   }
   ngOnInit() : void{
-  
+
   }
 
 registerForm=new FormGroup({
@@ -46,9 +46,15 @@ submitRegisterForm(registerForm:FormGroup){
   //     this.error=response.register.error.message;
   //   }
   // })
-  // let formdata= new FormData();
-  // formdata.append("img",);
-  this._AuthService.register(registerForm.value).subscribe({
+   let formdata= new FormData();
+   formdata.append("img", this.selectedImage, this.selectedImage.name);
+   formdata.append("first_name",registerForm.get("first_name")?.value);
+   formdata.append("last_name",registerForm.get("last_name")?.value);
+   formdata.append("email",registerForm.get("email")?.value);
+   formdata.append("password",registerForm.get("password")?.value);
+   formdata.append("confirmPassword",registerForm.get("confirmPassword")?.value);
+
+  this._AuthService.register(formdata).subscribe({
     next: (Response)=>{
       console.log(Response)
       // this.isAdded=true;
