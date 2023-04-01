@@ -82,8 +82,13 @@ export class AdminBooksEditComponent implements OnInit , OnChanges{
     if(this.selectedImage)
     formdata.append("img",this.selectedImage,this.selectedImage.name);
 
+  //oldcategoryID/:categoryID/:oldauthorID/:authorID
+   console.log("old cat",this.book.category._id);
+   console.log("old author",this.book.author._id);
+   console.log("form cat" ,formdata.get('category'));
+   console.log("form author" ,formdata.get('author'));
 
-    this.api.put(`${environment.baseUrl}/book/${this.book._id}`,formdata).subscribe({
+    this.api.put(`${environment.baseUrl}/book/${this.book._id}/${this.book?.category._id}/${this.category?.value}/${this.book?.author._id}/${this.author?.value}`,formdata).subscribe({
       next:()=>{
 
         this.isEdit.emit(true);

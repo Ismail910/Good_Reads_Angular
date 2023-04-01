@@ -15,8 +15,9 @@ export class UserCategoriesComponent implements OnInit,OnChanges{
  page!:string
 
  characters: any=[];
- showResults:boolean=false;
- titlename="category"
+ //showResults:boolean=false;
+ titlename="category";
+ show:boolean=false;
     constructor (private categoryService :CategoryService,
       private api:ApiService,private http: HttpClient){
       // this.categoryService.getCategories(1).subscribe((aut) => {
@@ -24,7 +25,7 @@ export class UserCategoriesComponent implements OnInit,OnChanges{
       //   this.page=aut.pages;
       //   console.log(this.categories );
       //   console.log(this.page);
-        
+
       // }  );
 //________________________
 
@@ -35,28 +36,28 @@ export class UserCategoriesComponent implements OnInit,OnChanges{
 getCategories(){
   this.api.get(`${environment.baseUrl}/category`).subscribe((data)=>{
     console.log(data);
-this.categories=data;    
+this.categories=data;
   })
 }
 
     ngOnChanges() {
-  
+
     }
-  
+
     ngOnInit() {
   //     this.categoryService.getCategories()
   //     .subscribe((aut) => this.categories = aut);
   // console.log(this.categories);
 
   this.getCategories();
- 
+
     }
-  
+
     search(searchText:string) {
-      this.showResults=true;
-      
+      //this.showResults=true;
+
       if(searchText==""){
-       
+
         this.characters=[]
       }else{
         this.http.get<any[]>(`${environment.baseUrl}/category/search/${searchText}`).subscribe(
@@ -69,5 +70,12 @@ this.categories=data;
         );
       }
     }
-  
+
+
+
+    showResults(e:any)
+    {
+      this.show=e;
+    }
+
 }

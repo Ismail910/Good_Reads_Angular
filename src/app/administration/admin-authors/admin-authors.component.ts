@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 export class AdminAuthorsComponent implements OnInit {
 
   listAuthors: Author[] = [];
-  selectedImage!:File;
+ // selectedImage!:File;
   totalPages: number = 0;
   page: number = 1;
   _pagination: any = [];

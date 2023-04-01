@@ -23,7 +23,9 @@ export class PopularComponent implements OnInit{
 
   ngOnInit(): void {
        this.getpopularBook()
-      // this.getpopularCategory()
+
+      this.getpopularCategory()
+
       this.getpopularAuthor()
   }
 
@@ -35,12 +37,12 @@ export class PopularComponent implements OnInit{
 getpopularCategory(){
     this.Api.get(`${environment.baseUrl}/popular/popularCategory`).subscribe(data=>{
       this.popularCategory = data;
-      console.log(this.getpopularCategory)
+      console.log(this.popularCategory)
     })
 }
 
 getpopularAuthor(){
-  this.Api.get(`http://localhost:5000/popular/popularAuthor`).subscribe(data=>{
+  this.Api.get(`${environment.baseUrl}/popular/popularAuthor`).subscribe(data=>{
     this.popularAuthor=data;
     console.log(this.popularAuthor)
   })

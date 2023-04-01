@@ -1,30 +1,33 @@
 
+  <!-- search -->
+  <app-search [title]="titlename" (searchresult)="search($event)"
+  (showResult)="showResults($event)">
 
+</app-search>
 
-<div class="container">
-  
-  <div class="popular_books">
-    <h1 style="text-align: center;color: #ED553B;" class="p-5" >View Books</h1>
+  <div class="content" role="main" *ngIf="show">
+    <div class="center" >
+      <div class="card" >
+        <div class="form-group">
 
-    <!-- search -->
-    <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
-  
-<div class="content" role="main" >
-  <div class="center" >
-    <div class="card" >
-      <div class="form-group">
-        
-        <ul class="list-group list-group-flush">
-         <li class="list-group-item" *ngFor="let c of characters ">
-            <a [routerLink]="['/category',c._id]" style="text-decoration: none;">{{c.name}}</a>
-            
-          </li>
-        </ul>
+          <ul class="list-group list-group-flush">
+           <li class="list-group-item" *ngFor="let c of characters ">
+              <a [routerLink]="['/book',c._id]" style="text-decoration: none;">{{c.name}}</a>
+
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- end search -->
+  <!-- end search -->
+
+
+<div class="container">
+
+  <div class="popular_books">
+    <h1 style="text-align: center;color: #ED553B;" class="p-5" >View Books</h1>
+
 
 
     <div class="books row">
