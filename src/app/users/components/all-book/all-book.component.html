@@ -37,5 +37,17 @@
         </div>
     </div>
       </div>
+
+
+<div class="container mt-5 text-center d-flex justify-content-center">
+  <app-pagination
+    [pagination]="_pagination"
+    [next]="next"
+    [prev]="prev"
+    [page]="page"
+    (currPage)="currentPage($event)"
+  >
+  </app-pagination>
+</div>
   </div>
   </div>

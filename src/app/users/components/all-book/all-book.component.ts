@@ -61,4 +61,23 @@ export class AllBookComponent implements OnInit{
     {
       this.show=e;
     }
+
+    next=()=>{
+      if(this.page<this.totalPages){
+        this.page++;
+        this.getBooks();
+      }}
+      prev=()=>{
+        if(this.page>1){
+        this.page--;
+        this.getBooks();
+        }
+      }
+
+      currentPage(p:number)
+      {
+        this.page=p;
+        this.getBooks();
+      }
+
 }
