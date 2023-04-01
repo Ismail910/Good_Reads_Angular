@@ -15,7 +15,8 @@ export class AllBookComponent implements OnInit{
   _pagination:any=[];
 
   characters: any=[];
-  showResults:boolean=false;
+  //showResults:boolean=false;
+  show:boolean=false;
   titlename="book"
   constructor(private Api: ApiService, private http: HttpClient){
 
@@ -39,10 +40,10 @@ export class AllBookComponent implements OnInit{
       })
     }
  search(searchText:string) {
-      this.showResults=true;
-      
+      //this.showResults=true;
+
       if(searchText==""){
-       
+
         this.characters=[]
       }else{
         this.http.get<any[]>(`${environment.baseUrl}/book/search/${searchText}`).subscribe(
@@ -54,5 +55,10 @@ export class AllBookComponent implements OnInit{
           }
         );
       }
+    }
+
+    showResults(e:any)
+    {
+      this.show=e;
     }
 }
