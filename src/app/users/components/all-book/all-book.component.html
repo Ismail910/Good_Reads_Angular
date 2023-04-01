@@ -5,11 +5,10 @@
 
 </app-search>
 
-  <div class="content" role="main" *ngIf="show">
+  <div class="content" role="main">
     <div class="center" >
       <div class="card" >
         <div class="form-group">
-
           <ul class="list-group list-group-flush">
            <li class="list-group-item" *ngFor="let c of characters ">
               <a [routerLink]="['/book',c._id]" style="text-decoration: none;">{{c.name}}</a>
