@@ -22,8 +22,10 @@ export class AuthService {
   register(data:any): Observable<any>{
     return this._HttpClient.post(`${environment.baseUrl}/register`,data)
   }
+
+
   login(data:any): Observable<any>{
-    return this._HttpClient.post(`${environment.baseUrl}/login`,data)
+    return this._HttpClient.post(`${environment.baseUrl}/login/user`,data)
   }
 
   saveCurrentUser()

@@ -42,7 +42,7 @@ getpopularCategory(){
 }
 
 getpopularAuthor(){
-  this.Api.get(`http://localhost:5000/popular/popularAuthor`).subscribe(data=>{
+  this.Api.get(`${environment.baseUrl}/popular/popularAuthor`).subscribe(data=>{
     this.popularAuthor=data;
     console.log(this.popularAuthor)
   })
