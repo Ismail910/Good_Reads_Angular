@@ -9,21 +9,18 @@ import { environment } from './../../../../environments/environment';
   styleUrls: ['./all-book.component.css']
 })
 export class AllBookComponent implements OnInit{
-  books!:any
+  books!:any;
   totalPages:number=0;
   page:number=1;
   _pagination:any=[];
-
   characters: any=[];
-  showResults:boolean=false;
-  titlename="book"
+  show:boolean=false;
+  titlename="book";
   constructor(private Api: ApiService, private http: HttpClient){
 
-
-  }
+}
   ngOnInit(): void {
    this.getBooks();
-
   }
 
   getBooks()
@@ -34,15 +31,12 @@ export class AllBookComponent implements OnInit{
         console.log(data);
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
-
-
       })
     }
  search(searchText:string) {
-      this.showResults=true;
-      
+
       if(searchText==""){
-       
+
         this.characters=[]
       }else{
         this.http.get<any[]>(`${environment.baseUrl}/book/search/${searchText}`).subscribe(
@@ -55,4 +49,27 @@ export class AllBookComponent implements OnInit{
         );
       }
     }
+
+    showResults(e:any)
+    {
+      this.show=e;
+    }
+
+    next=()=>{
+      if( this.page < this.totalPages){
+          this.page++;
+          this.getBooks();
+      }}
+      prev=()=>{
+          if(this.page>1){
+          this.page--;
+          this.getBooks();
+        }
+      }
+      currentPage(p:number)
+      {
+        this.page=p;
+        this.getBooks();
+      }
+
 }

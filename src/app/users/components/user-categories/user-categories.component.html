@@ -1,25 +1,25 @@
 
-<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
-  
-<!-- <div class="content" role="main" *ngIf="showResults"> -->
+<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults($event)"></app-search>
+
+ <div class="content" role="main" *ngIf="show">
 <div class="content" role="main" >
   <div class="center" >
     <div class="card" >
       <div class="form-group">
-        
+
         <ul class="list-group list-group-flush">
           <!-- results of ngFor is passed to appFilter with argument searchText -->
           <!-- <li class="list-group-item" *ngFor="let c of characters | searchFilter: searchText"> -->
           <li class="list-group-item" *ngFor="let c of characters ">
             <a [routerLink]="['/category',c._id]" style="text-decoration: none;">{{c.name}}</a>
-            
+
           </li>
         </ul>
       </div>
     </div>
   </div>
 </div>
-
+</div>
 
 <!-- <div class="container">
   <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
@@ -48,10 +48,6 @@
   </div>
 </div> -->
 
-
-
-
-
 <!-- Begin -->
 
 
@@ -63,22 +59,32 @@
     </h2>
 
     <div class="card m-3" style="width: 18rem; height: 23rem;" *ngFor="let category of categories"  routerLink="/category/{{ category._id }}" >
-      <!-- <div class="h-100 w-100 " routerLink="/category/{{ category._id }}"> -->
       <img src="http://localhost:5000/{{category?.img}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
-        color: #3c3484;
-        font-size: 160%;
-        text-align: center;
-        margin-left: 5%;
-        font-weight: bold;
-      ">{{ category.name }}</h5>
-        
+              color: #3c3484;
+              font-size: 160%;
+              text-align: center;
+              margin-left: 5%;
+              font-weight: bold;">
+              {{ category.name }}
+       </h5>
+
       </div>
-    <!-- </div> -->
+
     </div>
   </div>
 </div>
 
 
+<div class="container mt-5 text-center d-flex justify-content-center">
+  <app-pagination
+    [pagination]="_pagination"
+    [next]="next"
+    [prev]="prev"
+    [page]="page"
+    (currPage)="currentPage($event)"
+  >
+  </app-pagination>
+</div>
 
