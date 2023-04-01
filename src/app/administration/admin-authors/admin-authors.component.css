@@ -1,6 +1,6 @@
 table
 {
- width: 1140px;
+ width: 100%;
 }
 
 tr td
@@ -56,3 +56,5 @@ td button i
 {
   border-left: 5px solid rgb(149, 8, 8);
 }
+
+
