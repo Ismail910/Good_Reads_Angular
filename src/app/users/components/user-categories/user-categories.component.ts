@@ -11,9 +11,10 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./user-categories.component.css']
 })
 export class UserCategoriesComponent implements OnInit,OnChanges{
- categories!:any
- page!:string
-
+ categories!:any;
+ totalPages:number=0;
+ page:number=1;
+ _pagination:any=[];
  characters: any=[];
  //showResults:boolean=false;
  titlename="category";
@@ -77,5 +78,23 @@ this.categories=data;
     {
       this.show=e;
     }
+
+    next=()=>{
+      if( this.page < this.totalPages){
+          this.page++;
+          this.getCategories();
+      }}
+      prev=()=>{
+          if(this.page>1){
+          this.page--;
+          this.getCategories();
+        }
+      }
+
+      currentPage(p:number)
+      {
+        this.page=p;
+        this.getCategories();
+      }
 
 }

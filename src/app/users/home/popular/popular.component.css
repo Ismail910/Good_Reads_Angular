@@ -23,7 +23,7 @@
 /* right styling */
 /* popular book */
 .card{transition: all 0.7s ease;
-
+margin-bottom: 3%;
 }
 .pCategoryCard{
   position: relative;

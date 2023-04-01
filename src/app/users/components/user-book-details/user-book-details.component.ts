@@ -78,7 +78,7 @@ export class UserBookDetailsComponent implements OnInit {
       this.book = book;
       this.getRatin();
       console.log(book);
-      
+
     });
   }
 
@@ -149,6 +149,7 @@ export class UserBookDetailsComponent implements OnInit {
       userId: this.user_id,
       like: oldreview.target.value,
     };
+    console.log(Reviewdata._id);
     this.Api.put(`${environment.baseUrl}/reviews/${Reviewdata._id}`, data).subscribe((data) => {
       console.log(data);
       console.log('asd');
