@@ -15,9 +15,6 @@ const routes: Routes = [
   then(m=>m.AdministrationModule)
   },
   {path:'home', component:PopularComponent},
-
-  {path:'login', component:LoginComponent},
-  {path:'register', component:RegisterComponent},
   {path:'**',component:NotFoundComponent}
 
 ];

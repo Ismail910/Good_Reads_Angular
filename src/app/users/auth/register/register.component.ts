@@ -21,6 +21,7 @@ export class RegisterComponent implements OnInit {
   passwordMatching(){
   }
   ngOnInit() : void{
+
       this.registerForm =this?.fb.group({
       first_name : new FormControl(null,[Validators.minLength(3),Validators.maxLength(10),Validators.required]),
       last_name : new FormControl(null,[Validators.minLength(3),Validators.maxLength(10),Validators.required]),
@@ -29,15 +30,37 @@ export class RegisterComponent implements OnInit {
       password:new FormControl(null, [Validators.required,Validators.minLength(8)]),
       confirmPassword:new FormControl(null, [ Validators.required ]),
       img : new FormControl(null)
-    })
+    });
     // ,[passwordMatch("password","confirmPassword")]
+
   }
 
   // uploadImage(event: any) {
   //   this.selectedImage=event.target.files[0];
   //  }
 
+// submitRegisterForm(){
+
+//   this._AuthService.register(formData).subscribe({
+
 submitRegisterForm(){
+  // this._AuthService.register(registerForm.value).subscribe((response)=>{
+  //   if(response.id){
+  //     this._Router.navigate(['/login']);
+  //   }
+  //   else {
+  //     console.log("asd")
+  //     console.log(response.message)
+  //     this.error=response.register.error.message;
+  //   }
+  // })
+  //  let formdata= new FormData();
+  //  formdata.append("img", this.selectedImage, this.selectedImage.name);
+  //  formdata.append("first_name",this.registerForm.get("first_name")?.value);
+  //  formdata.append("last_name",this.registerForm.get("last_name")?.value);
+  //  formdata.append("email",this.registerForm.get("email")?.value);
+  //  formdata.append("password",this.registerForm.get("password")?.value);
+  //  formdata.append("confirmPassword",this.registerForm.get("confirmPassword")?.value);
   const formData = new FormData();
   formData.append('first_name', this.registerForm.get('first_name')?.value);
   formData.append('last_name', this.registerForm.get('last_name')?.value);
@@ -45,6 +68,7 @@ submitRegisterForm(){
   formData.append('password', this.registerForm.get('password')?.value);
   formData.append('confirmPassword', this.registerForm.get('confirmPassword')?.value);
   formData.append('img',this.registerForm.get('img')?.value);
+
   this._AuthService.register(formData).subscribe({
     next: (Response)=>{
       this._Router.navigate(['/login']);
