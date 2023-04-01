@@ -28,15 +28,15 @@ export class RegisterComponent implements OnInit {
       Validators.email,Validators.required]),
       password:new FormControl(null, [Validators.required,Validators.minLength(8)]),
       confirmPassword:new FormControl(null, [ Validators.required ]),
-      img : new FormControl(null)
+      img : new FormControl('')
     });
     // ,[passwordMatch("password","confirmPassword")]
   }
 
 
-  // uploadImage(event: any) {
-  //   this.selectedImage=event.target.files[0];
-  //  }
+    uploadImage(event: any) {
+     this.selectedImage=event.target.files[0];
+    }
 
 submitRegisterForm(){
   // this._AuthService.register(registerForm.value).subscribe((response)=>{
@@ -49,20 +49,24 @@ submitRegisterForm(){
   //     this.error=response.register.error.message;
   //   }
   // })
-  //  let formdata= new FormData();
-  //  formdata.append("img", this.selectedImage, this.selectedImage.name);
-  //  formdata.append("first_name",this.registerForm.get("first_name")?.value);
-  //  formdata.append("last_name",this.registerForm.get("last_name")?.value);
-  //  formdata.append("email",this.registerForm.get("email")?.value);
-  //  formdata.append("password",this.registerForm.get("password")?.value);
-  //  formdata.append("confirmPassword",this.registerForm.get("confirmPassword")?.value);
+    /*let formdata= new FormData();
+    if(this.selectedImage)
+    formdata.append("img", this.selectedImage, this.selectedImage.name);
+    formdata.append("first_name",this.registerForm.get("first_name")?.value);
+    formdata.append("last_name",this.registerForm.get("last_name")?.value);
+    formdata.append("email",this.registerForm.get("email")?.value);
+    formdata.append("password",this.registerForm.get("password")?.value);
+     formdata.append("confirmPassword",this.registerForm.get("confirmPassword")?.value);*/
   const formData = new FormData();
   formData.append('first_name', this.registerForm.get('first_name')?.value);
   formData.append('last_name', this.registerForm.get('last_name')?.value);
   formData.append('email', this.registerForm.get('email')?.value);
   formData.append('password', this.registerForm.get('password')?.value);
   formData.append('confirmPassword', this.registerForm.get('confirmPassword')?.value);
-  formData.append('img',this.registerForm.get('img')?.value);
+ // formData.append('img',this.registerForm.get('img')?.value);
+  if(this.selectedImage)
+  formData.append("img", this.selectedImage, this.selectedImage.name);
+
 
   this._AuthService.register(formData).subscribe({
     next: (Response)=>{
