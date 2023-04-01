@@ -1,7 +1,7 @@
 
 <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults($event)"></app-search>
 
- <div class="content" role="main" *ngIf="show">
+ <div class="content" role="main">
 <div class="content" role="main" >
   <div class="center" >
     <div class="card" >
@@ -58,7 +58,7 @@
       ALL CATEGORIES
     </h2>
 
-    <div class="card m-3" style="width: 18rem; height: 23rem;" *ngFor="let category of categories"  routerLink="/category/{{ category._id }}" >
+    <div class="card m-3" style="width: 18rem; height: 23rem;" *ngFor="let category of categories"  routerLink="/category/{{ category?._id }}" >
       <img src="http://localhost:5000/{{category?.img}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
@@ -67,7 +67,7 @@
               text-align: center;
               margin-left: 5%;
               font-weight: bold;">
-              {{ category.name }}
+              {{ category?.name }}
        </h5>
 
       </div>

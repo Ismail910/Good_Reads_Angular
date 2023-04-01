@@ -17,8 +17,6 @@ import { PopularComponent } from './home/popular/popular.component';
 import { UserAuthorCardComponent } from './components/user-author-card/user-author-card.component';
 import { SharedModule } from '../@shared/@shared.module';
 import { NotFoundComponent } from './error/not-found/not-found.component';
-
-//import { SlideshowComponent } from './user-layout/slideshow/slideshow.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookCardAllComponent } from './components/book-card-to-All/book-card.component';
@@ -42,7 +40,6 @@ import { AllBookComponent } from './components/all-book/all-book.component';
     PopularComponent,
     UserAuthorCardComponent,
     NotFoundComponent,
-    //SlideshowComponent,
      BookCardComponent,
      BookCardAllComponent,
      AboutusComponent,

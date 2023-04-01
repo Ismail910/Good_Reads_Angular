@@ -67,13 +67,13 @@
                     </div>
                     <div class="form-group">
                         <input type="file" class="form-control"   name="img" formControlName="img" accept=".png, .jpg, .jpeg"
+                        (change)="uploadImage($event)"
+
                        >
-                       <!-- (change)="uploadImage($event)"  -->
-                       <!-- [class.is-valid]="img?.valid"
-                       [class.is-invalid]="img?.invalid"  -->
-                        <!-- <div class="alert alert-warning" [hidden]="img?.valid || img?.untouched" >
+
+                         <!--<div class="alert alert-warning" [hidden]="img?.valid || img?.untouched" >
                           <small *ngIf="img?.errors?.['required']">Image is required </small>
-                        </div> -->
+                        </div>-->
                       </div>
 
                     <div class="m-auto py-5 d-flex justify-content-center" >

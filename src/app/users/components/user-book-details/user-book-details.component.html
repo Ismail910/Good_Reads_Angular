@@ -179,17 +179,17 @@
         />
       </div>
       <div class="col-5 p-5">
-        <h2 style="color:#ED553B; font-size: 60px;">{{ book.name }}</h2>
-        <h4 style="color:#3C3484; font-size: 40px;">{{ book.author.firstName }} {{ book.author.lastName }}</h4>
-        <p style="font-size: 30px;">{{ book.category.name }}</p>
+        <h2 style="color:#ED553B; font-size: 60px;">{{ book?.name }}</h2>
+        <h4 style="color:#3C3484; font-size: 40px;">{{ book?.author?.firstName }} {{ book?.author?.lastName }}</h4>
+        <p style="font-size: 30px;">{{ book?.category?.name }}</p>
         <p>Book overview :</p>
         <div class="avgContainer mb-5">
           <p>
-            <span class="AvgRate ">{{ book.avg_rate|number:'1.1-1' }}</span>
+            <span class="AvgRate ">{{ book?.avg_rate|number:'1.1-1' }}</span>
           </p>
         </div >
         <p>
-          {{ book.summary }}
+          {{ book?.summary }}
         </p>
       </div>
     </div>
@@ -202,7 +202,7 @@
       <div class=" selection  col-7" (click)="addRating()">
         <select
         type="button"
-        value="{{ book.bookUser.status }}"
+        value="{{ book?.bookUser?.status }}"
         (click)="add($event)">
         <option value="Read">Read</option>
         <option  value="Reading">Reading</option>
@@ -243,14 +243,14 @@
           <div class="card mb-3" style="overflow: scroll; height: 300px;">
             <div class="card-body">
               <p>Type your note, and hit enter to add it</p>
-              <div class="d-flex justify-content-between" *ngFor="let review of book.reviews">
+              <div class="d-flex justify-content-between" *ngFor="let review of book?.reviews">
                 <div class="d-flex flex-row ">
-                  <img src="{{ review.user.img }} ../../../../../../assets/download.jfif"
+                  <img src="{{ review?.user?.img }} ../../../../../../assets/download.jfif"
                   alt="Image"
                   class=" commentImg img-fluid mr-1 mt-1"
                  alt="avatar"  />
-                  <p class="small mb-0 ms-2" >{{ review.user.first_name }}
-                    {{ review.user.last_name }} <br> {{ review.comment }} <br>{{ review.date |date:'medium'}}</p>
+                  <p class="small mb-0 ms-2" >{{ review?.user?.first_name }}
+                    {{ review?.user?.last_name }} <br> {{ review?.comment }} <br>{{ review?.date |date:'medium'}}</p>
 
                 </div>
 
@@ -259,7 +259,7 @@
                     <select
                     class="select btn btn-secondary dropdown-toggle"
                     type="button"
-                    value="{{ review?.changeLike.like }}">
+                    value="{{ review?.changeLike?.like }}">
                     <option value="true">like</option>
                     <option value="false">dislike</option>
                   </select>

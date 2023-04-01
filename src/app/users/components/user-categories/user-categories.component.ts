@@ -35,9 +35,11 @@ export class UserCategoriesComponent implements OnInit,OnChanges{
     }
 
 getCategories(){
-  this.api.get(`${environment.baseUrl}/category`).subscribe((data)=>{
+  this.api.get(`${environment.baseUrl}/category/page/${this.page}`).subscribe((data)=>{
     console.log(data);
-this.categories=data;
+    this.categories=data.data;
+    this.totalPages=data.pages.totalPages;
+    this._pagination=[...Array(this.totalPages).keys()];
   })
 }
 

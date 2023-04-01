@@ -45,8 +45,8 @@ export class UserBookDetailsComponent implements OnInit {
   ) {
     this.userData = this.Auth.getuser().subscribe((user) => {
       this.userData = user;
-      console.log(this.userData);
-      console.log(this.userData.user.first_name);
+      // console.log(this.userData);
+      // console.log(this.userData.user.first_name);
       this.user_id = this.userData.user._id;
       this.user_info = this.userData.user;
     });
@@ -77,7 +77,7 @@ export class UserBookDetailsComponent implements OnInit {
     ).subscribe((book) => {
       this.book = book;
       this.getRatin();
-      console.log(book);
+      // console.log(book);
 
     });
   }
@@ -86,15 +86,15 @@ export class UserBookDetailsComponent implements OnInit {
   //////////   get rating
   getRating(star: number): void {
     this.rating = star;
-    console.log(this.rating);
-    console.log(this.book.bookUser.rating);
+    // console.log(this.rating);
+    // console.log(this.book.bookUser.rating);
   }
   getRatin() {
     this.rating = this.book.bookUser.rating;
   }
   add(stat: any) {
     this.status = stat.target.value;
-    console.log(this.status);
+    // console.log(this.status);
   }
 
   /////// set Rating form to db
@@ -111,16 +111,16 @@ export class UserBookDetailsComponent implements OnInit {
     {
       this.Api.post(`${environment.baseUrl}/bookUser`, data).subscribe((obj) => {
         this.bookUserId = obj.id
-        console.log(obj);
+        // console.log(obj);
         this.getbook();
-        console.log("create");
+        // console.log("create");
       });
 
     }else{
       this.Api.put(`${environment.baseUrl}/bookUser/${this.book.bookUser._id}`, data).subscribe((obj) => {
-        console.log(obj);
+        // console.log(obj);
         this.getbook();
-        console.log("update");
+        // console.log("update");
       });
     }
 
@@ -136,7 +136,7 @@ export class UserBookDetailsComponent implements OnInit {
     };
     this.Api.post(`${environment.baseUrl}/reviews/`, data).subscribe((data) => {
       this.getbook();
-      console.log(data);
+      // console.log(data);
       this.getbook();
     });
   }
@@ -144,17 +144,15 @@ export class UserBookDetailsComponent implements OnInit {
   ////////////// put and set Like To Review form to db
 
   setLikeToReview(oldreview:any, Reviewdata:any ) {
-    console.log(oldreview.target.value);
+    // console.log(oldreview.target.value);
     const data:any = {
       userId: this.user_id,
       like: oldreview.target.value,
     };
-    console.log(Reviewdata._id);
+    // console.log(Reviewdata._id);
     this.Api.put(`${environment.baseUrl}/reviews/${Reviewdata._id}`, data).subscribe((data) => {
-      console.log(data);
-      console.log('asd');
+      // console.log(data);
     });
-    console.log(data);
   }
 
 }

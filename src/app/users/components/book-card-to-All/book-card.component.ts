@@ -25,8 +25,8 @@ export class BookCardAllComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.books?.rating );
-    this.rating = this.books?.avg_rate 
+    // console.log(this.books?.rating );
+    this.rating = this.books?.avg_rate
   }
 
 }

@@ -1,27 +1,8 @@
 
-
-<!--
-<h2 class="text-center fs-5 m-5 p-5 text-danger">ALL AUTHORS</h2>
-=======
-
-  <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
-
-  <div class="content" role="main" *ngIf="showResults">
-  <div class="content" role="main" > -->
-    <!-- <div class="center" >
-      <div class="card" >
-
-
-  <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
-=======
 <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
-
-
-
   <div class="content " role="main" >
     <div class="center">
       <div class="card">
-
         <div class="form-group">
           <ul class="list-group list-group-flush" >
             <li class="list-group-item" *ngFor="let c of characters ">
@@ -30,43 +11,8 @@
           </ul>
         </div>
       </div>
-
-    </div> -->
-
-
-
-
-  <!-- <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
-<div class="container">
-    <ng-container *ngIf="authors.data">
-    <div class="row " *ngIf="authors">
-        <div class="col-12 col-md-12 col-lg-4 mt-5" *ngFor="let author of authors?.data">
-
-            <app-user-author-card [author]="author"></app-user-author-card>
-        </div>
-
-
     </div>
-
-
-  </ng-container>
-
-</div>
-
-=======
-=======
->>>>>>> 93c8f22f0e3291b05b2d30be680aff51363d79b2
-
-</ng-container>
-</div> -->
-
-
-
-
-
-
-
-
+  </div>
 
 <!-- Begin -->
 <div class="container">

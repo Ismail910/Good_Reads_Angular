@@ -37,14 +37,14 @@ export class PopularComponent implements OnInit{
 getpopularCategory(){
     this.Api.get(`${environment.baseUrl}/popular/popularCategory`).subscribe(data=>{
       this.popularCategory = data;
-      console.log(this.popularCategory)
+      // console.log(this.popularCategory)
     })
 }
 
 getpopularAuthor(){
   this.Api.get(`${environment.baseUrl}/popular/popularAuthor`).subscribe(data=>{
     this.popularAuthor=data;
-    console.log(this.popularAuthor)
+    // console.log(this.popularAuthor)
   })
 }
 
