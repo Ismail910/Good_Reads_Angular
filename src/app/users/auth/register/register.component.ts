@@ -18,8 +18,7 @@ export class RegisterComponent implements OnInit {
   isAdded:boolean=false;
   registerForm!: FormGroup;
   constructor(private _AuthService:AuthService,private _Router:Router, private fb: FormBuilder){}
-  passwordMatching(){
-  }
+  passwordMatching(){}
   ngOnInit() : void{
 
       this.registerForm =this?.fb.group({
@@ -32,16 +31,12 @@ export class RegisterComponent implements OnInit {
       img : new FormControl(null)
     });
     // ,[passwordMatch("password","confirmPassword")]
-
   }
+
 
   // uploadImage(event: any) {
   //   this.selectedImage=event.target.files[0];
   //  }
-
-// submitRegisterForm(){
-
-//   this._AuthService.register(formData).subscribe({
 
 submitRegisterForm(){
   // this._AuthService.register(registerForm.value).subscribe((response)=>{

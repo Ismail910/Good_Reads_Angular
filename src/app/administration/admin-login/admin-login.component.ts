@@ -74,7 +74,6 @@ export class AdminLoginComponent {
           this.error=false;
         },4000);
       }
-
      });
     }
 
