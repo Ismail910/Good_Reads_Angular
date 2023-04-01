@@ -21,7 +21,9 @@
         </p>
       </div>
 
-      
+      <div class="img1">
+        <img  src="../../../../assets/first.png" alt="">
+      </div>
     </div>
   </div>
 </section>
@@ -99,7 +101,7 @@
         <div *ngFor="let Author of Author?._id">
           <div class="authorPhoto">
             <img
-              [routerLink]="['/author/', Author?._id]"
+              [routerLink]="['/author/', Author?.ID]"
               src="http://localhost:5000/{{ Author?.photo }}"
               class="card-img-top h-75"
             />
@@ -134,7 +136,7 @@
       <div *ngFor="let category of popularCategory"  class="mb-5 col-3 ">
         <div *ngFor="let pCategory of category?.category"  style="width: 18rem; height: 20rem">
           <div class="card pCategoryCard w-100 h-100" >
-            <img src="http://localhost:5000/{{ pCategory?.img}}" alt=""  class="card-img-top h-100 " style="opacity: 0.6;">
+            <img src="http://localhost:5000/{{ pCategory?.img}}" alt=""  class="card-img-top h-100 " style="opacity: 0.6;" [routerLink]="['/category/', pCategory._id]">
           <h1 class="card-title titleCategory"
           style="
             color:#ed553b;
@@ -144,7 +146,7 @@
             margin-top: 8%;
             font-weight: bold;
           ">
-            {{ pCategory?.name }}->>
+            {{ pCategory?.name }}
           </h1>
         </div>
         </div>
