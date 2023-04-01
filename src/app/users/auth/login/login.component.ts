@@ -40,6 +40,7 @@ submitloginForm(loginForm:FormGroup){
       this.userData = Response;
       localStorage.setItem('token',Response.token);
       localStorage.setItem('isLogin',"true");
+      localStorage.setItem('isUser',"true");
       this._AuthService.saveCurrentUser();
       this._Router.navigate(['/home']);
     },

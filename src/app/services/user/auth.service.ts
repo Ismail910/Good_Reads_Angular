@@ -43,6 +43,7 @@ export class AuthService {
     this.currentUser.next(null)
     localStorage.removeItem('token')
     localStorage.removeItem('isLogin')
+    localStorage.removeItem('isUser')
     this._Router.navigate(['/login']);
   }
 }
