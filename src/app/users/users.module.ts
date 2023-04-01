@@ -40,10 +40,10 @@ import { AllBookComponent } from './components/all-book/all-book.component';
     PopularComponent,
     UserAuthorCardComponent,
     NotFoundComponent,
-    BookCardComponent,
-    BookCardAllComponent,
-    AboutusComponent,
-    AllBookComponent
+     BookCardComponent,
+     BookCardAllComponent,
+     AboutusComponent,
+     AllBookComponent
   ],
   imports: [
     CommonModule,

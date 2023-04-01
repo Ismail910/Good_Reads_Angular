@@ -13,6 +13,7 @@ export class AdminAuthorsEditComponent implements OnChanges{
   @Input()author:any;
   editAuthor:FormGroup;
   selectedImage!:File;
+  select:boolean=false;
   @Output()isEdit:EventEmitter<boolean> = new EventEmitter();
   error:Boolean=false;
 
@@ -36,7 +37,6 @@ export class AdminAuthorsEditComponent implements OnChanges{
 
   uploadImage(event: any) {
     this.selectedImage=event.target.files[0];
-    console.log(this.selectedImage);
 
    }
   Author()
@@ -56,9 +56,9 @@ export class AdminAuthorsEditComponent implements OnChanges{
     formdata.append("firstName", this.EfirstName?.value);
     formdata.append("lastName", this.ElastName?.value);
     formdata.append("dateOfBirth", date);
-     if(this.selectedImage)
-    formdata.append("photo",this.selectedImage,this.selectedImage.name);
-
+     if(this.selectedImage){
+     formdata.append("photo",this.selectedImage,this.selectedImage.name);
+     }
    this.api.put(`${environment.baseUrl}/admin/author/${this.author.ID}`,formdata).subscribe(
       {
       next:(data)=>{
