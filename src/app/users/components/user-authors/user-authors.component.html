@@ -1,4 +1,5 @@
 
+
 <!-- 
 <h2 class="text-center fs-5 m-5 p-5 text-danger">ALL AUTHORS</h2>
 =======
@@ -12,6 +13,9 @@
 
 
   <app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
+=======
+<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults=false"></app-search>
+
 
 
   <div class="content " role="main" >
@@ -26,9 +30,11 @@
           </ul>
         </div>
       </div>
+
     </div> -->
   
   
+
 
   <!-- <h2 class="text-center fs-5 m-5  text-danger">ALL AUTHORS</h2>
 <div class="container">
@@ -42,14 +48,18 @@
 
     </div>
 
+
   </ng-container>
 
 </div>  
 
 =======
+=======
+>>>>>>> 93c8f22f0e3291b05b2d30be680aff51363d79b2
 
 </ng-container>
 </div> -->
+
 
 
 
@@ -66,7 +76,7 @@
     </h2>
 
     <div class="card m-3 author" style="width: 18rem; height: 23rem;"*ngFor="let author of authors.data" [routerLink]="['/author',author.ID]" >
-     
+
       <img src="http://localhost:5000/{{author?.photo}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
@@ -81,6 +91,8 @@
     <!-- </div> -->
     </div>
   </div>
+
+
 
 </div>
 
@@ -100,6 +112,7 @@
 
 
 
+
 <!-- <ul class="pagination pagination-lg d-flex justify-content-center mb-5">
     <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
     <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -107,3 +120,4 @@
     <li class="page-item"><a class="page-link" href="#">3</a></li>
     <li class="page-item "><a class="page-link" href="#">Next</a></li>
   </ul> -->
+

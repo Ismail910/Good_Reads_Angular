@@ -1,7 +1,11 @@
+
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
+
+
+
 
 <!-- first section -->
 <section>
@@ -16,9 +20,8 @@
           aliquam distinctio iure laboriosam.
         </p>
       </div>
-      <div class="img1" style="width: 50%">
-        <img src="../../../../assets/new_intro_books_8_11.png" alt="" />
-      </div>
+
+      
     </div>
   </div>
 </section>
@@ -88,6 +91,7 @@
         Our top Authors 
       </h2>
 
+
       <div
         *ngFor="let Author of popularAuthor?.respopularAuthors"
         class="m-3"
@@ -128,7 +132,6 @@
       <h2 style="color: #ed553b; margin-top: 5%; text-align: center">
         Our top categories 
       </h2>
-
       <div *ngFor="let category of popularCategory"  class="mb-5 col-3 ">
         <div *ngFor="let pCategory of category?.category"  style="width: 18rem; height: 20rem">
           <div class="card pCategoryCard w-100 h-100" >

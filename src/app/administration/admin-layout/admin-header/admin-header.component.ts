@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/@core/auth/auth.service';
 
 @Component({
   selector: 'app-admin-header',
@@ -11,7 +13,7 @@ export class AdminHeaderComponent {
   lastName:string|null;
   @Output()status: EventEmitter<boolean> =  new EventEmitter();
    isShow:boolean;
-  constructor()
+  constructor(private auth:AuthService,private router:Router)
   {
     this.isShow=true;
     this.firstName=localStorage.getItem('fName');
@@ -25,5 +27,10 @@ export class AdminHeaderComponent {
     this.status.emit(!this.isShow);
    }
 
+   logout()
+   {
+    this.auth.logout();
+    this.router.navigate(['/Admin/login']);
+   }
 
 }

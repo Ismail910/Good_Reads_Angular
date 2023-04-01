@@ -112,7 +112,7 @@
         </form> -->
         <div class="dropdown" *ngIf="isLoginUser">
           <button class="btn dropdown-toggle logout" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"style="color:#E1D5D3;">
-            <img src="assets/admin.png" alt=""><span> {{firstName}} {{lastName}}</span>
+            <img src="http://localhost:5000/{{img}}" alt=""><span> {{firstName}} {{lastName}}</span>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" (click)="isLogOut()">
             <li><a class="dropdown-item" style="color:#ED553B;cursor: pointer;">
