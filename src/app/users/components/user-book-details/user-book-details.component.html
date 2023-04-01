@@ -195,17 +195,15 @@
     </div>
   </div>
 </section>
+
 <section>
   <div class="container mb-5">
     <div class="row justify-content-around">
-
       <div class=" selection  col-7" (click)="addRating()">
         <select
-
         type="button"
         value="{{ book.bookUser.status }}"
-        (click)="add($event)"
-      >
+        (click)="add($event)">
         <option value="Read">Read</option>
         <option  value="Reading">Reading</option>
         <option  value="wantToRead">Want To Read</option>
@@ -219,8 +217,6 @@
     </div>
   </div>
 </section>
-
-
 
 <!-- comments -->
 <section>
@@ -247,7 +243,6 @@
           <div class="card mb-3" style="overflow: scroll; height: 300px;">
             <div class="card-body">
               <p>Type your note, and hit enter to add it</p>
-  <!-- Start of comment view -->
               <div class="d-flex justify-content-between" *ngFor="let review of book.reviews">
                 <div class="d-flex flex-row ">
                   <img src="{{ review.user.img }} ../../../../../../assets/download.jfif"
@@ -264,15 +259,12 @@
                     <select
                     class="select btn btn-secondary dropdown-toggle"
                     type="button"
-                    value="{{ review?.changeLike.like }}"
-                    (click)="setLikeToReview($event, review)"
-                  >
+                    value="{{ review?.changeLike.like }}">
                     <option value="true">like</option>
                     <option value="false">dislike</option>
                   </select>
                 </div>
               </div>
-             
 
               </div>
             </div>

@@ -1,11 +1,5 @@
 <div>{{categories.books[0].book.name|json}}</div>
-<!-- <div>
-  <div class="container">
-    <div class="row py-5">
-      <h1>{{ categories | json }}</h1>
-    </div>
-  </div>
-</div> -->
+
 
 <div class="container mb-5">
   <div class="container d-flex justify-content-center">
@@ -28,14 +22,13 @@
         <div class="card col-12">
           <img [routerLink]="['/book/', book?.book._id]"
             src="http://localhost:5000/{{ book?.book.img }}"
-            
             class="card-img-top"
             alt="Hollywood Sign on The Hill"
             style="height: 250px"
           />
           <div class="card-body">
             <h4 class="bookName fs-1">{{ book.book.name }}</h4>
-            
+
             <div class="avgContainer">
               <p
                 class="card-text fs-5 d-flex justify-content-center align-items-center"
@@ -47,7 +40,7 @@
             </div>
 
             <div class="fs-1 col-5">
-             
+
             </div>
             <div class="selection col-5">
               <select class="select btn btn-secondary dropdown-toggle" type="button">
@@ -58,7 +51,7 @@
         </div>
       </div>
     </div>
-    <app-pagination></app-pagination>
+
 
     <!--
 <div class="container">
@@ -94,11 +87,11 @@
      <div *ngFor="let book of books"  class="col-md-4 unimation">
              <div class="movie my-2 position-relative">
                  <div class=" h-75">
-                  <a routerLink='/books/{{ book._id }}' ><img class="w-100" src="../../../../assets/images (1).jfif" >  </a> 
-                 </div>   
-                  [src]="book.img"        
-                 <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h2" style="color:  #3c3484;text-align: center;"><b>{{book.name | titlecase }}</b></h1> </a> 
-                 
+                  <a routerLink='/books/{{ book._id }}' ><img class="w-100" src="../../../../assets/images (1).jfif" >  </a>
+                 </div>
+                  [src]="book.img"
+                 <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h2" style="color:  #3c3484;text-align: center;"><b>{{book.name | titlecase }}</b></h1> </a>
+
              </div>
      </div>
   </div>
