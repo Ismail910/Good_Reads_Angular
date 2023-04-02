@@ -1,5 +1,5 @@
 
-<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults($event)"></app-search>
+<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults($event)" ></app-search>
 
  <div class="content" role="main">
 <div class="content" role="main" >
@@ -53,12 +53,12 @@
 
 
 <div class="container">
-  <div class="row">
-    <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
+  <div class="row d-flex justify-content-between">
+    <h2 style="color: #ed553b;  margin-top: 5%;text-align: center;"  class="col-12 ">
       ALL CATEGORIES
     </h2>
 
-    <div class="card m-3" style="width: 18rem; height: 23rem;" *ngFor="let category of categories"  routerLink="/category/{{ category?._id }}" >
+    <div class="card col-5 col-md-2 "  *ngFor="let category of categories"  routerLink="/category/{{ category?._id }}" >
       <img src="http://localhost:5000/{{category?.img}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
