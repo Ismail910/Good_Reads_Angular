@@ -58,7 +58,7 @@
             class="card-title"
             style="
               color: #3c3484;
-              font-size: 160%;
+              font-size: 110%;
               text-align: center;
               margin-left: 5%;
               font-weight: bold;
@@ -68,7 +68,7 @@
           </h5>
           <div class="avgContainer">
             <p
-              class="card-text fs-5 d-flex justify-content-center align-items-center"
+              class="card-text fs-3 d-flex justify-content-center align-items-center"
             >
               <span *ngFor="let star of [1, 2, 3, 4, 5]">
                 <i
@@ -103,7 +103,7 @@
             <img
               [routerLink]="['/author/', Author?.ID]"
               src="http://localhost:5000/{{ Author?.photo }}"
-              class="card-img-top h-75"
+              class="card-img-top  "
             />
           </div>
           <div class="card-body">
