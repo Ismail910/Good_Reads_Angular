@@ -13,7 +13,7 @@ export class BookCardComponent implements OnInit{
   @Input() book!:any;
   rating: number = 1 ;
   avgRating :number = 1;
-  bookId?:string
+  bookId?:string 
    constructor(private _Router : Router){
 
    }
