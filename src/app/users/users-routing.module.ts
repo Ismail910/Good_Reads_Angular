@@ -7,7 +7,6 @@ import { HomeComponent } from './home/home/HomeComponent.1';
 import { UserAuthorsComponent } from './components/user-authors/user-authors.component';
 import { UserAuthorDetailsComponent } from './components/user-author-details/user-author-details.component';
 import { UserCategoriesComponent } from './components/user-categories/user-categories.component';
-import { NotFoundComponent } from './error/not-found/not-found.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
 import { UserCategoryDetailsComponent } from './components/user-category-details/user-category-details.component';

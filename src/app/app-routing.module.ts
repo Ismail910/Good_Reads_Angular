@@ -1,11 +1,6 @@
 import { PopularComponent } from './users/home/popular/popular.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CategoryService } from './services/user/category.service';
-import { LoginComponent } from './users/auth/login/login.component';
-import { RegisterComponent } from './users/auth/register/register.component';
-import { UserCategoryDetailsComponent } from './users/components/user-category-details/user-category-details.component';
-import { NotFoundComponent } from './users/error/not-found/not-found.component';
 import { HomeComponent } from './users/home/home/HomeComponent.1';
 const routes: Routes = [
 
@@ -15,7 +10,6 @@ const routes: Routes = [
   then(m=>m.AdministrationModule)
   },
   {path:'home', component:PopularComponent},
-  {path:'**',component:NotFoundComponent}
 
 ];
 
