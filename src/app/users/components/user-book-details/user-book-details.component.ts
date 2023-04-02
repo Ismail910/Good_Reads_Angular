@@ -28,7 +28,7 @@ export class UserBookDetailsComponent implements OnInit {
   // reviewsId!:any;
   bookId!: string;
   rating!: number;
-  status!: string;
+  status!: string | "Want To Read";
   reviewForm: FormGroup;
   likeForm:FormGroup ;
   user_id!: User;
