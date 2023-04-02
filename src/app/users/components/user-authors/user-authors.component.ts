@@ -48,7 +48,7 @@ titlename="author"
           this.characters = authors;
         },
         (err) => {
-          console.error(err);
+          // console.error(err);
         }
       );
     }

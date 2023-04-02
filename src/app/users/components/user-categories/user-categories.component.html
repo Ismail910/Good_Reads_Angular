@@ -1,5 +1,5 @@
 
-<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults($event)"></app-search>
+<app-search [title]="titlename" (searchresult)="search($event)" (showResult)="showResults($event)" ></app-search>
 
  <div class="content" role="main">
 <div class="content" role="main" >
@@ -8,11 +8,9 @@
       <div class="form-group">
 
         <ul class="list-group list-group-flush">
-          <!-- results of ngFor is passed to appFilter with argument searchText -->
-          <!-- <li class="list-group-item" *ngFor="let c of characters | searchFilter: searchText"> -->
+          
           <li class="list-group-item" *ngFor="let c of characters ">
             <a [routerLink]="['/category',c._id]" style="text-decoration: none;">{{c.name}}</a>
-
           </li>
         </ul>
       </div>
@@ -21,44 +19,14 @@
 </div>
 </div>
 
-<!-- <div class="container">
-  <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
-    ALL CATEGORIES
-  </h2>
-  <div class="row py-5" >
-    <div *ngFor="let category of categories" class="col-md-2">
-      <div class="h-100 w-100" style="margin-left: 30%" routerLink="/category/{{ category._id }}">
-        <a routerLink="/category/{{ category._id }}"
-          ><img width="30%" src="http://localhost:5000/{{category?.img}}" />
-        </a>
-      </div>
-      <div >
-        <h1
-          style="
-            color: #3c3484;
-            font-size: 150%;
-            text-align: center;
-            margin-left: 60%;
-          "
-        >
-          <b>{{ category.name }}</b>
-        </h1>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- Begin -->
-
-
 
 <div class="container">
-  <div class="row">
-    <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
+  <div class="row d-flex justify-content-between">
+    <h2 style="color: #ed553b;  margin-top: 5%;text-align: center;"  class="col-12 ">
       ALL CATEGORIES
     </h2>
 
-    <div class="card m-3" style="width: 18rem; height: 23rem;" *ngFor="let category of categories"  routerLink="/category/{{ category._id }}" >
+    <div class="card col-5 col-md-2 "  *ngFor="let category of categories"  routerLink="/category/{{ category?._id }}" >
       <img src="http://localhost:5000/{{category?.img}}" class="card-img-top h-75 " >
       <div class="card-body">
         <h5 class="card-title"  style="
@@ -67,11 +35,9 @@
               text-align: center;
               margin-left: 5%;
               font-weight: bold;">
-              {{ category.name }}
+              {{ category?.name }}
        </h5>
-
       </div>
-
     </div>
   </div>
 </div>
@@ -83,8 +49,7 @@
     [next]="next"
     [prev]="prev"
     [page]="page"
-    (currPage)="currentPage($event)"
-  >
+    (currPage)="currentPage($event)">
   </app-pagination>
 </div>
 

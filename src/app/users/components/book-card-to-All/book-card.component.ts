@@ -13,6 +13,7 @@ export class BookCardAllComponent implements OnInit{
   @Input() books?:any;
   rating: number = 1 ;
   bookId?:string
+
    constructor(private _Router : Router){
    }
 
@@ -25,8 +26,8 @@ export class BookCardAllComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    console.log(this.books?.rating );
-    this.rating = this.books?.avg_rate 
+    // console.log(this.books?.rating );
+    this.rating = this.books?.avg_rate
   }
 
 }

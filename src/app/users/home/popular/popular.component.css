@@ -1,10 +1,7 @@
 .first_section {
   display: flex;
 }
-.img1 {
-  margin-right: 0;
-  width: 40%;
-}
+
 .title {
   font-size: 500%;
   margin-top: 30px;
@@ -14,14 +11,11 @@
 }
 .description {
   width: 80%;
-  font-size: 200%;
+  font-size: 180%;
   margin-left: 10%;
   margin-top: 15px;
 }
-/* popular categories */
 
-/* right styling */
-/* popular book */
 .card{transition: all 0.7s ease;
 margin-bottom: 3%;
 }
@@ -32,7 +26,8 @@ margin-bottom: 3%;
 .titleCategory{
   position: absolute;
   top: 40%;
-  left: 20%;
+  width: 100%;
+  opacity: 0.7;
 }
 .card:hover{box-shadow: 5px 5px 10px #333,-5px -5px 10px #333;
     transform: scale(1.05);
@@ -76,7 +71,7 @@ margin-bottom: 3%;
 
 .authorPhoto img{
   width: 80%;
-  height: 80%;
+  height: 30vh;
   border-radius: 50%;
   margin: 10%;
   
@@ -88,4 +83,9 @@ margin-bottom: 3%;
 }
 .fa.active {
   color: #ED553B;
+}
+@media(max-width:1034px){
+  .content{
+    display: none;
+  }
 }

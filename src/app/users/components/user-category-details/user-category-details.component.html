@@ -1,34 +1,27 @@
-<!-- <div>
-  <div class="container">
-    <div class="row py-5">
-      <h1>{{ categories | json }}</h1>
-    </div>
-  </div>
-</div> -->
 
 
 <div class="container mb-5">
   <div class="d-flex justify-content-center">
     <div
       class=" text-center bg-white border-0 col-12 col-md-12 col-lg-4 mt-5 mb-5"
-    
+
     >
 <div>
   <img class="categoryImg col-12 mt-5 " src="http://localhost:5000/{{ categories?.img }}" alt="">
 </div>
       <div class="card-body ">
-       
+
         <h3 class="text-center m-4 " style="color: #3c3484">
-          {{ categories.name }}
+          {{ categories?.name }}
         </h3>
       </div>
     </div>
   </div>
-  
+
     <div class="row">
       <div
         class="col-12 col-md-12 col-lg-4 mt-5 mb-5"
-        *ngFor="let book of categories.books" >
+        *ngFor="let book of categories?.books" >
         <div class="card col-12">
           <img [routerLink]="['/book/', book?.book._id]"
             src="http://localhost:5000/{{ book?.book.img }}"
@@ -37,8 +30,7 @@
             style="height: 50vh"
           />
           <div class="card-body">
-            <h4 class="bookName fs-1" style="color:#3c3484">{{ book.book.name }}</h4>
-            
+            <h4 class="bookName fs-1" style="color:#3c3484">{{ book?.book?.name }}</h4>
 
 
             <div class="avgContainer">
@@ -46,82 +38,17 @@
                 class="card-text fs-5 d-flex justify-content-center align-items-center"
               >
                 <span class="AvgRate">{{
-                  book?.book.avg_rate | number : "1.1-1"
+                  book?.book?.avg_rate | number : "1.1-1"
                 }}</span>
               </p>
             </div>
-
             <div class="fs-1 col-5">
-
             </div>
             <div class="selection col-5">
-              <select class="select btn btn-secondary dropdown-toggle" type="button">
-                <option value="{{ book?.status }}">{{ book?.status }}</option>
-              </select>
+                <div class=" btn btn-secondary ">{{book.status }}</div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <app-pagination >
-
-    </app-pagination>
   </div>
-           
-            <!-- <div class="selection col-5">
-              <select class="select btn btn-secondary dropdown-toggle" type="button">
-                <option value="{{ book?.status }}">{{ book?.status }}</option>
-              </select>
-            </div> -->
-         
-
-
-
-
-
-
-    <!--
-<div class="container">
-  <h2 style="color: #ed553b; margin-left: 40%; margin-top: 5%">
-    ALL CATEGORIES
-  </h2>
-  <div class="row py-5">
-    <div *ngFor="let book of categories?.books"  class="col-md-4 unimation">
-      <div class="h-100 w-100" style="margin-left: 30%">
-        <a routerLink="/category/{{ category._id }}"
-          ><img  src="http://localhost:5000/{{ categories.img }}" />
-        </a>
-      </div>
-      <div routerLink="/category/{{ category._id }}">
-        <h1
-          style="
-            color: #3c3484;
-            font-size: 150%;
-            text-align: center;
-            margin-left: 60%;
-          "
-        >
-          <b>{{ category.name }}</b>
-        </h1>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div class="container">
-  <div class="row py-5">
-     <div *ngFor="let book of books"  class="col-md-4 unimation">
-             <div class="movie my-2 position-relative">
-                 <div class=" h-75">
-                  <a routerLink='/books/{{ book._id }}' ><img class="w-100" src="../../../../assets/images (1).jfif" >  </a>
-                 </div>
-                  [src]="book.img"
-                 <a routerLink='/books/{{ book._id }}' ><h1 class="my-2 h2" style="color:  #3c3484;text-align: center;"><b>{{book.name | titlecase }}</b></h1> </a>
-
-             </div>
-     </div>
-  </div>
-</div>
-<app-pagination></app-pagination>-->
-

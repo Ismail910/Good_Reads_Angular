@@ -27,8 +27,8 @@ export class AllBookComponent implements OnInit{
     {
       this.Api.get(`${environment.baseUrl}/home/all/page/${this.page}`).subscribe(data=>{
         this.books=data.data;
-        console.log(this.books);
-        console.log(data);
+       console.log (this.books);
+      //   console.log(data);
         this.totalPages=data.pages.totalPages;
         this._pagination=[...Array(this.totalPages).keys()];
       })
@@ -66,6 +66,7 @@ export class AllBookComponent implements OnInit{
           this.getBooks();
         }
       }
+      
       currentPage(p:number)
       {
         this.page=p;
