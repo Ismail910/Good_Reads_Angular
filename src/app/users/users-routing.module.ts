@@ -17,8 +17,6 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 const routes: Routes = [
    {path:'',component:HomeComponent,children:
    [
-
-
     {path:'books',canActivate:[AuthGuard] ,component:UserBooksComponent},
 
     {path:'allBooks',component:AllBookComponent},

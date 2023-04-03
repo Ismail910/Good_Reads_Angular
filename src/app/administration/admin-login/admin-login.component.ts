@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@core/auth/auth.service';
@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment.development';
   templateUrl: './admin-login.component.html',
   styleUrls: ['./admin-login.component.css']
 })
-export class AdminLoginComponent {
+export class AdminLoginComponent  implements OnInit{
 
   formLogin:FormGroup;
   error:boolean=false;
@@ -23,6 +23,13 @@ export class AdminLoginComponent {
       }
     );
   }
+  ngOnInit(): void {
+    if(this.auth.isLogin()&&this.auth.isAdmin())
+    {
+      this.router.navigate(['/Admin/Dashboard']);
+    }
+  }
+
 
   get email()
   {

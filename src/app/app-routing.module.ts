@@ -1,7 +1,6 @@
-import { PopularComponent } from './users/home/popular/popular.component';
+import { NotFoundComponent } from './@shared/components/not-found/not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './users/home/home/HomeComponent.1';
 const routes: Routes = [
 
   {path:'',loadChildren:()=>import('./users/users.module').then(m=>m.UsersModule)},
@@ -9,7 +8,7 @@ const routes: Routes = [
   import('./administration/administration.module').
   then(m=>m.AdministrationModule)
   },
-  {path:'home', component:PopularComponent},
+  {path:'**',component:NotFoundComponent}
 
 ];
 
