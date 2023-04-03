@@ -18,7 +18,7 @@ export class UserBooksComponent implements OnChanges,OnInit{
 
   books!:Book[]
 
-  status!:string
+  status!:string | "Want To Read"
   bookId!:string
   totalPages:number=0;
   page:number=1;
